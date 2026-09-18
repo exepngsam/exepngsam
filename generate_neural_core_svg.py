@@ -1,0 +1,275 @@
+"""
+generate_neural_core_svg.py
+Replaces the old ASCII art card with a unique, ultra-futuristic
+Holographic 3D Quantum Neural Core & Diagnostics Console SVG for @exepngsam.
+Features:
+- Rotating 3D gyroscope orbital rings (opposite rotations, 60 FPS SMIL)
+- Pulsing glowing singularity reactor core with corona bloom filter
+- Orbiting synapse energy nodes & particle beams
+- Floating quantum telemetry data (Nexora, Stark-Ai, 800-Node 3D Physics)
+- Live Neural Diagnostics Console with moving health bar & terminal prompt
+Pure SMIL vector animations, zero lag, 100% self-contained SVG.
+"""
+
+OUTPUT_FILE = "neural-core.svg"
+USERNAME = "exepngsam"
+
+
+def generate_neural_core_svg(output_path=OUTPUT_FILE, total_contribs=112):
+    card_width = 510
+    card_height = 570
+    center_x = card_width // 2  # 255
+    center_y = 205
+
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {card_width} {card_height}" width="100%" height="auto" style="max-width: {card_width}px; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SFMono-Regular', Consolas, monospace;">
+  <defs>
+    <!-- Liquid Glass Dark Background -->
+    <linearGradient id="core-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141d2a" stop-opacity="0.95" />
+      <stop offset="50%" stop-color="#0c121a" stop-opacity="0.97" />
+      <stop offset="100%" stop-color="#070b10" stop-opacity="0.99" />
+    </linearGradient>
+
+    <!-- Liquid Glass Border Gradient -->
+    <linearGradient id="core-border" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.95">
+        <animate attributeName="stop-color" values="#00f0ff;#a855f7;#39d353;#00f0ff" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="40%" stop-color="#ffffff" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#39d353" stop-opacity="0.85">
+        <animate attributeName="stop-color" values="#39d353;#00f0ff;#a855f7;#39d353" dur="8s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <!-- Core Singularity Radial Gradient -->
+    <radialGradient id="singularity-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="25%" stop-color="#00f0ff" />
+      <stop offset="65%" stop-color="#a855f7" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0d1117" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="sun-core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="40%" stop-color="#00f0ff" />
+      <stop offset="80%" stop-color="#39d353" />
+      <stop offset="100%" stop-color="#006d32" />
+    </radialGradient>
+
+    <!-- Bloom Filters -->
+    <filter id="core-bloom" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="6" result="blur1" />
+      <feGaussianBlur stdDeviation="2" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur1" />
+        <feMergeNode in="blur2" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="ring-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2" result="b" />
+      <feMerge>
+        <feMergeNode in="b" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Progress Shimmer -->
+    <linearGradient id="bar-shimmer" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f0ff" />
+      <stop offset="50%" stop-color="#39d353" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+  </defs>
+
+  <style>
+    .term-title {{ font-size: 13px; fill: #7d8590; font-weight: 700; font-family: monospace; }}
+    .diag-hdr {{ font-size: 11px; font-weight: 800; fill: #a855f7; letter-spacing: 0.8px; font-family: monospace; }}
+    .diag-line {{ font-size: 12px; font-weight: 600; fill: #e6edf3; font-family: -apple-system, BlinkMacSystemFont, monospace; }}
+    .diag-key {{ font-size: 12px; font-weight: 800; fill: #58a6ff; font-family: monospace; }}
+    .hud-stat {{ font-size: 10px; font-weight: 700; fill: #7d8590; font-family: monospace; }}
+    .hud-val {{ font-size: 10px; font-weight: 800; fill: #00f0ff; font-family: monospace; }}
+  </style>
+
+  <!-- Outer Liquid Glass Frame -->
+  <rect x="2" y="2" width="{card_width - 4}" height="{card_height - 4}" rx="16" fill="url(#core-bg)" stroke="url(#core-border)" stroke-width="1.8" />
+
+  <!-- Window Header Bar -->
+  <g transform="translate(20, 20)">
+    <circle cx="0" cy="5" r="5" fill="#ff5f56" />
+    <circle cx="15" cy="5" r="5" fill="#ffbd2e" />
+    <circle cx="30" cy="5" r="5" fill="#27c93f" />
+
+    <text x="48" y="9.5" class="term-title">
+      <tspan fill="#00f0ff">exepngsam</tspan>@<tspan fill="#39d353">cyberdeck</tspan>: <tspan fill="#e6edf3">~/quantum-core.ai</tspan>
+    </text>
+
+    <!-- Top Right Status Pill -->
+    <rect x="{card_width - 150}" y="-2" width="110" height="18" rx="9" fill="#161b22" stroke="#30363d" stroke-width="1" />
+    <circle cx="{card_width - 140}" cy="7" r="2.8" fill="#39d353">
+      <animate attributeName="opacity" values="1; 0.2; 1" dur="1.5s" repeatCount="indefinite" />
+    </circle>
+    <text x="{card_width - 130}" y="11" font-size="9" fill="#39d353" font-weight="800" font-family="monospace">CORE_ONLINE</text>
+  </g>
+
+  <!-- Header Separator -->
+  <line x1="16" y1="48" x2="{card_width - 16}" y2="48" stroke="#21262d" stroke-width="1" />
+
+  <!-- ============================================================== -->
+  <!-- 3D HOLOGRAPHIC QUANTUM NEURAL REACTOR (CENTERPIECE)            -->
+  <!-- ============================================================== -->
+
+  <!-- Outer HUD Circular Crosshairs & Grids -->
+  <g transform="translate({center_x}, {center_y})">
+    <!-- Static outer dashed reticle ring -->
+    <circle r="120" fill="none" stroke="#21262d" stroke-width="1" stroke-dasharray="4 6" />
+    <circle r="138" fill="none" stroke="#30363d" stroke-width="0.8" stroke-dasharray="12 180" opacity="0.8">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="24s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- 4 Cardinal HUD Crosshair Marks -->
+    <line x1="0" y1="-132" x2="0" y2="-120" stroke="#00f0ff" stroke-width="2" />
+    <line x1="0" y1="120" x2="0" y2="132" stroke="#00f0ff" stroke-width="2" />
+    <line x1="-132" y1="0" x2="-120" y2="0" stroke="#00f0ff" stroke-width="2" />
+    <line x1="120" y1="0" x2="132" y2="0" stroke="#00f0ff" stroke-width="2" />
+
+    <!-- Corner Sci-Fi Brackets -->
+    <path d="M -115 -80 L -125 -80 L -125 -100 L -105 -100" fill="none" stroke="#00f0ff" stroke-width="1.2" opacity="0.7" />
+    <path d="M 115 -80 L 125 -80 L 125 -100 L 105 -100" fill="none" stroke="#00f0ff" stroke-width="1.2" opacity="0.7" />
+    <path d="M -115 80 L -125 80 L -125 100 L -105 100" fill="none" stroke="#00f0ff" stroke-width="1.2" opacity="0.7" />
+    <path d="M 115 80 L 125 80 L 125 100 L 105 100" fill="none" stroke="#00f0ff" stroke-width="1.2" opacity="0.7" />
+
+    <!-- Floating HUD Telemetry Tags -->
+    <text x="-125" y="-108" class="hud-stat">NODE: <tspan class="hud-val">800_PARTICLES</tspan></text>
+    <text x="50" y="-108" class="hud-stat">SYS: <tspan class="hud-val">AUTONOMOUS_AI</tspan></text>
+    <text x="-125" y="115" class="hud-stat">FREQ: <tspan class="hud-val">60Hz_SYNC</tspan></text>
+    <text x="50" y="115" class="hud-stat">LATENCY: <tspan class="hud-val">0.12ms</tspan></text>
+
+    <!-- Outer Ambient Glow Aura -->
+    <circle r="70" fill="url(#singularity-glow)" opacity="0.6">
+      <animate attributeName="r" values="60; 80; 60" dur="3s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.4; 0.75; 0.4" dur="3s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- ==================== 3D ROTATING GYROSCOPE RINGS ==================== -->
+
+    <!-- Ring 1: Primary 45-degree Gyroscope Ring (Clockwise) -->
+    <g>
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="10s" repeatCount="indefinite" />
+      <ellipse cx="0" cy="0" rx="98" ry="38" fill="none" stroke="#00f0ff" stroke-width="1.8" filter="url(#ring-glow)" opacity="0.9">
+        <animate attributeName="stroke" values="#00f0ff;#39d353;#a855f7;#00f0ff" dur="8s" repeatCount="indefinite" />
+      </ellipse>
+      <!-- Orbiting Particle on Ring 1 -->
+      <circle cx="98" cy="0" r="4.5" fill="#ffffff" filter="url(#core-bloom)" />
+      <circle cx="-98" cy="0" r="3" fill="#00f0ff" />
+    </g>
+
+    <!-- Ring 2: Counter-Rotating -45 degree Gyroscope Ring (Counter-Clockwise) -->
+    <g>
+      <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="8s" repeatCount="indefinite" />
+      <ellipse cx="0" cy="0" rx="98" ry="38" fill="none" stroke="#a855f7" stroke-width="1.8" filter="url(#ring-glow)" opacity="0.85">
+        <animate attributeName="stroke" values="#a855f7;#00f0ff;#39d353;#a855f7" dur="8s" repeatCount="indefinite" />
+      </ellipse>
+      <!-- Orbiting Particle on Ring 2 -->
+      <circle cx="0" cy="38" r="4" fill="#39d353" filter="url(#core-bloom)" />
+      <circle cx="0" cy="-38" r="3.5" fill="#ffffff" />
+    </g>
+
+    <!-- Ring 3: Vertical 3D Tilt Ring -->
+    <g>
+      <animateTransform attributeName="transform" type="rotate" from="45" to="405" dur="14s" repeatCount="indefinite" />
+      <ellipse cx="0" cy="0" rx="82" ry="24" fill="none" stroke="#39d353" stroke-width="1.5" stroke-dasharray="14 6" opacity="0.8">
+        <animate attributeName="ry" values="24; 70; 24" dur="4s" repeatCount="indefinite" />
+      </ellipse>
+      <circle cx="82" cy="0" r="3.5" fill="#00f0ff" />
+    </g>
+
+    <!-- Center Glowing Singularity Core Reactor -->
+    <circle cx="0" cy="0" r="26" fill="url(#sun-core)" filter="url(#core-bloom)">
+      <animate attributeName="r" values="22; 29; 22" dur="2.2s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.9; 1; 0.9" dur="2.2s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- Core Inner Diamond Spark -->
+    <polygon points="0,-14 10,0 0,14 -10,0" fill="#ffffff">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="4s" repeatCount="indefinite" />
+    </polygon>
+
+    <!-- Pulsing Synapse Radiating Wave Lines -->
+    <circle r="42" fill="none" stroke="#00f0ff" stroke-width="1" opacity="0.7">
+      <animate attributeName="r" values="30; 75; 95" dur="2.5s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.8; 0.2; 0" dur="2.5s" repeatCount="indefinite" />
+    </circle>
+  </g>
+
+  <!-- ============================================================== -->
+  <!-- BOTTOM NEURAL DIAGNOSTICS & TELEMETRY CONSOLE                  -->
+  <!-- ============================================================== -->
+  <g transform="translate(24, 355)">
+    <!-- Section Divider Header -->
+    <text x="0" y="14" class="diag-hdr">━━━ NEURAL ENGINE DIAGNOSTICS ━━━━━━━━━━━━━━━━━━━</text>
+
+    <!-- Telemetry Box Frame -->
+    <rect x="0" y="24" width="462" height="135" rx="10" fill="#101722" stroke="#30363d" stroke-width="1.2" />
+
+    <!-- Line 1: Primary AI Engine -->
+    <g transform="translate(14, 48)">
+      <circle cx="2" cy="-4" r="3" fill="#00f0ff">
+        <animate attributeName="opacity" values="1; 0.2; 1" dur="1.2s" repeatCount="indefinite" />
+      </circle>
+      <text x="14" y="0" class="diag-line">
+        <tspan class="diag-key">AI SYSTEM</tspan> ~ <tspan fill="#ffffff">Nexora</tspan> (Autonomous Coordination)
+      </text>
+    </g>
+
+    <!-- Line 2: OS & Particle Engine -->
+    <g transform="translate(14, 72)">
+      <circle cx="2" cy="-4" r="3" fill="#39d353">
+        <animate attributeName="opacity" values="1; 0.2; 1" dur="1.5s" repeatCount="indefinite" />
+      </circle>
+      <text x="14" y="0" class="diag-line">
+        <tspan class="diag-key">PHYSICS</tspan>   ~ <tspan fill="#ffffff">800-Node 3D Particle Simulation OS</tspan>
+      </text>
+    </g>
+
+    <!-- Line 3: Stack & Cloud -->
+    <g transform="translate(14, 96)">
+      <circle cx="2" cy="-4" r="3" fill="#a855f7">
+        <animate attributeName="opacity" values="1; 0.2; 1" dur="1.8s" repeatCount="indefinite" />
+      </circle>
+      <text x="14" y="0" class="diag-line">
+        <tspan class="diag-key">COMPUTE</tspan>   ~ <tspan fill="#00f0ff">AWS Bedrock</tspan> • <tspan fill="#39d353">Next.js</tspan> • <tspan fill="#ffa657">TypeScript</tspan>
+      </text>
+    </g>
+
+    <!-- Real-time Animated Health Progress Bar -->
+    <g transform="translate(14, 118)">
+      <text x="0" y="8" font-size="10" font-weight="700" fill="#7d8590" font-family="monospace">CORE HEALTH</text>
+      <text x="434" y="8" font-size="10" font-weight="800" fill="#39d353" font-family="monospace" text-anchor="end">100% OPERATIONAL</text>
+      <rect x="0" y="14" width="434" height="8" rx="4" fill="#161b22" />
+      <rect x="0" y="14" width="0" height="8" rx="4" fill="url(#bar-shimmer)">
+        <animate attributeName="width" values="0; 434" dur="1.4s" fill="freeze" />
+      </rect>
+    </g>
+  </g>
+
+  <!-- Console Footer Command -->
+  <g transform="translate(24, 540)">
+    <text x="0" y="0" font-size="12" font-family="monospace" font-weight="700" fill="#39d353">exepngsam@deck:~$</text>
+    <text x="145" y="0" font-size="12" font-family="monospace" font-weight="600" fill="#e6edf3">./quantum-core --status</text>
+    <rect x="320" y="-11" width="7" height="13" fill="#00f0ff">
+      <animate attributeName="opacity" values="1; 0; 1" dur="0.8s" repeatCount="indefinite" />
+    </rect>
+    <text x="338" y="0" font-size="10.5" font-family="monospace" font-weight="700" fill="#39d353">[READY]</text>
+  </g>
+</svg>'''
+
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write(svg)
+    print(f"[OK] Generated {output_path} ({len(svg)} bytes)")
+    return output_path
+
+
+if __name__ == "__main__":
+    generate_neural_core_svg()

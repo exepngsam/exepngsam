@@ -4,10 +4,10 @@ Master Python orchestrator for the complete animated Cyberpunk / Liquid Glass
 GitHub Profile Suite for @exepngsam.
 
 Executes:
-1. generate_header_svg.py       -> header-liquid-glass.svg (iOS 27 Liquid Glass animated banner)
-2. generate_contribution_svg.py -> github-contribution-animation.svg (53x7 slant reveal & glint)
-3. generate_terminal_card.py    -> terminal-card.svg (Scaled-up ASCII avatar + cursor sweep)
-4. generate_info_card.py        -> info-card.svg (Scaled-up Neofetch card with staggered reveals)
+1. generate_header_svg.py       -> header-liquid-glass.svg (iOS 27 Liquid Glass banner)
+2. generate_neural_core_svg.py  -> neural-core.svg (3D Holographic Quantum Core - Replaces ASCII)
+3. generate_info_card.py        -> info-card.svg (Scaled-up Neofetch card with staggered reveals)
+4. generate_contribution_svg.py -> github-contribution-animation.svg (53x7 calendar slant reveal)
 5. generate_stats_svg.py        -> github-stats-animated.svg (Self-contained animated stats & wave)
 6. generate_projects_svg.py     -> projects-animated.svg (Totally animated 6-card grid)
 7. generate_snake_svg.py        -> github-contribution-grid-snake.svg (Contribution snake game)
@@ -17,9 +17,9 @@ Executes:
 import os
 import sys
 import generate_header_svg
-import generate_contribution_svg
-import generate_terminal_card
+import generate_neural_core_svg
 import generate_info_card
+import generate_contribution_svg
 import generate_stats_svg
 import generate_projects_svg
 import generate_snake_svg
@@ -33,11 +33,11 @@ README_TEMPLATE = f"""<div align="center">
 
 <br /><br />
 
-<!-- Side-by-Side Terminal ASCII Portrait & Neofetch Cards via HTML Table (Enlarged & Crystal Clear) -->
+<!-- Side-by-Side 3D Quantum Neural Core & Neofetch Telemetry Cards (Unique, High-Legibility, Zero ASCII) -->
 <table border="0" cellpadding="0" cellspacing="0" style="border: none; background: transparent; width: 100%; max-width: 960px;">
   <tr>
     <td width="50%" align="center" valign="top" style="border: none; padding: 8px;">
-      <img src="./terminal-card.svg" alt="Terminal ASCII Portrait" width="100%" />
+      <img src="./neural-core.svg" alt="3D Holographic Quantum Neural Core" width="100%" />
     </td>
     <td width="50%" align="center" valign="top" style="border: none; padding: 8px;">
       <img src="./info-card.svg" alt="Neofetch System Telemetry" width="100%" />
@@ -200,22 +200,21 @@ def main():
     header_svg = generate_header_svg.generate_header_svg()
     print(f"      -> {header_svg} created.")
 
-    # 2. Generate Contribution Graph SVG
-    print("\n[2/7] Generating 53x7 Animated Contribution Calendar...")
+    # 2. Generate 3D Holographic Quantum Neural Core SVG (Replaces ASCII)
+    print("\n[2/7] Generating 3D Holographic Quantum Neural Core SVG...")
+    neural_svg = generate_neural_core_svg.generate_neural_core_svg()
+    print(f"      -> {neural_svg} created.")
+
+    # 3. Generate Neofetch Info Card SVG (Enlarged & Crisp)
+    print("\n[3/7] Generating Enlarged Neofetch Telemetry Info Card...")
+    info_svg = generate_info_card.generate_svg()
+    print(f"      -> {info_svg} created.")
+
+    # 4. Generate Contribution Graph SVG
+    print("\n[4/7] Generating 53x7 Animated Contribution Calendar...")
     grid, total, months = generate_contribution_svg.fetch_contributions(USERNAME)
     contrib_svg = generate_contribution_svg.generate_svg(grid, total, months)
     print(f"      -> {contrib_svg} created.")
-
-    # 3. Generate Terminal ASCII Card SVG (Enlarged & Crisp)
-    print("\n[3/7] Generating Enlarged Terminal ASCII Portrait Card...")
-    ascii_lines = generate_terminal_card.fetch_and_convert_avatar(USERNAME)
-    terminal_svg = generate_terminal_card.generate_svg(ascii_lines)
-    print(f"      -> {terminal_svg} created.")
-
-    # 4. Generate Neofetch Info Card SVG (Enlarged & Crisp)
-    print("\n[4/7] Generating Enlarged Neofetch Telemetry Info Card...")
-    info_svg = generate_info_card.generate_svg()
-    print(f"      -> {info_svg} created.")
 
     # 5. Generate Animated Stats & Waveform SVG
     print("\n[5/7] Generating Animated Liquid Glass Stats & Waveform SVG...")
@@ -242,7 +241,7 @@ def main():
     print("\n" + "=" * 70)
     print("   [ALL 7 ASSETS GENERATED & VERIFIED SUCCESSFULLY]")
     print("   - header-liquid-glass.svg")
-    print("   - terminal-card.svg")
+    print("   - neural-core.svg (Unique 3D Holographic AI Core)")
     print("   - info-card.svg")
     print("   - github-contribution-animation.svg")
     print("   - github-stats-animated.svg")

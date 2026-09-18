@@ -5,11 +5,11 @@
 
 <br /><br />
 
-<!-- Side-by-Side Terminal ASCII Portrait & Neofetch Cards via HTML Table (Enlarged & Crystal Clear) -->
+<!-- Side-by-Side 3D Quantum Neural Core & Neofetch Telemetry Cards (Unique, High-Legibility, Zero ASCII) -->
 <table border="0" cellpadding="0" cellspacing="0" style="border: none; background: transparent; width: 100%; max-width: 960px;">
   <tr>
     <td width="50%" align="center" valign="top" style="border: none; padding: 8px;">
-      <img src="./terminal-card.svg" alt="Terminal ASCII Portrait" width="100%" />
+      <img src="./neural-core.svg" alt="3D Holographic Quantum Neural Core" width="100%" />
     </td>
     <td width="50%" align="center" valign="top" style="border: none; padding: 8px;">
       <img src="./info-card.svg" alt="Neofetch System Telemetry" width="100%" />

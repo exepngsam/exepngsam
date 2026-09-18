@@ -80,7 +80,7 @@
         <animate attributeName="r" values="3.5;5;3.5" dur="2s" repeatCount="indefinite" />
       </circle>
       <text x="24" y="14" class="badge-text">
-        <tspan class="stat-number">112</tspan> CONTRIBUTIONS
+        <tspan class="stat-number">113</tspan> CONTRIBUTIONS
       </text>
     </g>
   </g>
