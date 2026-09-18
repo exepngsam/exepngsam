@@ -2,8 +2,8 @@ name: Live Profile Telemetry Updater
 
 on:
   schedule:
-    # Auto-refresh telemetry every 12 hours
-    - cron: "0 */12 * * *"
+    # Auto-refresh telemetry every hour for live updates
+    - cron: "0 * * * *"
   workflow_dispatch:
   push:
     branches:
