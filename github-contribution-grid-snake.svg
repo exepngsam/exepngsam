@@ -17,6 +17,15 @@
         <animate attributeName="stop-color" values="#39d353;#a855f7;#00f0ff;#39d353" dur="8s" repeatCount="indefinite" />
       </stop>
     </linearGradient>
+
+    <!-- Ultra-Smooth Hardware-Accelerated Glow Filter (Pure 60 FPS, Zero Jitter) -->
+    <filter id="smooth-snake-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.6" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
   </defs>
 
   <style>
@@ -55,19 +64,27 @@
       }
       .s.s0 {
         fill: #00f0ff;
-        filter: drop-shadow(0 0 6px #00f0ff);
+        stroke: #ffffff;
+        stroke-width: 0.8px;
+        stroke-opacity: 0.85;
       }
       .s.s1 {
-        fill: #22d3ee;
-        filter: drop-shadow(0 0 4px rgba(0, 240, 255, 0.6));
+        fill: #00e5ff;
+        stroke: #00f0ff;
+        stroke-width: 0.5px;
+        stroke-opacity: 0.5;
       }
       .s.s2 {
-        fill: #39d353;
-        filter: drop-shadow(0 0 4px rgba(57, 211, 83, 0.6));
+        fill: #00dfa2;
+        stroke: #00e5ff;
+        stroke-width: 0.5px;
+        stroke-opacity: 0.5;
       }
       .s.s3 {
-        fill: #a855f7;
-        filter: drop-shadow(0 0 3px rgba(168, 85, 247, 0.6));
+        fill: #39d353;
+        stroke: #00dfa2;
+        stroke-width: 0.5px;
+        stroke-opacity: 0.5;
       }
       .game-title { font-size: 11.5px; font-weight: 700; fill: #7d8590; font-family: monospace; }
       .month-lbl { font-size: 9px; fill: #58a6ff; font-weight: 600; font-family: monospace; }
@@ -92,7 +109,7 @@
     <circle cx="28" cy="0" r="4.5" fill="#27c93f" />
 
     <text x="44" y="4" class="game-title">
-      <tspan fill="#00f0ff">snake@cyberdeck</tspan>: <tspan fill="#39d353">contributions.eat()</tspan> ~ <tspan fill="#ffffff">119 dots consumed</tspan>
+      <tspan fill="#00f0ff">snake@cyberdeck</tspan>: <tspan fill="#39d353">contributions.eat()</tspan> ~ <tspan fill="#ffffff">120 dots consumed</tspan>
     </text>
 
     <!-- Top Right Live Status Pill -->
@@ -514,17 +531,19 @@
     <rect class="u u2" height="12" width="113.7" x="621.9" y="144"/>
     <rect class="u u3" height="12" width="113.7" x="734.9" y="144"/>
 
-    <!-- Smooth Slithering Snake Segments (Cell-by-cell linear transform) -->
-    <rect class="s s0" x="0.8" y="0.8" width="14.4" height="14.4" rx="4.5" ry="4.5"/>
-    <rect class="s s1" x="1.8" y="1.8" width="12.3" height="12.3" rx="4.1" ry="4.1"/>
-    <rect class="s s2" x="2.6" y="2.6" width="10.8" height="10.8" rx="3.6" ry="3.6"/>
-    <rect class="s s3" x="3.0" y="3.0" width="9.9" height="9.9" rx="3.3" ry="3.3"/>
+    <!-- Smooth Slithering Snake Segments (Seamless Connected Serpent with Hardware-Accelerated Bloom) -->
+    <g filter="url(#smooth-snake-glow)">
+      <rect class="s s0" x="0.2" y="0.2" width="15.6" height="15.6" rx="4.6" ry="4.6"/>
+    <rect class="s s1" x="0.3" y="0.3" width="15.4" height="15.4" rx="4.2" ry="4.2"/>
+    <rect class="s s2" x="0.4" y="0.4" width="15.2" height="15.2" rx="3.9" ry="3.9"/>
+    <rect class="s s3" x="0.5" y="0.5" width="15.0" height="15.0" rx="3.6" ry="3.6"/>
+    </g>
   </g>
 
   <!-- ==================== FOOTER TELEMETRY & CONTROLS ==================== -->
   <g transform="translate(24, 228)">
     <text x="0" y="0" class="footer-stat">
-      GAME: <tspan fill="#39d353">SNAKE_AI_v2</tspan> | SCORE: <tspan fill="#00f0ff">119 PTS</tspan> | SPEED: <tspan fill="#ffa657">60 FPS</tspan> | STATUS: <tspan fill="#a855f7">AUTONOMOUS</tspan>
+      GAME: <tspan fill="#39d353">SNAKE_AI_v2</tspan> | SCORE: <tspan fill="#00f0ff">120 PTS</tspan> | SPEED: <tspan fill="#ffa657">60 FPS</tspan> | STATUS: <tspan fill="#a855f7">AUTONOMOUS</tspan>
     </text>
 
     <!-- Right Side Indicator -->

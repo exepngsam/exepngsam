@@ -59,10 +59,16 @@ def generate_snake_svg(output_path=OUTPUT_FILE, grid=None, total_contribs=None, 
     # Extract all rect elements
     rects = re.findall(r"<rect [^>]+/>", platane_raw)
     cells = [r for r in rects if 'class="c' in r]
-    snake_rects = [r for r in rects if 'class="s' in r]
+    # Seamless, connected snake segments (virtually zero gap, eliminating disjointed block separation)
+    snake_rects = [
+        '<rect class="s s0" x="0.2" y="0.2" width="15.6" height="15.6" rx="4.6" ry="4.6"/>',
+        '<rect class="s s1" x="0.3" y="0.3" width="15.4" height="15.4" rx="4.2" ry="4.2"/>',
+        '<rect class="s s2" x="0.4" y="0.4" width="15.2" height="15.2" rx="3.9" ry="3.9"/>',
+        '<rect class="s s3" x="0.5" y="0.5" width="15.0" height="15.0" rx="3.6" ry="3.6"/>',
+    ]
     progress_rects = [r for r in rects if 'class="u' in r]
 
-    # CyberDeck theme styling overrides appended to ensure seamless aesthetics
+    # CyberDeck theme styling overrides with unified, fluid neon gradient (Zero per-frame drop-shadow lag)
     cyberdeck_css_overrides = """
       :root {
         --cb: rgba(48, 54, 61, 0.4);
@@ -98,19 +104,27 @@ def generate_snake_svg(output_path=OUTPUT_FILE, grid=None, total_contribs=None, 
       }
       .s.s0 {
         fill: #00f0ff;
-        filter: drop-shadow(0 0 6px #00f0ff);
+        stroke: #ffffff;
+        stroke-width: 0.8px;
+        stroke-opacity: 0.85;
       }
       .s.s1 {
-        fill: #22d3ee;
-        filter: drop-shadow(0 0 4px rgba(0, 240, 255, 0.6));
+        fill: #00e5ff;
+        stroke: #00f0ff;
+        stroke-width: 0.5px;
+        stroke-opacity: 0.5;
       }
       .s.s2 {
-        fill: #39d353;
-        filter: drop-shadow(0 0 4px rgba(57, 211, 83, 0.6));
+        fill: #00dfa2;
+        stroke: #00e5ff;
+        stroke-width: 0.5px;
+        stroke-opacity: 0.5;
       }
       .s.s3 {
-        fill: #a855f7;
-        filter: drop-shadow(0 0 3px rgba(168, 85, 247, 0.6));
+        fill: #39d353;
+        stroke: #00dfa2;
+        stroke-width: 0.5px;
+        stroke-opacity: 0.5;
       }
       .game-title { font-size: 11.5px; font-weight: 700; fill: #7d8590; font-family: monospace; }
       .month-lbl { font-size: 9px; fill: #58a6ff; font-weight: 600; font-family: monospace; }
@@ -156,6 +170,15 @@ def generate_snake_svg(output_path=OUTPUT_FILE, grid=None, total_contribs=None, 
         <animate attributeName="stop-color" values="#39d353;#a855f7;#00f0ff;#39d353" dur="8s" repeatCount="indefinite" />
       </stop>
     </linearGradient>
+
+    <!-- Ultra-Smooth Hardware-Accelerated Glow Filter (Pure 60 FPS, Zero Jitter) -->
+    <filter id="smooth-snake-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.6" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
   </defs>
 
   <style>
@@ -216,8 +239,10 @@ def generate_snake_svg(output_path=OUTPUT_FILE, grid=None, total_contribs=None, 
     <!-- Progress Score Expansion Segments -->
     {progress_svg}
 
-    <!-- Smooth Slithering Snake Segments (Cell-by-cell linear transform) -->
-    {snake_svg}
+    <!-- Smooth Slithering Snake Segments (Seamless Connected Serpent with Hardware-Accelerated Bloom) -->
+    <g filter="url(#smooth-snake-glow)">
+      {snake_svg}
+    </g>
   </g>
 
   <!-- ==================== FOOTER TELEMETRY & CONTROLS ==================== -->
