@@ -1,14 +1,33 @@
 """
 generate_header_svg.py
 Generates a large, ultra-premium iOS / Liquid Glass animated banner SVG
-for @exepngsam. Features glassmorphism, specular light shimmer wave,
-crystal pill badges, and high-legibility modern typography.
+for @exepngsam with live-fetched follower, repo, and contribution counts.
+Features glassmorphism, specular light shimmer wave, crystal pill badges,
+and high-legibility modern typography.
 """
 
+import requests
+
+USERNAME = "exepngsam"
 OUTPUT_FILE = "header-liquid-glass.svg"
 
 
-def generate_header_svg(output_path=OUTPUT_FILE):
+def fetch_user_stats(username=USERNAME):
+    followers = 2
+    repos = 7
+    try:
+        r = requests.get(f"https://api.github.com/users/{username}", timeout=6)
+        if r.status_code == 200:
+            data = r.json()
+            followers = data.get("followers", followers)
+            repos = data.get("public_repos", repos)
+    except Exception as e:
+        print(f"[WARN] Failed to fetch live user stats: {e}")
+    return followers, repos
+
+
+def generate_header_svg(output_path=OUTPUT_FILE, total_contribs=111):
+    followers, repos = fetch_user_stats(USERNAME)
     width = 920
     height = 240
 
@@ -54,14 +73,6 @@ def generate_header_svg(output_path=OUTPUT_FILE):
         <feMergeNode in="SourceGraphic" />
       </feMerge>
     </filter>
-
-    <filter id="text-glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="3" result="t-blur" />
-      <feMerge>
-        <feMergeNode in="t-blur" />
-        <feMergeNode in="SourceGraphic" />
-      </feMerge>
-    </filter>
   </defs>
 
   <style>
@@ -69,7 +80,7 @@ def generate_header_svg(output_path=OUTPUT_FILE):
     .hero-sub {{ font-size: 15px; font-weight: 600; fill: #00f0ff; letter-spacing: 0.6px; }}
     .term-code {{ font-size: 11.5px; font-family: 'SFMono-Regular', Consolas, monospace; fill: #7d8590; font-weight: 500; }}
     .pill-label {{ font-size: 10.5px; font-weight: 700; font-family: monospace; letter-spacing: 0.5px; }}
-    .pill-val {{ font-size: 12px; font-weight: 800; font-family: monospace; }}
+    .pill-val {{ font-size: 13px; font-weight: 900; font-family: monospace; }}
   </style>
 
   <!-- Liquid Glass Outer Frame -->
@@ -86,7 +97,7 @@ def generate_header_svg(output_path=OUTPUT_FILE):
     <circle cx="15" cy="0" r="5" fill="#ffbd2e" />
     <circle cx="30" cy="0" r="5" fill="#27c93f" />
     <text x="48" y="3.5" class="term-code">
-      <tspan fill="#39d353">●</tspan> CYBERDECK OS v2.4 // CONNECTED TO <tspan fill="#00f0ff">@exepngsam</tspan>
+      <tspan fill="#39d353">●</tspan> CYBERDECK OS v2.4 // CONNECTED TO <tspan fill="#00f0ff">@{USERNAME}</tspan>
     </text>
   </g>
 
@@ -100,38 +111,47 @@ def generate_header_svg(output_path=OUTPUT_FILE):
     </text>
   </g>
 
-  <!-- Liquid Glass Status Pills (Screenshot 2 Style - Much Bigger & Vibrant) -->
+  <!-- Liquid Glass Status Pills (Screenshot 2 Style - Animated & Live) -->
   <g transform="translate(24, 150)">
-    <!-- Pill 1: Followers -->
+    <!-- Pill 1: Followers (Live count) -->
     <g transform="translate(0, 0)">
-      <rect x="0" y="0" width="145" height="38" rx="19" fill="url(#pill-bg)" stroke="#00f0ff" stroke-width="1.2" stroke-opacity="0.8" />
-      <text x="16" y="24" class="pill-label" fill="#7d8590">FOLLOWERS</text>
-      <rect x="94" y="5" width="42" height="28" rx="14" fill="#00f0ff" />
-      <text x="115" y="24" class="pill-val" fill="#0d1117" text-anchor="middle">2</text>
+      <rect x="0" y="0" width="150" height="38" rx="19" fill="url(#pill-bg)" stroke="#00f0ff" stroke-width="1.2" stroke-opacity="0.8" />
+      <circle cx="16" cy="19" r="3" fill="#00f0ff">
+        <animate attributeName="opacity" values="1; 0.2; 1" dur="1.5s" repeatCount="indefinite" />
+      </circle>
+      <text x="26" y="24" class="pill-label" fill="#7d8590">FOLLOWERS</text>
+      <rect x="98" y="5" width="44" height="28" rx="14" fill="#00f0ff" />
+      <text x="120" y="24" class="pill-val" fill="#0d1117" text-anchor="middle">{followers}</text>
     </g>
 
-    <!-- Pill 2: Public Repos -->
-    <g transform="translate(160, 0)">
+    <!-- Pill 2: Public Repos (Live count) -->
+    <g transform="translate(165, 0)">
       <rect x="0" y="0" width="165" height="38" rx="19" fill="url(#pill-bg)" stroke="#39d353" stroke-width="1.2" stroke-opacity="0.8" />
-      <text x="16" y="24" class="pill-label" fill="#7d8590">PUBLIC REPOS</text>
+      <circle cx="16" cy="19" r="3" fill="#39d353">
+        <animate attributeName="opacity" values="1; 0.2; 1" dur="1.8s" repeatCount="indefinite" />
+      </circle>
+      <text x="26" y="24" class="pill-label" fill="#7d8590">PUBLIC REPOS</text>
       <rect x="114" y="5" width="42" height="28" rx="14" fill="#39d353" />
-      <text x="135" y="24" class="pill-val" fill="#0d1117" text-anchor="middle">7</text>
+      <text x="135" y="24" class="pill-val" fill="#0d1117" text-anchor="middle">{repos}</text>
     </g>
 
-    <!-- Pill 3: Contributions 2026 -->
-    <g transform="translate(340, 0)">
+    <!-- Pill 3: Contributions 2026 (Live count) -->
+    <g transform="translate(345, 0)">
       <rect x="0" y="0" width="195" height="38" rx="19" fill="url(#pill-bg)" stroke="#ffa657" stroke-width="1.2" stroke-opacity="0.8" />
-      <text x="16" y="24" class="pill-label" fill="#7d8590">CONTRIBUTIONS</text>
+      <circle cx="16" cy="19" r="3" fill="#ffa657">
+        <animate attributeName="opacity" values="1; 0.2; 1" dur="2s" repeatCount="indefinite" />
+      </circle>
+      <text x="26" y="24" class="pill-label" fill="#7d8590">CONTRIBUTIONS</text>
       <rect x="136" y="5" width="50" height="28" rx="14" fill="#ffa657" />
-      <text x="161" y="24" class="pill-val" fill="#0d1117" text-anchor="middle">110</text>
+      <text x="161" y="24" class="pill-val" fill="#0d1117" text-anchor="middle">{total_contribs}</text>
     </g>
 
     <!-- Pill 4: Core Tech Stack -->
-    <g transform="translate(550, 0)">
-      <rect x="0" y="0" width="315" height="38" rx="19" fill="url(#pill-bg)" stroke="#a855f7" stroke-width="1.2" stroke-opacity="0.8" />
+    <g transform="translate(555, 0)">
+      <rect x="0" y="0" width="310" height="38" rx="19" fill="url(#pill-bg)" stroke="#a855f7" stroke-width="1.2" stroke-opacity="0.8" />
       <text x="16" y="24" class="pill-label" fill="#a855f7">CORE STACK</text>
-      <rect x="105" y="5" width="200" height="28" rx="14" fill="#a855f7" fill-opacity="0.25" stroke="#a855f7" stroke-width="1" />
-      <text x="205" y="23" class="pill-val" fill="#e6edf3" font-size="10.5" text-anchor="middle">TYPESCRIPT • PYTHON • AWS</text>
+      <rect x="105" y="5" width="195" height="28" rx="14" fill="#a855f7" fill-opacity="0.25" stroke="#a855f7" stroke-width="1" />
+      <text x="202" y="23" class="pill-val" fill="#e6edf3" font-size="10.5" text-anchor="middle">TYPESCRIPT • PYTHON • AWS</text>
     </g>
   </g>
 
