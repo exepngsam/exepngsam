@@ -130,6 +130,32 @@ def generate_snake_svg(output_path=OUTPUT_FILE, grid=None, total_contribs=None, 
       .month-lbl { font-size: 9px; fill: #58a6ff; font-weight: 600; font-family: monospace; }
       .day-lbl { font-size: 8.5px; fill: #7d8590; font-family: monospace; font-weight: 600; }
       .footer-stat { font-size: 9.5px; font-weight: 700; fill: #7d8590; font-family: monospace; }
+      .smooth-meter-fill {
+        transform-origin: 0 0;
+        animation: smooth-meter-grow 14700ms cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+      }
+      @keyframes smooth-meter-grow {
+        0%, 28.5% {
+          transform: scaleX(0);
+          opacity: 0.5;
+        }
+        29.0% {
+          transform: scaleX(0.03);
+          opacity: 1;
+        }
+        62.6% {
+          transform: scaleX(1);
+          opacity: 1;
+        }
+        98.0% {
+          transform: scaleX(1);
+          opacity: 1;
+        }
+        99.4%, 100% {
+          transform: scaleX(0);
+          opacity: 0.5;
+        }
+      }
     """
 
     full_css = platane_css + cyberdeck_css_overrides
@@ -179,6 +205,23 @@ def generate_snake_svg(output_path=OUTPUT_FILE, grid=None, total_contribs=None, 
         <feMergeNode in="SourceGraphic" />
       </feMerge>
     </filter>
+
+    <!-- Luminous Fluid Gradient for Smooth Energy Meter -->
+    <linearGradient id="smooth-meter-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f0ff" />
+      <stop offset="35%" stop-color="#00dfa2" />
+      <stop offset="70%" stop-color="#39d353" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+
+    <!-- Flowing Shimmer Wave through the Meter -->
+    <linearGradient id="smooth-meter-pulse" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+      <animate attributeName="x1" values="-100%; 200%" dur="2.4s" repeatCount="indefinite" />
+      <animate attributeName="x2" values="0%; 300%" dur="2.4s" repeatCount="indefinite" />
+    </linearGradient>
   </defs>
 
   <style>
@@ -191,8 +234,8 @@ def generate_snake_svg(output_path=OUTPUT_FILE, grid=None, total_contribs=None, 
   <!-- Corner HUD Sci-Fi Brackets on Game Board -->
   <path d="M 26 42 L 20 42 L 20 50" fill="none" stroke="#00f0ff" stroke-width="1.5" opacity="0.8" />
   <path d="M {WIDTH - 26} 42 L {WIDTH - 20} 42 L {WIDTH - 20} 50" fill="none" stroke="#00f0ff" stroke-width="1.5" opacity="0.8" />
-  <path d="M 26 {HEIGHT - 28} L 20 {HEIGHT - 28} L 20 {HEIGHT - 36}" fill="none" stroke="#39d353" stroke-width="1.5" opacity="0.8" />
-  <path d="M {WIDTH - 26} {HEIGHT - 28} L {WIDTH - 20} {HEIGHT - 28} L {WIDTH - 20} {HEIGHT - 36}" fill="none" stroke="#39d353" stroke-width="1.5" opacity="0.8" />
+  <path d="M 26 {HEIGHT - 12} L 20 {HEIGHT - 12} L 20 {HEIGHT - 20}" fill="none" stroke="#39d353" stroke-width="1.5" opacity="0.8" />
+  <path d="M {WIDTH - 26} {HEIGHT - 12} L {WIDTH - 20} {HEIGHT - 12} L {WIDTH - 20} {HEIGHT - 20}" fill="none" stroke="#39d353" stroke-width="1.5" opacity="0.8" />
 
   <!-- ==================== TOP TITLE BAR ==================== -->
   <g transform="translate(24, 20)">
@@ -233,11 +276,12 @@ def generate_snake_svg(output_path=OUTPUT_FILE, grid=None, total_contribs=None, 
     <!-- Base Contribution Grid Cells -->
     {cells_svg}
 
-    <!-- Progress Track Background -->
-    <rect x="0" y="144" width="848" height="12" rx="3" ry="3" fill="#161b22" stroke="#30363d" stroke-width="0.8" opacity="0.6" />
-
-    <!-- Progress Score Expansion Segments -->
-    {progress_svg}
+    <!-- Liquid-Smooth Energy Harvest Progression Meter (60 FPS Fluid Fill) -->
+    <rect x="0" y="145" width="848" height="8" rx="4" ry="4" fill="#0c121c" stroke="#21262d" stroke-width="1" />
+    <g>
+      <rect class="smooth-meter-fill" x="0" y="145" width="848" height="8" rx="4" ry="4" fill="url(#smooth-meter-grad)" />
+      <rect class="smooth-meter-fill" x="0" y="145" width="848" height="8" rx="4" ry="4" fill="url(#smooth-meter-pulse)" />
+    </g>
 
     <!-- Smooth Slithering Snake Segments (Seamless Connected Serpent with Hardware-Accelerated Bloom) -->
     <g filter="url(#smooth-snake-glow)">

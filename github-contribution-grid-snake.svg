@@ -26,6 +26,23 @@
         <feMergeNode in="SourceGraphic" />
       </feMerge>
     </filter>
+
+    <!-- Luminous Fluid Gradient for Smooth Energy Meter -->
+    <linearGradient id="smooth-meter-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f0ff" />
+      <stop offset="35%" stop-color="#00dfa2" />
+      <stop offset="70%" stop-color="#39d353" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+
+    <!-- Flowing Shimmer Wave through the Meter -->
+    <linearGradient id="smooth-meter-pulse" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+      <animate attributeName="x1" values="-100%; 200%" dur="2.4s" repeatCount="indefinite" />
+      <animate attributeName="x2" values="0%; 300%" dur="2.4s" repeatCount="indefinite" />
+    </linearGradient>
   </defs>
 
   <style>
@@ -90,6 +107,32 @@
       .month-lbl { font-size: 9px; fill: #58a6ff; font-weight: 600; font-family: monospace; }
       .day-lbl { font-size: 8.5px; fill: #7d8590; font-family: monospace; font-weight: 600; }
       .footer-stat { font-size: 9.5px; font-weight: 700; fill: #7d8590; font-family: monospace; }
+      .smooth-meter-fill {
+        transform-origin: 0 0;
+        animation: smooth-meter-grow 14700ms cubic-bezier(0.25, 0.1, 0.25, 1) infinite;
+      }
+      @keyframes smooth-meter-grow {
+        0%, 28.5% {
+          transform: scaleX(0);
+          opacity: 0.5;
+        }
+        29.0% {
+          transform: scaleX(0.03);
+          opacity: 1;
+        }
+        62.6% {
+          transform: scaleX(1);
+          opacity: 1;
+        }
+        98.0% {
+          transform: scaleX(1);
+          opacity: 1;
+        }
+        99.4%, 100% {
+          transform: scaleX(0);
+          opacity: 0.5;
+        }
+      }
     
   </style>
 
@@ -99,8 +142,8 @@
   <!-- Corner HUD Sci-Fi Brackets on Game Board -->
   <path d="M 26 42 L 20 42 L 20 50" fill="none" stroke="#00f0ff" stroke-width="1.5" opacity="0.8" />
   <path d="M 894 42 L 900 42 L 900 50" fill="none" stroke="#00f0ff" stroke-width="1.5" opacity="0.8" />
-  <path d="M 26 212 L 20 212 L 20 204" fill="none" stroke="#39d353" stroke-width="1.5" opacity="0.8" />
-  <path d="M 894 212 L 900 212 L 900 204" fill="none" stroke="#39d353" stroke-width="1.5" opacity="0.8" />
+  <path d="M 26 228 L 20 228 L 20 220" fill="none" stroke="#39d353" stroke-width="1.5" opacity="0.8" />
+  <path d="M 894 228 L 900 228 L 900 220" fill="none" stroke="#39d353" stroke-width="1.5" opacity="0.8" />
 
   <!-- ==================== TOP TITLE BAR ==================== -->
   <g transform="translate(24, 20)">
@@ -109,7 +152,7 @@
     <circle cx="28" cy="0" r="4.5" fill="#27c93f" />
 
     <text x="44" y="4" class="game-title">
-      <tspan fill="#00f0ff">snake@cyberdeck</tspan>: <tspan fill="#39d353">contributions.eat()</tspan> ~ <tspan fill="#ffffff">120 dots consumed</tspan>
+      <tspan fill="#00f0ff">snake@cyberdeck</tspan>: <tspan fill="#39d353">contributions.eat()</tspan> ~ <tspan fill="#ffffff">121 dots consumed</tspan>
     </text>
 
     <!-- Top Right Live Status Pill -->
@@ -522,14 +565,12 @@
     <rect class="c cd" x="834" y="66" rx="2" ry="2"/>
     <rect class="c ce" x="834" y="82" rx="2" ry="2"/>
 
-    <!-- Progress Track Background -->
-    <rect x="0" y="144" width="848" height="12" rx="3" ry="3" fill="#161b22" stroke="#30363d" stroke-width="0.8" opacity="0.6" />
-
-    <!-- Progress Score Expansion Segments -->
-    <rect class="u u0" height="12" width="396.3" x="0.0" y="144"/>
-    <rect class="u u1" height="12" width="226.7" x="395.7" y="144"/>
-    <rect class="u u2" height="12" width="113.7" x="621.9" y="144"/>
-    <rect class="u u3" height="12" width="113.7" x="734.9" y="144"/>
+    <!-- Liquid-Smooth Energy Harvest Progression Meter (60 FPS Fluid Fill) -->
+    <rect x="0" y="145" width="848" height="8" rx="4" ry="4" fill="#0c121c" stroke="#21262d" stroke-width="1" />
+    <g>
+      <rect class="smooth-meter-fill" x="0" y="145" width="848" height="8" rx="4" ry="4" fill="url(#smooth-meter-grad)" />
+      <rect class="smooth-meter-fill" x="0" y="145" width="848" height="8" rx="4" ry="4" fill="url(#smooth-meter-pulse)" />
+    </g>
 
     <!-- Smooth Slithering Snake Segments (Seamless Connected Serpent with Hardware-Accelerated Bloom) -->
     <g filter="url(#smooth-snake-glow)">
@@ -543,7 +584,7 @@
   <!-- ==================== FOOTER TELEMETRY & CONTROLS ==================== -->
   <g transform="translate(24, 228)">
     <text x="0" y="0" class="footer-stat">
-      GAME: <tspan fill="#39d353">SNAKE_AI_v2</tspan> | SCORE: <tspan fill="#00f0ff">120 PTS</tspan> | SPEED: <tspan fill="#ffa657">60 FPS</tspan> | STATUS: <tspan fill="#a855f7">AUTONOMOUS</tspan>
+      GAME: <tspan fill="#39d353">SNAKE_AI_v2</tspan> | SCORE: <tspan fill="#00f0ff">121 PTS</tspan> | SPEED: <tspan fill="#ffa657">60 FPS</tspan> | STATUS: <tspan fill="#a855f7">AUTONOMOUS</tspan>
     </text>
 
     <!-- Right Side Indicator -->
