@@ -58,13 +58,6 @@ def generate_header_svg(output_path=OUTPUT_FILE, total_contribs=111):
       <stop offset="100%" stop-color="#141a24" stop-opacity="0.8" />
     </linearGradient>
 
-    <!-- Specular Light Sweep Gradient -->
-    <linearGradient id="shimmer-sweep" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
-      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.22" />
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
-    </linearGradient>
-
     <!-- Glow Filter -->
     <filter id="liquid-glow" x="-20%" y="-20%" width="140%" height="140%">
       <feGaussianBlur stdDeviation="6" result="blur" />
@@ -85,11 +78,6 @@ def generate_header_svg(output_path=OUTPUT_FILE, total_contribs=111):
 
   <!-- Liquid Glass Outer Frame -->
   <rect x="3" y="3" width="{width - 6}" height="{height - 6}" rx="20" fill="url(#glass-grad)" stroke="url(#liquid-border)" stroke-width="2" />
-
-  <!-- Animated Specular Glass Shimmer Beam -->
-  <rect x="-200" y="3" width="220" height="{height - 6}" rx="20" fill="url(#shimmer-sweep)" pointer-events="none">
-    <animate attributeName="x" values="-220; {width + 220}" dur="5s" repeatCount="indefinite" />
-  </rect>
 
   <!-- Window Header Dots -->
   <g transform="translate(24, 22)">

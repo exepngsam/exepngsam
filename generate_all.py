@@ -33,7 +33,7 @@ README_TEMPLATE = f"""<div align="center">
 <!-- iOS 27 Liquid Glass Animated Hero Banner -->
 <img src="./header-liquid-glass.svg" alt="Sam // AI Architect & Builder" width="100%" style="max-width: 960px;" />
 
-<br /><br />
+<br />
 
 <!-- Unified CyberDeck OS Dual-Pane Terminal (3D Quantum Core & Neofetch Telemetry - Matches Header Banner Width) -->
 <img src="./terminal-card.svg" alt="CyberDeck OS Dual-Pane Terminal" width="100%" style="max-width: 960px;" />
@@ -41,9 +41,7 @@ README_TEMPLATE = f"""<div align="center">
 <br />
 
 <!-- Autonomous CyberDeck Snake AI Contribution Game (60 FPS, Live Score & Dot Counter) -->
-<div align="center">
-  <img src="./github-contribution-grid-snake.svg" alt="CyberDeck Autonomous Snake Game" width="100%" style="max-width: 960px;" />
-</div>
+<img src="./github-contribution-grid-snake.svg" alt="CyberDeck Autonomous Snake Game" width="100%" style="max-width: 960px;" />
 
 <br />
 
@@ -84,7 +82,7 @@ README_TEMPLATE = f"""<div align="center">
 <!-- 100% Reliable, Self-Contained Animated Stats Matrix & Activity Wave -->
 <img src="./github-stats-animated.svg" alt="GitHub Telemetry & Activity Wave" width="100%" style="max-width: 960px;" />
 
-<br /><br />
+<br />
 
 <!-- Dedicated CyberDeck Live Streak & Weekly Velocity Spectrum Card -->
 <img src="./github-streak-cyberdeck.svg" alt="CyberDeck Live Streak & Weekly Velocity Spectrum" width="100%" style="max-width: 960px;" />

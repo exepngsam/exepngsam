@@ -35,13 +35,6 @@ def generate_streak_svg(output_path=OUTPUT_FILE, total_contribs=115, current_str
       </stop>
     </linearGradient>
 
-    <!-- Shimmer Sweep -->
-    <linearGradient id="streak-shimmer" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
-      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.16" />
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
-    </linearGradient>
-
     <!-- Flame Aura Radial Gradient -->
     <radialGradient id="flame-aura" cx="50%" cy="50%" r="50%">
       <stop offset="0%" stop-color="#ffa657" stop-opacity="0.9" />
@@ -77,11 +70,6 @@ def generate_streak_svg(output_path=OUTPUT_FILE, total_contribs=115, current_str
 
   <!-- Outer Liquid Glass Frame -->
   <rect x="3" y="3" width="{width - 6}" height="{height - 6}" rx="18" fill="url(#streak-glass)" stroke="url(#streak-border)" stroke-width="1.8" />
-
-  <!-- Animated Specular Light Beam -->
-  <rect x="-220" y="3" width="220" height="{height - 6}" rx="18" fill="url(#streak-shimmer)" pointer-events="none">
-    <animate attributeName="x" values="-220; {width + 220}" dur="6s" repeatCount="indefinite" />
-  </rect>
 
   <!-- Title Bar -->
   <g transform="translate(24, 20)">

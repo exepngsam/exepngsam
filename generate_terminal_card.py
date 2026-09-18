@@ -44,13 +44,6 @@ def generate_terminal_card_svg(output_path=OUTPUT_FILE):
       </stop>
     </linearGradient>
 
-    <!-- Specular Light Sweep Gradient -->
-    <linearGradient id="term-shimmer" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
-      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.18" />
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
-    </linearGradient>
-
     <!-- Vertical Laser Divider Gradient -->
     <linearGradient id="laser-divider" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#00f0ff" stop-opacity="0" />
@@ -116,11 +109,6 @@ def generate_terminal_card_svg(output_path=OUTPUT_FILE):
 
   <!-- Outer Liquid Glass Frame (Matching header-liquid-glass rx=20) -->
   <rect x="3" y="3" width="{width - 6}" height="{height - 6}" rx="20" fill="url(#term-glass)" stroke="url(#term-border)" stroke-width="2" />
-
-  <!-- Animated Specular Glass Shimmer Beam -->
-  <rect x="-220" y="3" width="220" height="{height - 6}" rx="20" fill="url(#term-shimmer)" pointer-events="none">
-    <animate attributeName="x" values="-220; {width + 220}" dur="6s" repeatCount="indefinite" />
-  </rect>
 
   <!-- ==================== TOP TITLE BAR ==================== -->
   <g transform="translate(24, 22)">
