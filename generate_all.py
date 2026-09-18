@@ -24,6 +24,7 @@ import generate_contribution_svg
 import generate_stats_svg
 import generate_projects_svg
 import generate_snake_svg
+import generate_streak_svg
 
 USERNAME = "exepngsam"
 
@@ -39,16 +40,9 @@ README_TEMPLATE = f"""<div align="center">
 
 <br />
 
-<!-- Centered Animated Contribution Activity Calendar -->
+<!-- Autonomous CyberDeck Snake AI Contribution Game (60 FPS, Live Score & Dot Counter) -->
 <div align="center">
-  <img src="./github-contribution-animation.svg" alt="GitHub 53x7 Contribution Activity Calendar" width="100%" style="max-width: 960px;" />
-</div>
-
-<br />
-
-<!-- Animated Contribution Snake Game -->
-<div align="center">
-  <img src="./github-contribution-grid-snake.svg" alt="GitHub Contribution Snake Game" width="100%" style="max-width: 960px;" />
+  <img src="./github-contribution-grid-snake.svg" alt="CyberDeck Autonomous Snake Game" width="100%" style="max-width: 960px;" />
 </div>
 
 <br />
@@ -92,8 +86,8 @@ README_TEMPLATE = f"""<div align="center">
 
 <br /><br />
 
-<!-- Real-time Streak Stats -->
-<img src="https://github-readme-streak-stats.herokuapp.com/?user={USERNAME}&theme=tokyonight&background=0d1117&border=30363d&stroke=00f0ff&ring=39d353&fire=ffa657&currStreakNum=e6edf3&sideNums=e6edf3&currStreakLabel=00f0ff" width="100%" style="max-width: 520px;" alt="Streak Stats" />
+<!-- Dedicated CyberDeck Live Streak & Weekly Velocity Spectrum Card -->
+<img src="./github-streak-cyberdeck.svg" alt="CyberDeck Live Streak & Weekly Velocity Spectrum" width="100%" style="max-width: 960px;" />
 
 </div>
 
@@ -187,48 +181,46 @@ def main():
     print("   LIQUID GLASS & CYBERPUNK PROFILE GENERATOR SUITE — @exepngsam")
     print("=" * 70)
 
+    # Fetch real live contribution telemetry from GitHub first
+    print("\n[FETCH] Querying live GitHub profile telemetry for @exepngsam...")
+    grid, total, months = generate_contribution_svg.fetch_contributions(USERNAME)
+
     # 1. Generate Liquid Glass Hero Banner
-    print("\n[1/8] Generating Liquid Glass Hero Banner SVG...")
-    header_svg = generate_header_svg.generate_header_svg()
+    print("\n[1/7] Generating Liquid Glass Hero Banner SVG...")
+    header_svg = generate_header_svg.generate_header_svg(total_contribs=total)
     print(f"      -> {header_svg} created.")
 
     # 2. Generate Unified CyberDeck Dual-Pane Terminal Card SVG (920px wide)
-    print("\n[2/8] Generating Unified CyberDeck Dual-Pane Terminal Card SVG...")
+    print("\n[2/7] Generating Unified CyberDeck Dual-Pane Terminal Card SVG...")
     term_svg = generate_terminal_card.generate_terminal_card_svg()
     print(f"      -> {term_svg} created.")
 
-    # 3. Generate 3D Holographic Quantum Neural Core SVG (Standalone)
-    print("\n[3/8] Generating 3D Holographic Quantum Neural Core SVG...")
-    neural_svg = generate_neural_core_svg.generate_neural_core_svg()
-    print(f"      -> {neural_svg} created.")
+    # 3. Generate Autonomous CyberDeck Snake AI Contribution Game (60 FPS, Live dots & score)
+    print("\n[3/7] Generating Autonomous CyberDeck Snake AI Game SVG...")
+    snake_svg = generate_snake_svg.generate_snake_svg(grid=grid, total_contribs=total, months=months)
+    print(f"      -> {snake_svg} created.")
 
-    # 4. Generate Neofetch Info Card SVG (Standalone)
-    print("\n[4/8] Generating Enlarged Neofetch Telemetry Info Card...")
-    info_svg = generate_info_card.generate_svg()
-    print(f"      -> {info_svg} created.")
-
-    # 5. Generate Contribution Graph SVG
-    print("\n[5/8] Generating 53x7 Animated Contribution Calendar...")
-    grid, total, months = generate_contribution_svg.fetch_contributions(USERNAME)
-    contrib_svg = generate_contribution_svg.generate_svg(grid, total, months)
-    print(f"      -> {contrib_svg} created.")
-
-    # 6. Generate Animated Stats & Waveform SVG
-    print("\n[6/8] Generating Animated Liquid Glass Stats & Waveform SVG...")
+    # 4. Generate Animated Stats & Waveform SVG
+    print("\n[4/7] Generating Animated Liquid Glass Stats & Waveform SVG...")
     stats_svg = generate_stats_svg.generate_stats_svg()
     print(f"      -> {stats_svg} created.")
 
-    # 7. Generate Animated Projects Card SVG
-    print("\n[7/8] Generating Totally Animated Projects Dashboard Card...")
+    # 5. Generate Dedicated CyberDeck Live Streak & Weekly Velocity Equalizer SVG
+    print("\n[5/7] Generating CyberDeck Live Streak & Weekly Velocity Spectrum SVG...")
+    streak_svg = generate_streak_svg.generate_streak_svg(total_contribs=total)
+    print(f"      -> {streak_svg} created.")
+
+    # 6. Generate Animated Projects Card SVG
+    print("\n[6/7] Generating Totally Animated Projects Dashboard Card...")
     projects_svg = generate_projects_svg.generate_projects_svg()
     print(f"      -> {projects_svg} created.")
 
-    # 8. Generate Animated Snake Game SVG
-    print("\n[8/8] Generating Contribution Snake Game SVG...")
-    snake_svg = generate_snake_svg.generate_snake_svg()
-    print(f"      -> {snake_svg} created.")
+    # 7. Generate Standalone auxiliary cards (neural-core.svg, info-card.svg)
+    print("\n[7/7] Generating Standalone auxiliary telemetry SVGs...")
+    generate_neural_core_svg.generate_neural_core_svg()
+    generate_info_card.generate_svg()
 
-    # 9. Inject into README.md
+    # 8. Inject into README.md
     print("\nWriting complete README.md with high-readability layout...")
     readme_path = "README.md"
     with open(readme_path, "w", encoding="utf-8") as f:
@@ -236,15 +228,13 @@ def main():
     print(f"      -> {readme_path} created ({len(README_TEMPLATE)} bytes).")
 
     print("\n" + "=" * 70)
-    print("   [ALL 8 ASSETS GENERATED & VERIFIED SUCCESSFULLY]")
-    print("   - header-liquid-glass.svg (Hero Banner)")
+    print("   [ALL ASSETS GENERATED & VERIFIED SUCCESSFULLY]")
+    print("   - header-liquid-glass.svg (Hero Banner - Cleaned Pills)")
     print("   - terminal-card.svg (Unified CyberDeck Dual-Pane Terminal)")
-    print("   - neural-core.svg (3D Holographic AI Core)")
-    print("   - info-card.svg (Neofetch Telemetry)")
-    print("   - github-contribution-animation.svg")
-    print("   - github-stats-animated.svg")
-    print("   - projects-animated.svg")
-    print("   - github-contribution-grid-snake.svg")
+    print("   - github-contribution-grid-snake.svg (Autonomous Snake Game - 60 FPS)")
+    print("   - github-stats-animated.svg (Stats Matrix & Activity Wave)")
+    print("   - github-streak-cyberdeck.svg (Live Streak & Velocity Equalizer)")
+    print("   - projects-animated.svg (Animated Projects Dashboard)")
     print("   - README.md")
     print("=" * 70)
 

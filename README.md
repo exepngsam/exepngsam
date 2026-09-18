@@ -10,16 +10,9 @@
 
 <br />
 
-<!-- Centered Animated Contribution Activity Calendar -->
+<!-- Autonomous CyberDeck Snake AI Contribution Game (60 FPS, Live Score & Dot Counter) -->
 <div align="center">
-  <img src="./github-contribution-animation.svg" alt="GitHub 53x7 Contribution Activity Calendar" width="100%" style="max-width: 960px;" />
-</div>
-
-<br />
-
-<!-- Animated Contribution Snake Game -->
-<div align="center">
-  <img src="./github-contribution-grid-snake.svg" alt="GitHub Contribution Snake Game" width="100%" style="max-width: 960px;" />
+  <img src="./github-contribution-grid-snake.svg" alt="CyberDeck Autonomous Snake Game" width="100%" style="max-width: 960px;" />
 </div>
 
 <br />
@@ -63,8 +56,8 @@
 
 <br /><br />
 
-<!-- Real-time Streak Stats -->
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=exepngsam&theme=tokyonight&background=0d1117&border=30363d&stroke=00f0ff&ring=39d353&fire=ffa657&currStreakNum=e6edf3&sideNums=e6edf3&currStreakLabel=00f0ff" width="100%" style="max-width: 520px;" alt="Streak Stats" />
+<!-- Dedicated CyberDeck Live Streak & Weekly Velocity Spectrum Card -->
+<img src="./github-streak-cyberdeck.svg" alt="CyberDeck Live Streak & Weekly Velocity Spectrum" width="100%" style="max-width: 960px;" />
 
 </div>
 

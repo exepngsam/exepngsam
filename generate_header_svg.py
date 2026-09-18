@@ -115,43 +115,35 @@ def generate_header_svg(output_path=OUTPUT_FILE, total_contribs=111):
   <g transform="translate(24, 150)">
     <!-- Pill 1: Followers (Live count) -->
     <g transform="translate(0, 0)">
-      <rect x="0" y="0" width="150" height="38" rx="19" fill="url(#pill-bg)" stroke="#00f0ff" stroke-width="1.2" stroke-opacity="0.8" />
+      <rect x="0" y="0" width="160" height="38" rx="19" fill="url(#pill-bg)" stroke="#00f0ff" stroke-width="1.2" stroke-opacity="0.8" />
       <circle cx="16" cy="19" r="3" fill="#00f0ff">
         <animate attributeName="opacity" values="1; 0.2; 1" dur="1.5s" repeatCount="indefinite" />
       </circle>
       <text x="26" y="24" class="pill-label" fill="#7d8590">FOLLOWERS</text>
-      <rect x="98" y="5" width="44" height="28" rx="14" fill="#00f0ff" />
-      <text x="120" y="24" class="pill-val" fill="#0d1117" text-anchor="middle">{followers}</text>
+      <rect x="106" y="5" width="46" height="28" rx="14" fill="#00f0ff" />
+      <text x="129" y="24" class="pill-val" fill="#0d1117" text-anchor="middle">{followers}</text>
     </g>
 
     <!-- Pill 2: Public Repos (Live count) -->
-    <g transform="translate(165, 0)">
-      <rect x="0" y="0" width="165" height="38" rx="19" fill="url(#pill-bg)" stroke="#39d353" stroke-width="1.2" stroke-opacity="0.8" />
+    <g transform="translate(180, 0)">
+      <rect x="0" y="0" width="180" height="38" rx="19" fill="url(#pill-bg)" stroke="#39d353" stroke-width="1.2" stroke-opacity="0.8" />
       <circle cx="16" cy="19" r="3" fill="#39d353">
         <animate attributeName="opacity" values="1; 0.2; 1" dur="1.8s" repeatCount="indefinite" />
       </circle>
       <text x="26" y="24" class="pill-label" fill="#7d8590">PUBLIC REPOS</text>
-      <rect x="114" y="5" width="42" height="28" rx="14" fill="#39d353" />
-      <text x="135" y="24" class="pill-val" fill="#0d1117" text-anchor="middle">{repos}</text>
+      <rect x="124" y="5" width="46" height="28" rx="14" fill="#39d353" />
+      <text x="147" y="24" class="pill-val" fill="#0d1117" text-anchor="middle">{repos}</text>
     </g>
 
     <!-- Pill 3: Contributions 2026 (Live count) -->
-    <g transform="translate(345, 0)">
-      <rect x="0" y="0" width="195" height="38" rx="19" fill="url(#pill-bg)" stroke="#ffa657" stroke-width="1.2" stroke-opacity="0.8" />
+    <g transform="translate(380, 0)">
+      <rect x="0" y="0" width="205" height="38" rx="19" fill="url(#pill-bg)" stroke="#ffa657" stroke-width="1.2" stroke-opacity="0.8" />
       <circle cx="16" cy="19" r="3" fill="#ffa657">
         <animate attributeName="opacity" values="1; 0.2; 1" dur="2s" repeatCount="indefinite" />
       </circle>
       <text x="26" y="24" class="pill-label" fill="#7d8590">CONTRIBUTIONS</text>
-      <rect x="136" y="5" width="50" height="28" rx="14" fill="#ffa657" />
-      <text x="161" y="24" class="pill-val" fill="#0d1117" text-anchor="middle">{total_contribs}</text>
-    </g>
-
-    <!-- Pill 4: Core Tech Stack -->
-    <g transform="translate(555, 0)">
-      <rect x="0" y="0" width="310" height="38" rx="19" fill="url(#pill-bg)" stroke="#a855f7" stroke-width="1.2" stroke-opacity="0.8" />
-      <text x="16" y="24" class="pill-label" fill="#a855f7">CORE STACK</text>
-      <rect x="105" y="5" width="195" height="28" rx="14" fill="#a855f7" fill-opacity="0.25" stroke="#a855f7" stroke-width="1" />
-      <text x="202" y="23" class="pill-val" fill="#e6edf3" font-size="10.5" text-anchor="middle">TYPESCRIPT • PYTHON • AWS</text>
+      <rect x="144" y="5" width="52" height="28" rx="14" fill="#ffa657" />
+      <text x="170" y="24" class="pill-val" fill="#0d1117" text-anchor="middle">{total_contribs}</text>
     </g>
   </g>
 
@@ -161,7 +153,7 @@ def generate_header_svg(output_path=OUTPUT_FILE, total_contribs=111):
     <animate attributeName="opacity" values="1;0.2;1" dur="2s" repeatCount="indefinite" />
   </circle>
   <text x="36" y="{height - 15}" font-size="9" fill="#7d8590" font-family="monospace">
-    STATUS: <tspan fill="#39d353">ONLINE</tspan> | LATENCY: <tspan fill="#00f0ff">0.12ms</tspan> | ARCH: <tspan fill="#a855f7">LIQUID_GLASS_v27</tspan>
+    STATUS: <tspan fill="#39d353">ONLINE</tspan> | LATENCY: <tspan fill="#00f0ff">0.12ms</tspan>
   </text>
 </svg>'''
 
