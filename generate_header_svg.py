@@ -181,15 +181,16 @@ def generate_header_svg(output_path=OUTPUT_FILE, total_contribs=None):
       <text x="161" y="24" class="pill-val" fill="#0d1117" text-anchor="middle">{live_contribs}</text>
     </g>
 
-    <!-- Pill 4: Core Tech Stack (Live dynamically determined) -->
-    <g transform="translate(550, 0)">
-      <rect x="0" y="0" width="322" height="38" rx="19" fill="url(#pill-bg)" stroke="#a855f7" stroke-width="1.2" stroke-opacity="0.8" />
+    <!-- Pill 4: Current Focus (Agentic AI & Autonomous Systems) -->
+    <g transform="translate(548, 0)">
+      <rect x="0" y="0" width="324" height="38" rx="19" fill="url(#pill-bg)" stroke="#a855f7" stroke-width="1.2" stroke-opacity="0.8" />
       <circle cx="16" cy="19" r="3" fill="#a855f7">
-        <animate attributeName="opacity" values="1; 0.2; 1" dur="2.4s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="1; 0.2; 1" dur="2s" repeatCount="indefinite" />
+        <animate attributeName="r" values="3; 3.6; 3" dur="2s" repeatCount="indefinite" />
       </circle>
-      <text x="26" y="24" class="pill-label" fill="#a855f7">CORE STACK</text>
-      <rect x="108" y="5" width="206" height="28" rx="14" fill="#a855f7" fill-opacity="0.22" stroke="#a855f7" stroke-width="1" />
-      <text x="211" y="23" class="pill-val" fill="#e6edf3" font-size="10.5" text-anchor="middle">{top_stack}</text>
+      <text x="26" y="24" class="pill-label" fill="#a855f7">FOCUS</text>
+      <rect x="74" y="5" width="242" height="28" rx="14" fill="#a855f7" fill-opacity="0.22" stroke="#a855f7" stroke-width="1" />
+      <text x="195" y="23" class="pill-val" fill="#f3e8ff" font-size="10.2" font-weight="800" text-anchor="middle">AGENTIC AI &amp; AUTONOMOUS SYSTEMS</text>
     </g>
   </g>
 
@@ -207,7 +208,7 @@ def generate_header_svg(output_path=OUTPUT_FILE, total_contribs=None):
         f.write(svg)
 
     ET.fromstring(svg)
-    print(f"[OK] Generated {output_path} with live stats: Followers={followers}, Repos={repos}, Contribs={live_contribs}, Stack={top_stack}")
+    print(f"[OK] Generated {output_path} with live stats: Followers={followers}, Repos={repos}, Contribs={live_contribs}, Focus=AGENTIC AI & AUTONOMOUS SYSTEMS")
     return output_path
 
 
