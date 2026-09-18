@@ -1,22 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 425 475" width="100%" height="auto" style="max-width: 425px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 510 570" width="100%" height="auto" style="max-width: 510px; font-family: -apple-system, BlinkMacSystemFont, 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;">
   <defs>
-    <!-- Background Gradient -->
+    <!-- Liquid Glass Background Gradient -->
     <linearGradient id="term-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#090d13" />
-      <stop offset="50%" stop-color="#0d1117" />
-      <stop offset="100%" stop-color="#121820" />
+      <stop offset="0%" stop-color="#141d2a" stop-opacity="0.95" />
+      <stop offset="50%" stop-color="#0c121a" stop-opacity="0.97" />
+      <stop offset="100%" stop-color="#070b10" stop-opacity="0.99" />
     </linearGradient>
 
-    <!-- Glowing Border Gradient -->
+    <!-- Glowing Liquid Glass Border Gradient -->
     <linearGradient id="term-border" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.8" />
-      <stop offset="50%" stop-color="#30363d" stop-opacity="0.6" />
-      <stop offset="100%" stop-color="#39d353" stop-opacity="0.5" />
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.9">
+        <animate attributeName="stop-color" values="#00f0ff;#39d353;#a855f7;#00f0ff" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="40%" stop-color="#ffffff" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#39d353" stop-opacity="0.8">
+        <animate attributeName="stop-color" values="#39d353;#a855f7;#00f0ff;#39d353" dur="8s" repeatCount="indefinite" />
+      </stop>
     </linearGradient>
 
     <!-- Cursor Glow -->
     <filter id="cursor-glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur" />
       <feMerge>
         <feMergeNode in="blur" />
         <feMergeNode in="SourceGraphic" />
@@ -25,41 +29,41 @@
 
     <!-- Scanline Pattern -->
     <pattern id="scanlines" width="100" height="4" patternUnits="userSpaceOnUse">
-      <line x1="0" y1="0" x2="100" y2="0" stroke="#000000" stroke-opacity="0.18" stroke-width="1.2" />
+      <line x1="0" y1="0" x2="100" y2="0" stroke="#000000" stroke-opacity="0.14" stroke-width="1.2" />
     </pattern>
   </defs>
 
   <style>
-    .term-title { font-size: 11px; fill: #7d8590; font-weight: 600; }
-    .ascii-text { font-size: 8.8px; fill: #00f0ff; letter-spacing: 1.6px; font-weight: 500; }
-    .cmd-prompt { font-size: 11px; fill: #39d353; font-weight: 600; }
-    .cmd-text { font-size: 11px; fill: #e6edf3; font-weight: 500; }
-    .whoami-title { font-size: 11.5px; fill: #58a6ff; font-weight: 700; }
-    .whoami-sub { font-size: 10px; fill: #a855f7; font-weight: 500; }
+    .term-title { font-size: 13px; fill: #7d8590; font-weight: 700; font-family: monospace; }
+    .ascii-text { font-size: 11.2px; fill: #00f0ff; letter-spacing: 2.1px; font-weight: 600; font-family: 'SFMono-Regular', Consolas, monospace; }
+    .cmd-prompt { font-size: 13px; fill: #39d353; font-weight: 700; font-family: monospace; }
+    .cmd-text { font-size: 13px; fill: #ffffff; font-weight: 600; font-family: monospace; }
+    .whoami-title { font-size: 13.5px; fill: #00f0ff; font-weight: 800; font-family: -apple-system, BlinkMacSystemFont, monospace; }
+    .whoami-sub { font-size: 12px; fill: #a855f7; font-weight: 600; font-family: monospace; }
   </style>
 
-  <!-- Outer Card Frame -->
-  <rect x="2" y="2" width="421" height="471" rx="12" fill="url(#term-bg)" stroke="url(#term-border)" stroke-width="1.5" />
+  <!-- Outer Liquid Glass Frame -->
+  <rect x="2" y="2" width="506" height="566" rx="16" fill="url(#term-bg)" stroke="url(#term-border)" stroke-width="1.8" />
 
   <!-- Window Header Bar -->
-  <g transform="translate(18, 16)">
+  <g transform="translate(20, 20)">
     <!-- macOS buttons -->
-    <circle cx="0" cy="5" r="4.5" fill="#ff5f56" />
-    <circle cx="14" cy="5" r="4.5" fill="#ffbd2e" />
-    <circle cx="28" cy="5" r="4.5" fill="#27c93f" />
+    <circle cx="0" cy="5" r="5" fill="#ff5f56" />
+    <circle cx="15" cy="5" r="5" fill="#ffbd2e" />
+    <circle cx="30" cy="5" r="5" fill="#27c93f" />
 
     <!-- Window Title -->
-    <text x="44" y="8.5" class="term-title">
+    <text x="48" y="9.5" class="term-title">
       <tspan fill="#00f0ff">exepngsam</tspan>@<tspan fill="#39d353">cyberdeck</tspan>: <tspan fill="#e6edf3">~/avatar.ascii</tspan>
     </text>
 
     <!-- Right status pill -->
-    <rect x="295" y="-1" width="88" height="15" rx="7.5" fill="#161b22" stroke="#30363d" stroke-width="0.8" />
-    <text x="307" y="10" font-size="8.5" fill="#58a6ff" font-weight="700">PORTRAIT.RAW</text>
+    <rect x="365" y="-2" width="105" height="18" rx="9" fill="#161b22" stroke="#30363d" stroke-width="1" />
+    <text x="378" y="11" font-size="9.5" fill="#58a6ff" font-weight="800" font-family="monospace">PORTRAIT.RAW</text>
   </g>
 
   <!-- Header Separator -->
-  <line x1="14" y1="42" x2="411" y2="42" stroke="#21262d" stroke-width="1" />
+  <line x1="16" y1="48" x2="494" y2="48" stroke="#21262d" stroke-width="1" />
 
   <!-- ASCII Art Section (Row-by-Row Reveal + Sweeping Cursor) -->
   <g id="ascii-portrait">
@@ -67,261 +71,261 @@
     <!-- Row 0 -->
     <g opacity="0">
       <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="0.400s" fill="freeze" />
-      <text x="24" y="66.0" class="ascii-text">---------------------::-----------------------</text>
+      <text x="28" y="74.0" class="ascii-text">---------------------::-----------------------</text>
     </g>
-    <rect x="24" y="57.0" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
-      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.070s" begin="0.400s" fill="freeze" />
-      <animate attributeName="x" values="24; 355.2" dur="0.070s" begin="0.400s" fill="freeze" />
-      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.070s" begin="0.400s" fill="freeze" />
+    <rect x="28" y="65.0" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
+      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.060s" begin="0.400s" fill="freeze" />
+      <animate attributeName="x" values="28; 359.2" dur="0.060s" begin="0.400s" fill="freeze" />
+      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.060s" begin="0.400s" fill="freeze" />
     </rect>
     <!-- Row 1 -->
     <g opacity="0">
-      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="0.470s" fill="freeze" />
-      <text x="24" y="78.5" class="ascii-text">----------------------------:.   .------------</text>
+      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="0.460s" fill="freeze" />
+      <text x="28" y="89.2" class="ascii-text">----------------------------:.   .------------</text>
     </g>
-    <rect x="24" y="69.5" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
-      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.070s" begin="0.470s" fill="freeze" />
-      <animate attributeName="x" values="24; 355.2" dur="0.070s" begin="0.470s" fill="freeze" />
-      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.070s" begin="0.470s" fill="freeze" />
+    <rect x="28" y="80.2" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
+      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.060s" begin="0.460s" fill="freeze" />
+      <animate attributeName="x" values="28; 359.2" dur="0.060s" begin="0.460s" fill="freeze" />
+      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.060s" begin="0.460s" fill="freeze" />
     </rect>
     <!-- Row 2 -->
     <g opacity="0">
-      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="0.540s" fill="freeze" />
-      <text x="24" y="91.0" class="ascii-text">---------:-::--==+-=:..  ..       :-----------</text>
+      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="0.520s" fill="freeze" />
+      <text x="28" y="104.4" class="ascii-text">---------:-::--==+-=:..  ..       :-----------</text>
     </g>
-    <rect x="24" y="82.0" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
-      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.070s" begin="0.540s" fill="freeze" />
-      <animate attributeName="x" values="24; 355.2" dur="0.070s" begin="0.540s" fill="freeze" />
-      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.070s" begin="0.540s" fill="freeze" />
+    <rect x="28" y="95.4" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
+      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.060s" begin="0.520s" fill="freeze" />
+      <animate attributeName="x" values="28; 359.2" dur="0.060s" begin="0.520s" fill="freeze" />
+      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.060s" begin="0.520s" fill="freeze" />
     </rect>
     <!-- Row 3 -->
     <g opacity="0">
-      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="0.610s" fill="freeze" />
-      <text x="24" y="103.5" class="ascii-text">----------==--+--:                ------------</text>
+      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="0.580s" fill="freeze" />
+      <text x="28" y="119.6" class="ascii-text">----------==--+--:                ------------</text>
     </g>
-    <rect x="24" y="94.5" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
-      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.070s" begin="0.610s" fill="freeze" />
-      <animate attributeName="x" values="24; 355.2" dur="0.070s" begin="0.610s" fill="freeze" />
-      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.070s" begin="0.610s" fill="freeze" />
+    <rect x="28" y="110.6" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
+      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.060s" begin="0.580s" fill="freeze" />
+      <animate attributeName="x" values="28; 359.2" dur="0.060s" begin="0.580s" fill="freeze" />
+      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.060s" begin="0.580s" fill="freeze" />
     </rect>
     <!-- Row 4 -->
     <g opacity="0">
-      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="0.680s" fill="freeze" />
-      <text x="24" y="116.0" class="ascii-text">--------:.--.   :-..:..           .::-:::-----</text>
+      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="0.640s" fill="freeze" />
+      <text x="28" y="134.8" class="ascii-text">--------:.--.   :-..:..           .::-:::-----</text>
     </g>
-    <rect x="24" y="107.0" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
-      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.070s" begin="0.680s" fill="freeze" />
-      <animate attributeName="x" values="24; 355.2" dur="0.070s" begin="0.680s" fill="freeze" />
-      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.070s" begin="0.680s" fill="freeze" />
+    <rect x="28" y="125.80000000000001" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
+      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.060s" begin="0.640s" fill="freeze" />
+      <animate attributeName="x" values="28; 359.2" dur="0.060s" begin="0.640s" fill="freeze" />
+      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.060s" begin="0.640s" fill="freeze" />
     </rect>
     <!-- Row 5 -->
     <g opacity="0">
-      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="0.750s" fill="freeze" />
-      <text x="24" y="128.5" class="ascii-text">-------. .      .:::-::::            -*=-:----</text>
+      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="0.700s" fill="freeze" />
+      <text x="28" y="150.0" class="ascii-text">-------. .      .:::-::::            -*=-:----</text>
     </g>
-    <rect x="24" y="119.5" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
-      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.070s" begin="0.750s" fill="freeze" />
-      <animate attributeName="x" values="24; 355.2" dur="0.070s" begin="0.750s" fill="freeze" />
-      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.070s" begin="0.750s" fill="freeze" />
+    <rect x="28" y="141.0" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
+      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.060s" begin="0.700s" fill="freeze" />
+      <animate attributeName="x" values="28; 359.2" dur="0.060s" begin="0.700s" fill="freeze" />
+      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.060s" begin="0.700s" fill="freeze" />
     </rect>
     <!-- Row 6 -->
     <g opacity="0">
-      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="0.820s" fill="freeze" />
-      <text x="24" y="141.0" class="ascii-text">------:.=.  ..=+: ..:-:..::           *%%*::::</text>
+      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="0.760s" fill="freeze" />
+      <text x="28" y="165.2" class="ascii-text">------:.=.  ..=+: ..:-:..::           *%%*::::</text>
     </g>
-    <rect x="24" y="132.0" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
-      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.070s" begin="0.820s" fill="freeze" />
-      <animate attributeName="x" values="24; 355.2" dur="0.070s" begin="0.820s" fill="freeze" />
-      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.070s" begin="0.820s" fill="freeze" />
+    <rect x="28" y="156.2" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
+      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.060s" begin="0.760s" fill="freeze" />
+      <animate attributeName="x" values="28; 359.2" dur="0.060s" begin="0.760s" fill="freeze" />
+      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.060s" begin="0.760s" fill="freeze" />
     </rect>
     <!-- Row 7 -->
     <g opacity="0">
-      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="0.890s" fill="freeze" />
-      <text x="24" y="153.5" class="ascii-text">-----:           .  .:.. .:.          =*#%*   </text>
+      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="0.820s" fill="freeze" />
+      <text x="28" y="180.39999999999998" class="ascii-text">-----:           .  .:.. .:.          =*#%*   </text>
     </g>
-    <rect x="24" y="144.5" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
-      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.070s" begin="0.890s" fill="freeze" />
-      <animate attributeName="x" values="24; 355.2" dur="0.070s" begin="0.890s" fill="freeze" />
-      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.070s" begin="0.890s" fill="freeze" />
+    <rect x="28" y="171.39999999999998" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
+      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.060s" begin="0.820s" fill="freeze" />
+      <animate attributeName="x" values="28; 359.2" dur="0.060s" begin="0.820s" fill="freeze" />
+      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.060s" begin="0.820s" fill="freeze" />
     </rect>
     <!-- Row 8 -->
     <g opacity="0">
-      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="0.960s" fill="freeze" />
-      <text x="24" y="166.0" class="ascii-text">----:        .  .    ...              **##%   </text>
+      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="0.880s" fill="freeze" />
+      <text x="28" y="195.6" class="ascii-text">----:        .  .    ...              **##%   </text>
     </g>
-    <rect x="24" y="157.0" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
-      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.070s" begin="0.960s" fill="freeze" />
-      <animate attributeName="x" values="24; 355.2" dur="0.070s" begin="0.960s" fill="freeze" />
-      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.070s" begin="0.960s" fill="freeze" />
+    <rect x="28" y="186.6" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
+      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.060s" begin="0.880s" fill="freeze" />
+      <animate attributeName="x" values="28; 359.2" dur="0.060s" begin="0.880s" fill="freeze" />
+      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.060s" begin="0.880s" fill="freeze" />
     </rect>
     <!-- Row 9 -->
     <g opacity="0">
-      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="1.030s" fill="freeze" />
-      <text x="24" y="178.5" class="ascii-text">--:=-=- .   ....  .  .  ....         -%*###   </text>
+      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="0.940s" fill="freeze" />
+      <text x="28" y="210.79999999999998" class="ascii-text">--:=-=- .   ....  .  .  ....         -%*###   </text>
     </g>
-    <rect x="24" y="169.5" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
-      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.070s" begin="1.030s" fill="freeze" />
-      <animate attributeName="x" values="24; 355.2" dur="0.070s" begin="1.030s" fill="freeze" />
-      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.070s" begin="1.030s" fill="freeze" />
+    <rect x="28" y="201.79999999999998" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
+      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.060s" begin="0.940s" fill="freeze" />
+      <animate attributeName="x" values="28; 359.2" dur="0.060s" begin="0.940s" fill="freeze" />
+      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.060s" begin="0.940s" fill="freeze" />
     </rect>
     <!-- Row 10 -->
     <g opacity="0">
-      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="1.100s" fill="freeze" />
-      <text x="24" y="191.0" class="ascii-text">---:  .:.       .                   .*####+   </text>
+      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="1.000s" fill="freeze" />
+      <text x="28" y="226.0" class="ascii-text">---:  .:.       .                   .*####+   </text>
     </g>
-    <rect x="24" y="182.0" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
-      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.070s" begin="1.100s" fill="freeze" />
-      <animate attributeName="x" values="24; 355.2" dur="0.070s" begin="1.100s" fill="freeze" />
-      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.070s" begin="1.100s" fill="freeze" />
+    <rect x="28" y="217.0" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
+      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.060s" begin="1.000s" fill="freeze" />
+      <animate attributeName="x" values="28; 359.2" dur="0.060s" begin="1.000s" fill="freeze" />
+      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.060s" begin="1.000s" fill="freeze" />
     </rect>
     <!-- Row 11 -->
     <g opacity="0">
-      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="1.170s" fill="freeze" />
-      <text x="24" y="203.5" class="ascii-text">----. .                             *@%%#%*   </text>
+      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="1.060s" fill="freeze" />
+      <text x="28" y="241.2" class="ascii-text">----. .                             *@%%#%*   </text>
     </g>
-    <rect x="24" y="194.5" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
-      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.070s" begin="1.170s" fill="freeze" />
-      <animate attributeName="x" values="24; 355.2" dur="0.070s" begin="1.170s" fill="freeze" />
-      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.070s" begin="1.170s" fill="freeze" />
+    <rect x="28" y="232.2" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
+      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.060s" begin="1.060s" fill="freeze" />
+      <animate attributeName="x" values="28; 359.2" dur="0.060s" begin="1.060s" fill="freeze" />
+      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.060s" begin="1.060s" fill="freeze" />
     </rect>
     <!-- Row 12 -->
     <g opacity="0">
-      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="1.240s" fill="freeze" />
-      <text x="24" y="216.0" class="ascii-text">-----:=+-:**                       =#*###*.  :</text>
+      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="1.120s" fill="freeze" />
+      <text x="28" y="256.4" class="ascii-text">-----:=+-:**                       =#*###*.  :</text>
     </g>
-    <rect x="24" y="207.0" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
-      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.070s" begin="1.240s" fill="freeze" />
-      <animate attributeName="x" values="24; 355.2" dur="0.070s" begin="1.240s" fill="freeze" />
-      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.070s" begin="1.240s" fill="freeze" />
+    <rect x="28" y="247.39999999999998" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
+      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.060s" begin="1.120s" fill="freeze" />
+      <animate attributeName="x" values="28; 359.2" dur="0.060s" begin="1.120s" fill="freeze" />
+      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.060s" begin="1.120s" fill="freeze" />
     </rect>
     <!-- Row 13 -->
     <g opacity="0">
-      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="1.310s" fill="freeze" />
-      <text x="24" y="228.5" class="ascii-text">-------+=-:+. -:                  :%*##*#- ..:</text>
+      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="1.180s" fill="freeze" />
+      <text x="28" y="271.6" class="ascii-text">-------+=-:+. -:                  :%*##*#- ..:</text>
     </g>
-    <rect x="24" y="219.5" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
-      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.070s" begin="1.310s" fill="freeze" />
-      <animate attributeName="x" values="24; 355.2" dur="0.070s" begin="1.310s" fill="freeze" />
-      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.070s" begin="1.310s" fill="freeze" />
+    <rect x="28" y="262.6" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
+      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.060s" begin="1.180s" fill="freeze" />
+      <animate attributeName="x" values="28; 359.2" dur="0.060s" begin="1.180s" fill="freeze" />
+      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.060s" begin="1.180s" fill="freeze" />
     </rect>
     <!-- Row 14 -->
     <g opacity="0">
-      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="1.380s" fill="freeze" />
-      <text x="24" y="241.0" class="ascii-text">--------*#++%+...  .::.          +@#*%#%+:.--:</text>
+      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="1.240s" fill="freeze" />
+      <text x="28" y="286.79999999999995" class="ascii-text">--------*#++%+...  .::.          +@#*%#%+:.--:</text>
     </g>
-    <rect x="24" y="232.0" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
-      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.070s" begin="1.380s" fill="freeze" />
-      <animate attributeName="x" values="24; 355.2" dur="0.070s" begin="1.380s" fill="freeze" />
-      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.070s" begin="1.380s" fill="freeze" />
+    <rect x="28" y="277.79999999999995" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
+      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.060s" begin="1.240s" fill="freeze" />
+      <animate attributeName="x" values="28; 359.2" dur="0.060s" begin="1.240s" fill="freeze" />
+      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.060s" begin="1.240s" fill="freeze" />
     </rect>
     <!-- Row 15 -->
     <g opacity="0">
-      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="1.450s" fill="freeze" />
-      <text x="24" y="253.5" class="ascii-text">--------:=++=:..  :----::      -*%=*##@%=  :--</text>
+      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="1.300s" fill="freeze" />
+      <text x="28" y="302.0" class="ascii-text">--------:=++=:..  :----::      -*%=*##@%=  :--</text>
     </g>
-    <rect x="24" y="244.5" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
-      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.070s" begin="1.450s" fill="freeze" />
-      <animate attributeName="x" values="24; 355.2" dur="0.070s" begin="1.450s" fill="freeze" />
-      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.070s" begin="1.450s" fill="freeze" />
+    <rect x="28" y="293.0" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
+      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.060s" begin="1.300s" fill="freeze" />
+      <animate attributeName="x" values="28; 359.2" dur="0.060s" begin="1.300s" fill="freeze" />
+      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.060s" begin="1.300s" fill="freeze" />
     </rect>
     <!-- Row 16 -->
     <g opacity="0">
-      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="1.520s" fill="freeze" />
-      <text x="24" y="266.0" class="ascii-text">---------::.    .----------:==*#*-**+%*  ..:::</text>
+      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="1.360s" fill="freeze" />
+      <text x="28" y="317.2" class="ascii-text">---------::.    .----------:==*#*-**+%*  ..:::</text>
     </g>
-    <rect x="24" y="257.0" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
-      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.070s" begin="1.520s" fill="freeze" />
-      <animate attributeName="x" values="24; 355.2" dur="0.070s" begin="1.520s" fill="freeze" />
-      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.070s" begin="1.520s" fill="freeze" />
+    <rect x="28" y="308.2" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
+      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.060s" begin="1.360s" fill="freeze" />
+      <animate attributeName="x" values="28; 359.2" dur="0.060s" begin="1.360s" fill="freeze" />
+      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.060s" begin="1.360s" fill="freeze" />
     </rect>
     <!-- Row 17 -->
     <g opacity="0">
-      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="1.590s" fill="freeze" />
-      <text x="24" y="278.5" class="ascii-text">--------------:-----------==-=-:+*=*@@.   ::::</text>
+      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="1.420s" fill="freeze" />
+      <text x="28" y="332.4" class="ascii-text">--------------:-----------==-=-:+*=*@@.   ::::</text>
     </g>
-    <rect x="24" y="269.5" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
-      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.070s" begin="1.590s" fill="freeze" />
-      <animate attributeName="x" values="24; 355.2" dur="0.070s" begin="1.590s" fill="freeze" />
-      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.070s" begin="1.590s" fill="freeze" />
+    <rect x="28" y="323.4" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
+      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.060s" begin="1.420s" fill="freeze" />
+      <animate attributeName="x" values="28; 359.2" dur="0.060s" begin="1.420s" fill="freeze" />
+      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.060s" begin="1.420s" fill="freeze" />
     </rect>
     <!-- Row 18 -->
     <g opacity="0">
-      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="1.660s" fill="freeze" />
-      <text x="24" y="291.0" class="ascii-text">---------------------------++=*+=-*%=:   ....:</text>
+      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="1.480s" fill="freeze" />
+      <text x="28" y="347.59999999999997" class="ascii-text">---------------------------++=*+=-*%=:   ....:</text>
     </g>
-    <rect x="24" y="282.0" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
-      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.070s" begin="1.660s" fill="freeze" />
-      <animate attributeName="x" values="24; 355.2" dur="0.070s" begin="1.660s" fill="freeze" />
-      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.070s" begin="1.660s" fill="freeze" />
+    <rect x="28" y="338.59999999999997" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
+      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.060s" begin="1.480s" fill="freeze" />
+      <animate attributeName="x" values="28; 359.2" dur="0.060s" begin="1.480s" fill="freeze" />
+      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.060s" begin="1.480s" fill="freeze" />
     </rect>
     <!-- Row 19 -->
     <g opacity="0">
-      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="1.730s" fill="freeze" />
-      <text x="24" y="303.5" class="ascii-text">--------------------------:+%+#*+%@+       :::</text>
+      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="1.540s" fill="freeze" />
+      <text x="28" y="362.8" class="ascii-text">--------------------------:+%+#*+%@+       :::</text>
     </g>
-    <rect x="24" y="294.5" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
-      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.070s" begin="1.730s" fill="freeze" />
-      <animate attributeName="x" values="24; 355.2" dur="0.070s" begin="1.730s" fill="freeze" />
-      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.070s" begin="1.730s" fill="freeze" />
+    <rect x="28" y="353.8" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
+      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.060s" begin="1.540s" fill="freeze" />
+      <animate attributeName="x" values="28; 359.2" dur="0.060s" begin="1.540s" fill="freeze" />
+      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.060s" begin="1.540s" fill="freeze" />
     </rect>
     <!-- Row 20 -->
     <g opacity="0">
-      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="1.800s" fill="freeze" />
-      <text x="24" y="316.0" class="ascii-text">--------------------------:-.-#%=.          ::</text>
+      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="1.600s" fill="freeze" />
+      <text x="28" y="378.0" class="ascii-text">--------------------------:-.-#%=.          ::</text>
     </g>
-    <rect x="24" y="307.0" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
-      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.070s" begin="1.800s" fill="freeze" />
-      <animate attributeName="x" values="24; 355.2" dur="0.070s" begin="1.800s" fill="freeze" />
-      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.070s" begin="1.800s" fill="freeze" />
+    <rect x="28" y="369.0" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
+      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.060s" begin="1.600s" fill="freeze" />
+      <animate attributeName="x" values="28; 359.2" dur="0.060s" begin="1.600s" fill="freeze" />
+      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.060s" begin="1.600s" fill="freeze" />
     </rect>
     <!-- Row 21 -->
     <g opacity="0">
-      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="1.870s" fill="freeze" />
-      <text x="24" y="328.5" class="ascii-text">--------------------------::.                 </text>
+      <animate attributeName="opacity" values="0; 1" dur="0.04s" begin="1.660s" fill="freeze" />
+      <text x="28" y="393.2" class="ascii-text">--------------------------::.                 </text>
     </g>
-    <rect x="24" y="319.5" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
-      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.070s" begin="1.870s" fill="freeze" />
-      <animate attributeName="x" values="24; 355.2" dur="0.070s" begin="1.870s" fill="freeze" />
-      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.070s" begin="1.870s" fill="freeze" />
+    <rect x="28" y="384.2" width="7" height="11" fill="#ffffff" filter="url(#cursor-glow)" opacity="0">
+      <animate attributeName="opacity" values="0; 0.9; 0.9; 0" keyTimes="0; 0.15; 0.85; 1" dur="0.060s" begin="1.660s" fill="freeze" />
+      <animate attributeName="x" values="28; 359.2" dur="0.060s" begin="1.660s" fill="freeze" />
+      <animate attributeName="fill" values="#00f0ff; #ffffff; #39d353" dur="0.060s" begin="1.660s" fill="freeze" />
     </rect>
   </g>
 
   <!-- Subtle Scanline Texture -->
-  <rect x="14" y="44" width="397" height="365" fill="url(#scanlines)" pointer-events="none" />
+  <rect x="14" y="44" width="482" height="460" fill="url(#scanlines)" pointer-events="none" />
 
   <!-- Footer Divider -->
-  <line x1="14" y1="347.0" x2="411" y2="347.0" stroke="#21262d" stroke-width="1" />
+  <line x1="14" y1="414.4" x2="496" y2="414.4" stroke="#21262d" stroke-width="1" />
 
   <!-- Terminal Footer: $ whoami animation -->
-  <g transform="translate(18, 359.0)">
+  <g transform="translate(18, 426.4)">
     <!-- Prompt symbol -->
-    <text x="0" y="11" class="cmd-prompt">exepngsam@deck:~$</text>
+    <text x="0" y="13" class="cmd-prompt">exepngsam@deck:~$</text>
 
     <!-- Typewritten 'whoami' command -->
     <g opacity="0">
-      <animate attributeName="opacity" values="0; 1" dur="0.05s" begin="2.140s" fill="freeze" />
-      <text x="116" y="11" class="cmd-text">whoami</text>
+      <animate attributeName="opacity" values="0; 1" dur="0.05s" begin="1.920s" fill="freeze" />
+      <text x="140" y="13" class="cmd-text">whoami</text>
     </g>
 
     <!-- Blinking command cursor -->
-    <rect x="160" y="1" width="6.5" height="12" fill="#00f0ff">
-      <animate attributeName="opacity" values="1; 0; 1" dur="0.8s" repeatCount="indefinite" begin="2.140s" />
+    <rect x="195" y="2" width="7.5" height="13" fill="#00f0ff">
+      <animate attributeName="opacity" values="1; 0; 1" dur="0.8s" repeatCount="indefinite" begin="1.920s" />
     </rect>
 
     <!-- Output Line 1: Identity -->
     <g opacity="0">
-      <animate attributeName="opacity" values="0; 1" dur="0.15s" begin="3.040s" fill="freeze" />
-      <text x="2" y="29" class="whoami-title">
+      <animate attributeName="opacity" values="0; 1" dur="0.15s" begin="2.820s" fill="freeze" />
+      <text x="2" y="36" class="whoami-title">
         <tspan fill="#39d353">➜ </tspan>
-        <tspan fill="#e6edf3">Sam</tspan>
+        <tspan fill="#ffffff">Sam</tspan>
         <tspan fill="#7d8590"> (@exepngsam)</tspan>
       </text>
     </g>
 
     <!-- Output Line 2: Role & System -->
     <g opacity="0">
-      <animate attributeName="opacity" values="0; 1" dur="0.15s" begin="3.290s" fill="freeze" />
-      <text x="14" y="44" class="whoami-sub">
+      <animate attributeName="opacity" values="0; 1" dur="0.15s" begin="3.070s" fill="freeze" />
+      <text x="16" y="54" class="whoami-sub">
         <tspan fill="#00f0ff">⚡</tspan> AI Systems &amp; Full-Stack Architect
       </text>
     </g>

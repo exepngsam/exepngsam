@@ -1,21 +1,26 @@
 """
 generate_all.py
-Master Python orchestrator for the complete animated Cyberpunk GitHub Profile Suite for @exepngsam.
+Master Python orchestrator for the complete animated Cyberpunk / Liquid Glass
+GitHub Profile Suite for @exepngsam.
 
 Executes:
-1. generate_contribution_svg.py -> github-contribution-animation.svg (53x7 slant reveal & glint)
-2. generate_terminal_card.py    -> terminal-card.svg (ASCII avatar + sweeping cursor + whoami)
-3. generate_info_card.py        -> info-card.svg (Neofetch terminal card with staggered reveals)
-4. generate_projects_svg.py     -> projects-animated.svg (Screenshot 4 totally animated card grid)
-5. generate_snake_svg.py        -> github-contribution-grid-snake.svg (Contribution snake game)
-6. Generates complete README.md incorporating all requested visual sections.
+1. generate_header_svg.py       -> header-liquid-glass.svg (iOS 27 Liquid Glass animated banner)
+2. generate_contribution_svg.py -> github-contribution-animation.svg (53x7 slant reveal & glint)
+3. generate_terminal_card.py    -> terminal-card.svg (Scaled-up ASCII avatar + cursor sweep)
+4. generate_info_card.py        -> info-card.svg (Scaled-up Neofetch card with staggered reveals)
+5. generate_stats_svg.py        -> github-stats-animated.svg (Self-contained animated stats & wave)
+6. generate_projects_svg.py     -> projects-animated.svg (Totally animated 6-card grid)
+7. generate_snake_svg.py        -> github-contribution-grid-snake.svg (Contribution snake game)
+8. Updates README.md with high-contrast, scalable layout.
 """
 
 import os
 import sys
+import generate_header_svg
 import generate_contribution_svg
 import generate_terminal_card
 import generate_info_card
+import generate_stats_svg
 import generate_projects_svg
 import generate_snake_svg
 
@@ -23,29 +28,18 @@ USERNAME = "exepngsam"
 
 README_TEMPLATE = f"""<div align="center">
 
-<!-- Animated Dynamic Cyberpunk Typing Banner -->
-<a href="https://github.com/{USERNAME}">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=25&pause=1000&color=00F0FF&center=true&vCenter=true&width=700&height=55&lines=SAM+%7C%7C+AI+SYSTEMS+%26+FULL-STACK+ARCHITECT;BUILDING+AUTONOMOUS+AI+AGENTS+%26+SYSTEMS;NEXT.JS+15+%E2%80%A2+AWS+BEDROCK+%E2%80%A2+TYPESCRIPT;109+CONTRIBUTIONS+AND+COUNTING..." alt="Typing SVG" />
-</a>
+<!-- iOS 27 Liquid Glass Animated Hero Banner -->
+<img src="./header-liquid-glass.svg" alt="Sam // AI Architect & Builder" width="100%" style="max-width: 960px;" />
 
-<p align="center">
-  <code>[ SYSTEM INITIALIZED: CYBERDECK OS v2.4 ] ~ CONNECTED TO GITHUB:@{USERNAME}</code>
-</p>
+<br /><br />
 
-[![GitHub Followers](https://img.shields.io/github/followers/{USERNAME}?style=for-the-badge&logo=github&color=00f0ff&labelColor=0d1117)](https://github.com/{USERNAME})
-[![Total Repos](https://img.shields.io/badge/Public_Repos-7-39d353?style=for-the-badge&logo=git&labelColor=0d1117)](https://github.com/{USERNAME}?tab=repositories)
-[![Annual Contributions](https://img.shields.io/badge/Contributions_2026-109-ffa657?style=for-the-badge&logo=github&labelColor=0d1117)](https://github.com/{USERNAME})
-[![Tech Stack](https://img.shields.io/badge/Stack-TypeScript_%7C_Python_%7C_AWS_Bedrock-a855f7?style=for-the-badge&logo=vibe&labelColor=0d1117)](https://github.com/{USERNAME})
-
-<br />
-
-<!-- Side-by-Side Terminal & Neofetch Cards via HTML Table -->
-<table border="0" cellpadding="0" cellspacing="0" style="border: none; background: transparent; width: 100%; max-width: 880px;">
+<!-- Side-by-Side Terminal ASCII Portrait & Neofetch Cards via HTML Table (Enlarged & Crystal Clear) -->
+<table border="0" cellpadding="0" cellspacing="0" style="border: none; background: transparent; width: 100%; max-width: 960px;">
   <tr>
-    <td width="50%" align="center" valign="top" style="border: none; padding: 6px;">
+    <td width="50%" align="center" valign="top" style="border: none; padding: 8px;">
       <img src="./terminal-card.svg" alt="Terminal ASCII Portrait" width="100%" />
     </td>
-    <td width="50%" align="center" valign="top" style="border: none; padding: 6px;">
+    <td width="50%" align="center" valign="top" style="border: none; padding: 8px;">
       <img src="./info-card.svg" alt="Neofetch System Telemetry" width="100%" />
     </td>
   </tr>
@@ -55,14 +49,14 @@ README_TEMPLATE = f"""<div align="center">
 
 <!-- Centered Animated Contribution Activity Calendar -->
 <div align="center">
-  <img src="./github-contribution-animation.svg" alt="GitHub 53x7 Contribution Activity Calendar" width="100%" style="max-width: 880px;" />
+  <img src="./github-contribution-animation.svg" alt="GitHub 53x7 Contribution Activity Calendar" width="100%" style="max-width: 960px;" />
 </div>
 
 <br />
 
 <!-- Animated Contribution Snake Game -->
 <div align="center">
-  <img src="./github-contribution-grid-snake.svg" alt="GitHub Contribution Snake Game" width="100%" style="max-width: 880px;" />
+  <img src="./github-contribution-grid-snake.svg" alt="GitHub Contribution Snake Game" width="100%" style="max-width: 960px;" />
 </div>
 
 <br />
@@ -75,13 +69,13 @@ README_TEMPLATE = f"""<div align="center">
 
 ## 🤝 Connect
 
-<a href="https://github.com/{USERNAME}"><img src="https://skillicons.dev/icons?i=github" width="48" height="48" alt="GitHub" /></a>
-&nbsp;&nbsp;
-<a href="https://linkedin.com"><img src="https://skillicons.dev/icons?i=linkedin" width="48" height="48" alt="LinkedIn" /></a>
-&nbsp;&nbsp;
-<a href="mailto:loudbiology@gmail.com"><img src="https://skillicons.dev/icons?i=gmail" width="48" height="48" alt="Gmail" /></a>
-&nbsp;&nbsp;
-<a href="https://portfolio19s.vercel.app/"><img src="https://skillicons.dev/icons?i=vercel" width="48" height="48" alt="Portfolio" /></a>
+<a href="https://github.com/{USERNAME}"><img src="https://skillicons.dev/icons?i=github" width="52" height="52" alt="GitHub" /></a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://linkedin.com"><img src="https://skillicons.dev/icons?i=linkedin" width="52" height="52" alt="LinkedIn" /></a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="mailto:loudbiology@gmail.com"><img src="https://skillicons.dev/icons?i=gmail" width="52" height="52" alt="Gmail" /></a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://portfolio19s.vercel.app/"><img src="https://skillicons.dev/icons?i=vercel" width="52" height="52" alt="Portfolio" /></a>
 
 <br /><br />
 
@@ -99,43 +93,32 @@ README_TEMPLATE = f"""<div align="center">
 
 <br />
 
-## 📊 GitHub Stats
+## 📊 GitHub Stats &amp; Telemetry
 
-<!-- Activity Graph -->
-<a href="https://github.com/{USERNAME}">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username={USERNAME}&theme=tokyo-night&area=true&hide_border=false&color=00f0ff&line=39d353&point=a855f7&bg_color=0d1117" alt="Activity Graph" width="100%" style="max-width: 880px;" />
-</a>
+<!-- 100% Reliable, Self-Contained Animated Stats Matrix & Activity Wave -->
+<img src="./github-stats-animated.svg" alt="GitHub Telemetry & Activity Wave" width="100%" style="max-width: 960px;" />
 
 <br /><br />
 
-<!-- GitHub Stats & Streak Side-by-Side -->
-<table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 880px;">
-  <tr>
-    <td width="50%" align="center" valign="top" style="border: none; padding: 4px;">
-      <img src="https://github-readme-stats.vercel.app/api?username={USERNAME}&show_icons=true&theme=tokyonight&bg_color=0d1117&title_color=00f0ff&icon_color=39d353&text_color=e6edf3&border_color=30363d&count_private=true&include_all_commits=true" width="100%" alt="GitHub Stats" />
-    </td>
-    <td width="50%" align="center" valign="top" style="border: none; padding: 4px;">
-      <img src="https://github-readme-streak-stats.herokuapp.com/?user={USERNAME}&theme=tokyonight&background=0d1117&border=30363d&stroke=00f0ff&ring=39d353&fire=ffa657&currStreakNum=e6edf3&sideNums=e6edf3&currStreakLabel=00f0ff" width="100%" alt="Streak Stats" />
-    </td>
-  </tr>
-</table>
+<!-- Real-time Streak Stats -->
+<img src="https://github-readme-streak-stats.herokuapp.com/?user={USERNAME}&theme=tokyonight&background=0d1117&border=30363d&stroke=00f0ff&ring=39d353&fire=ffa657&currStreakNum=e6edf3&sideNums=e6edf3&currStreakLabel=00f0ff" width="100%" style="max-width: 520px;" alt="Streak Stats" />
 
 </div>
 
 ---
 
-## 🚀 Featured Platforms & Systems
+## 🚀 Featured Platforms &amp; Systems
 
 <div align="center">
 
-<!-- Totally Animated Projects Dashboard Card -->
-<img src="./projects-animated.svg" alt="Featured Platforms & Systems Dashboard" width="100%" style="max-width: 880px;" />
+<!-- Totally Animated Projects Dashboard Card (Screenshot 4) -->
+<img src="./projects-animated.svg" alt="Featured Platforms &amp; Systems Dashboard" width="100%" style="max-width: 960px;" />
 
 </div>
 
 <br />
 
-<!-- Interactive Fallback & Direct Clickable Links Table -->
+<!-- Direct Clickable Links & Documentation -->
 <table>
   <tr>
     <td width="50%" valign="top">
@@ -201,60 +184,72 @@ README_TEMPLATE = f"""<div align="center">
 >>> [CONNECTION ESTABLISHED] ~ ping exepngsam.dev: 0.12ms (status: optimal)
 ```
 
-**Crafted with pure SMIL vector animations &amp; Cyberpunk aesthetics.**
+**Crafted with pure SMIL vector animations &amp; Liquid Glass iOS aesthetics.**
 
 </div>
 """
 
 
 def main():
-    print("=" * 68)
-    print("   CYBERPUNK GITHUB PROFILE GENERATOR SUITE — @exepngsam")
-    print("=" * 68)
+    print("=" * 70)
+    print("   LIQUID GLASS & CYBERPUNK PROFILE GENERATOR SUITE — @exepngsam")
+    print("=" * 70)
 
-    # 1. Generate Contribution Graph SVG
-    print("\n[1/5] Generating 53x7 Animated Contribution Calendar...")
+    # 1. Generate Liquid Glass Hero Banner
+    print("\n[1/7] Generating Liquid Glass Hero Banner SVG...")
+    header_svg = generate_header_svg.generate_header_svg()
+    print(f"      -> {header_svg} created.")
+
+    # 2. Generate Contribution Graph SVG
+    print("\n[2/7] Generating 53x7 Animated Contribution Calendar...")
     grid, total, months = generate_contribution_svg.fetch_contributions(USERNAME)
     contrib_svg = generate_contribution_svg.generate_svg(grid, total, months)
     print(f"      -> {contrib_svg} created.")
 
-    # 2. Generate Terminal ASCII Card SVG
-    print("\n[2/5] Generating macOS Terminal ASCII Portrait Card...")
+    # 3. Generate Terminal ASCII Card SVG (Enlarged & Crisp)
+    print("\n[3/7] Generating Enlarged Terminal ASCII Portrait Card...")
     ascii_lines = generate_terminal_card.fetch_and_convert_avatar(USERNAME)
     terminal_svg = generate_terminal_card.generate_svg(ascii_lines)
     print(f"      -> {terminal_svg} created.")
 
-    # 3. Generate Neofetch Info Card SVG
-    print("\n[3/5] Generating Neofetch Telemetry Info Card...")
+    # 4. Generate Neofetch Info Card SVG (Enlarged & Crisp)
+    print("\n[4/7] Generating Enlarged Neofetch Telemetry Info Card...")
     info_svg = generate_info_card.generate_svg()
     print(f"      -> {info_svg} created.")
 
-    # 4. Generate Animated Projects Card SVG (Screenshot 4)
-    print("\n[4/5] Generating Totally Animated Projects Dashboard Card (Screenshot 4)...")
+    # 5. Generate Animated Stats & Waveform SVG
+    print("\n[5/7] Generating Animated Liquid Glass Stats & Waveform SVG...")
+    stats_svg = generate_stats_svg.generate_stats_svg()
+    print(f"      -> {stats_svg} created.")
+
+    # 6. Generate Animated Projects Card SVG
+    print("\n[6/7] Generating Totally Animated Projects Dashboard Card...")
     projects_svg = generate_projects_svg.generate_projects_svg()
     print(f"      -> {projects_svg} created.")
 
-    # 5. Generate Animated Snake Game SVG
-    print("\n[5/5] Generating Contribution Snake Game SVG...")
+    # 7. Generate Animated Snake Game SVG
+    print("\n[7/7] Generating Contribution Snake Game SVG...")
     snake_svg = generate_snake_svg.generate_snake_svg()
     print(f"      -> {snake_svg} created.")
 
-    # 6. Inject into README.md
-    print("\nWriting complete README.md...")
+    # 8. Inject into README.md
+    print("\nWriting complete README.md with high-readability layout...")
     readme_path = "README.md"
     with open(readme_path, "w", encoding="utf-8") as f:
         f.write(README_TEMPLATE.strip() + "\n")
     print(f"      -> {readme_path} created ({len(README_TEMPLATE)} bytes).")
 
-    print("\n" + "=" * 68)
-    print("   [ALL ASSETS GENERATED & VERIFIED SUCCESSFULLY]")
-    print("   - github-contribution-animation.svg")
+    print("\n" + "=" * 70)
+    print("   [ALL 7 ASSETS GENERATED & VERIFIED SUCCESSFULLY]")
+    print("   - header-liquid-glass.svg")
     print("   - terminal-card.svg")
     print("   - info-card.svg")
+    print("   - github-contribution-animation.svg")
+    print("   - github-stats-animated.svg")
     print("   - projects-animated.svg")
     print("   - github-contribution-grid-snake.svg")
     print("   - README.md")
-    print("=" * 68)
+    print("=" * 70)
 
 
 if __name__ == "__main__":

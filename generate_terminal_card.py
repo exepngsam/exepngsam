@@ -81,39 +81,43 @@ def fetch_and_convert_avatar(username=USERNAME, width_chars=46):
 
 
 def generate_svg(ascii_lines, output_path=OUTPUT_FILE):
-    """Generates the macOS terminal card SVG with pure SMIL animations."""
-    card_width = 425
-    card_height = 475
+    """Generates the macOS terminal card SVG with pure SMIL animations (scaled up & enhanced)."""
+    card_width = 510
+    card_height = 570
 
-    start_x = 24
-    start_y = 66
-    line_height = 12.5
+    start_x = 28
+    start_y = 74
+    line_height = 15.2
 
     num_lines = len(ascii_lines)
-    row_delay_step = 0.07  # 70ms per line
+    row_delay_step = 0.06  # 60ms per line
     anim_start = 0.4       # initial pause
 
     svg_parts = []
     # Header & SVG Defs
-    svg_parts.append(f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {card_width} {card_height}" width="100%" height="auto" style="max-width: {card_width}px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;">
+    svg_parts.append(f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {card_width} {card_height}" width="100%" height="auto" style="max-width: {card_width}px; font-family: -apple-system, BlinkMacSystemFont, 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;">
   <defs>
-    <!-- Background Gradient -->
+    <!-- Liquid Glass Background Gradient -->
     <linearGradient id="term-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#090d13" />
-      <stop offset="50%" stop-color="#0d1117" />
-      <stop offset="100%" stop-color="#121820" />
+      <stop offset="0%" stop-color="#141d2a" stop-opacity="0.95" />
+      <stop offset="50%" stop-color="#0c121a" stop-opacity="0.97" />
+      <stop offset="100%" stop-color="#070b10" stop-opacity="0.99" />
     </linearGradient>
 
-    <!-- Glowing Border Gradient -->
+    <!-- Glowing Liquid Glass Border Gradient -->
     <linearGradient id="term-border" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.8" />
-      <stop offset="50%" stop-color="#30363d" stop-opacity="0.6" />
-      <stop offset="100%" stop-color="#39d353" stop-opacity="0.5" />
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.9">
+        <animate attributeName="stop-color" values="#00f0ff;#39d353;#a855f7;#00f0ff" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="40%" stop-color="#ffffff" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#39d353" stop-opacity="0.8">
+        <animate attributeName="stop-color" values="#39d353;#a855f7;#00f0ff;#39d353" dur="8s" repeatCount="indefinite" />
+      </stop>
     </linearGradient>
 
     <!-- Cursor Glow -->
     <filter id="cursor-glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur" />
       <feMerge>
         <feMergeNode in="blur" />
         <feMergeNode in="SourceGraphic" />
@@ -122,41 +126,41 @@ def generate_svg(ascii_lines, output_path=OUTPUT_FILE):
 
     <!-- Scanline Pattern -->
     <pattern id="scanlines" width="100" height="4" patternUnits="userSpaceOnUse">
-      <line x1="0" y1="0" x2="100" y2="0" stroke="#000000" stroke-opacity="0.18" stroke-width="1.2" />
+      <line x1="0" y1="0" x2="100" y2="0" stroke="#000000" stroke-opacity="0.14" stroke-width="1.2" />
     </pattern>
   </defs>
 
   <style>
-    .term-title {{ font-size: 11px; fill: #7d8590; font-weight: 600; }}
-    .ascii-text {{ font-size: 8.8px; fill: #00f0ff; letter-spacing: 1.6px; font-weight: 500; }}
-    .cmd-prompt {{ font-size: 11px; fill: #39d353; font-weight: 600; }}
-    .cmd-text {{ font-size: 11px; fill: #e6edf3; font-weight: 500; }}
-    .whoami-title {{ font-size: 11.5px; fill: #58a6ff; font-weight: 700; }}
-    .whoami-sub {{ font-size: 10px; fill: #a855f7; font-weight: 500; }}
+    .term-title {{ font-size: 13px; fill: #7d8590; font-weight: 700; font-family: monospace; }}
+    .ascii-text {{ font-size: 11.2px; fill: #00f0ff; letter-spacing: 2.1px; font-weight: 600; font-family: 'SFMono-Regular', Consolas, monospace; }}
+    .cmd-prompt {{ font-size: 13px; fill: #39d353; font-weight: 700; font-family: monospace; }}
+    .cmd-text {{ font-size: 13px; fill: #ffffff; font-weight: 600; font-family: monospace; }}
+    .whoami-title {{ font-size: 13.5px; fill: #00f0ff; font-weight: 800; font-family: -apple-system, BlinkMacSystemFont, monospace; }}
+    .whoami-sub {{ font-size: 12px; fill: #a855f7; font-weight: 600; font-family: monospace; }}
   </style>
 
-  <!-- Outer Card Frame -->
-  <rect x="2" y="2" width="{card_width - 4}" height="{card_height - 4}" rx="12" fill="url(#term-bg)" stroke="url(#term-border)" stroke-width="1.5" />
+  <!-- Outer Liquid Glass Frame -->
+  <rect x="2" y="2" width="{card_width - 4}" height="{card_height - 4}" rx="16" fill="url(#term-bg)" stroke="url(#term-border)" stroke-width="1.8" />
 
   <!-- Window Header Bar -->
-  <g transform="translate(18, 16)">
+  <g transform="translate(20, 20)">
     <!-- macOS buttons -->
-    <circle cx="0" cy="5" r="4.5" fill="#ff5f56" />
-    <circle cx="14" cy="5" r="4.5" fill="#ffbd2e" />
-    <circle cx="28" cy="5" r="4.5" fill="#27c93f" />
+    <circle cx="0" cy="5" r="5" fill="#ff5f56" />
+    <circle cx="15" cy="5" r="5" fill="#ffbd2e" />
+    <circle cx="30" cy="5" r="5" fill="#27c93f" />
 
     <!-- Window Title -->
-    <text x="44" y="8.5" class="term-title">
+    <text x="48" y="9.5" class="term-title">
       <tspan fill="#00f0ff">exepngsam</tspan>@<tspan fill="#39d353">cyberdeck</tspan>: <tspan fill="#e6edf3">~/avatar.ascii</tspan>
     </text>
 
     <!-- Right status pill -->
-    <rect x="{card_width - 130}" y="-1" width="88" height="15" rx="7.5" fill="#161b22" stroke="#30363d" stroke-width="0.8" />
-    <text x="{card_width - 118}" y="10" font-size="8.5" fill="#58a6ff" font-weight="700">PORTRAIT.RAW</text>
+    <rect x="{card_width - 145}" y="-2" width="105" height="18" rx="9" fill="#161b22" stroke="#30363d" stroke-width="1" />
+    <text x="{card_width - 132}" y="11" font-size="9.5" fill="#58a6ff" font-weight="800" font-family="monospace">PORTRAIT.RAW</text>
   </g>
 
   <!-- Header Separator -->
-  <line x1="14" y1="42" x2="{card_width - 14}" y2="42" stroke="#21262d" stroke-width="1" />
+  <line x1="16" y1="48" x2="{card_width - 16}" y2="48" stroke="#21262d" stroke-width="1" />
 
   <!-- ASCII Art Section (Row-by-Row Reveal + Sweeping Cursor) -->
   <g id="ascii-portrait">
@@ -205,25 +209,25 @@ def generate_svg(ascii_lines, output_path=OUTPUT_FILE):
   <!-- Terminal Footer: $ whoami animation -->
   <g transform="translate(18, {footer_y})">
     <!-- Prompt symbol -->
-    <text x="0" y="11" class="cmd-prompt">exepngsam@deck:~$</text>
+    <text x="0" y="13" class="cmd-prompt">exepngsam@deck:~$</text>
 
     <!-- Typewritten 'whoami' command -->
     <g opacity="0">
       <animate attributeName="opacity" values="0; 1" dur="0.05s" begin="{footer_start_delay:.3f}s" fill="freeze" />
-      <text x="116" y="11" class="cmd-text">whoami</text>
+      <text x="140" y="13" class="cmd-text">whoami</text>
     </g>
 
     <!-- Blinking command cursor -->
-    <rect x="160" y="1" width="6.5" height="12" fill="#00f0ff">
+    <rect x="195" y="2" width="7.5" height="13" fill="#00f0ff">
       <animate attributeName="opacity" values="1; 0; 1" dur="0.8s" repeatCount="indefinite" begin="{footer_start_delay:.3f}s" />
     </rect>
 
     <!-- Output Line 1: Identity -->
     <g opacity="0">
       <animate attributeName="opacity" values="0; 1" dur="0.15s" begin="{res1_delay:.3f}s" fill="freeze" />
-      <text x="2" y="29" class="whoami-title">
+      <text x="2" y="36" class="whoami-title">
         <tspan fill="#39d353">➜ </tspan>
-        <tspan fill="#e6edf3">Sam</tspan>
+        <tspan fill="#ffffff">Sam</tspan>
         <tspan fill="#7d8590"> (@exepngsam)</tspan>
       </text>
     </g>
@@ -231,7 +235,7 @@ def generate_svg(ascii_lines, output_path=OUTPUT_FILE):
     <!-- Output Line 2: Role & System -->
     <g opacity="0">
       <animate attributeName="opacity" values="0; 1" dur="0.15s" begin="{res2_delay:.3f}s" fill="freeze" />
-      <text x="14" y="44" class="whoami-sub">
+      <text x="16" y="54" class="whoami-sub">
         <tspan fill="#00f0ff">⚡</tspan> AI Systems &amp; Full-Stack Architect
       </text>
     </g>

@@ -41,73 +41,77 @@ COLOR_SWATCHES = [
 
 
 def generate_svg(output_path=OUTPUT_FILE):
-    """Generates the macOS terminal Neofetch card SVG with pure SMIL animations."""
-    card_width = 425
-    card_height = 475
+    """Generates the macOS terminal Neofetch card SVG with pure SMIL animations (scaled up & enhanced)."""
+    card_width = 510
+    card_height = 570
 
-    start_x = 24
-    start_y = 66
-    line_height = 16.5
+    start_x = 28
+    start_y = 74
+    line_height = 19.8
     stagger_step = 0.06  # 60ms delay between rows as requested
     base_delay = 0.25
 
     svg_parts = []
     # Header & Styles
-    svg_parts.append(f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {card_width} {card_height}" width="100%" height="auto" style="max-width: {card_width}px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;">
+    svg_parts.append(f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {card_width} {card_height}" width="100%" height="auto" style="max-width: {card_width}px; font-family: -apple-system, BlinkMacSystemFont, 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;">
   <defs>
-    <!-- Background Gradient -->
+    <!-- Liquid Glass Background Gradient -->
     <linearGradient id="info-bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#090d13" />
-      <stop offset="50%" stop-color="#0d1117" />
-      <stop offset="100%" stop-color="#121820" />
+      <stop offset="0%" stop-color="#141d2a" stop-opacity="0.95" />
+      <stop offset="50%" stop-color="#0c121a" stop-opacity="0.97" />
+      <stop offset="100%" stop-color="#070b10" stop-opacity="0.99" />
     </linearGradient>
 
-    <!-- Glowing Border Gradient -->
+    <!-- Glowing Liquid Glass Border Gradient -->
     <linearGradient id="info-border" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#39d353" stop-opacity="0.7" />
-      <stop offset="50%" stop-color="#30363d" stop-opacity="0.6" />
-      <stop offset="100%" stop-color="#00f0ff" stop-opacity="0.8" />
+      <stop offset="0%" stop-color="#39d353" stop-opacity="0.9">
+        <animate attributeName="stop-color" values="#39d353;#a855f7;#00f0ff;#39d353" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="40%" stop-color="#ffffff" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#00f0ff" stop-opacity="0.9">
+        <animate attributeName="stop-color" values="#00f0ff;#39d353;#a855f7;#00f0ff" dur="8s" repeatCount="indefinite" />
+      </stop>
     </linearGradient>
 
     <!-- Swatch Drop Shadow -->
     <filter id="swatch-glow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#000000" flood-opacity="0.6" />
+      <feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-color="#000000" flood-opacity="0.6" />
     </filter>
   </defs>
 
   <style>
-    .term-title {{ font-size: 11px; fill: #7d8590; font-weight: 600; }}
-    .hdr-user {{ font-size: 13px; font-weight: 800; fill: #00f0ff; letter-spacing: 0.5px; }}
-    .hdr-host {{ font-size: 13px; font-weight: 800; fill: #39d353; letter-spacing: 0.5px; }}
-    .divider-line {{ font-size: 10px; fill: #30363d; }}
-    .sec-label {{ font-size: 9.5px; font-weight: 700; letter-spacing: 0.8px; }}
-    .f-key {{ font-size: 11px; font-weight: 700; }}
-    .f-sep {{ font-size: 11px; fill: #7d8590; font-weight: 400; }}
-    .f-val {{ font-size: 11px; font-weight: 500; }}
+    .term-title {{ font-size: 13px; fill: #7d8590; font-weight: 700; font-family: monospace; }}
+    .hdr-user {{ font-size: 15.5px; font-weight: 900; fill: #00f0ff; letter-spacing: 0.6px; font-family: -apple-system, BlinkMacSystemFont, monospace; }}
+    .hdr-host {{ font-size: 15.5px; font-weight: 900; fill: #39d353; letter-spacing: 0.6px; font-family: -apple-system, BlinkMacSystemFont, monospace; }}
+    .divider-line {{ font-size: 11px; fill: #30363d; font-family: monospace; }}
+    .sec-label {{ font-size: 11px; font-weight: 800; letter-spacing: 1px; font-family: monospace; }}
+    .f-key {{ font-size: 13px; font-weight: 800; font-family: -apple-system, BlinkMacSystemFont, monospace; }}
+    .f-sep {{ font-size: 13px; fill: #7d8590; font-weight: 400; font-family: monospace; }}
+    .f-val {{ font-size: 13px; font-weight: 600; font-family: -apple-system, BlinkMacSystemFont, monospace; }}
   </style>
 
-  <!-- Outer Card Frame -->
-  <rect x="2" y="2" width="{card_width - 4}" height="{card_height - 4}" rx="12" fill="url(#info-bg)" stroke="url(#info-border)" stroke-width="1.5" />
+  <!-- Outer Liquid Glass Frame -->
+  <rect x="2" y="2" width="{card_width - 4}" height="{card_height - 4}" rx="16" fill="url(#info-bg)" stroke="url(#info-border)" stroke-width="1.8" />
 
   <!-- Window Header Bar -->
-  <g transform="translate(18, 16)">
+  <g transform="translate(20, 20)">
     <!-- macOS buttons -->
-    <circle cx="0" cy="5" r="4.5" fill="#ff5f56" />
-    <circle cx="14" cy="5" r="4.5" fill="#ffbd2e" />
-    <circle cx="28" cy="5" r="4.5" fill="#27c93f" />
+    <circle cx="0" cy="5" r="5" fill="#ff5f56" />
+    <circle cx="15" cy="5" r="5" fill="#ffbd2e" />
+    <circle cx="30" cy="5" r="5" fill="#27c93f" />
 
     <!-- Window Title -->
-    <text x="44" y="8.5" class="term-title">
+    <text x="48" y="9.5" class="term-title">
       <tspan fill="#00f0ff">sam</tspan>@<tspan fill="#39d353">cyberdeck</tspan>: <tspan fill="#e6edf3">~/neofetch</tspan>
     </text>
 
     <!-- Right status pill -->
-    <rect x="{card_width - 122}" y="-1" width="80" height="15" rx="7.5" fill="#161b22" stroke="#30363d" stroke-width="0.8" />
-    <text x="{card_width - 110}" y="10" font-size="8.5" fill="#39d353" font-weight="700">SYS.ONLINE</text>
+    <rect x="{card_width - 138}" y="-2" width="98" height="18" rx="9" fill="#161b22" stroke="#30363d" stroke-width="1" />
+    <text x="{card_width - 124}" y="11" font-size="9.5" fill="#39d353" font-weight="800" font-family="monospace">SYS.ONLINE</text>
   </g>
 
   <!-- Header Separator -->
-  <line x1="14" y1="42" x2="{card_width - 14}" y2="42" stroke="#21262d" stroke-width="1" />
+  <line x1="16" y1="48" x2="{card_width - 16}" y2="48" stroke="#21262d" stroke-width="1" />
 
   <!-- Neofetch Content: Staggered Line Reveals -->
   <g id="neofetch-lines">
@@ -175,9 +179,9 @@ def generate_svg(output_path=OUTPUT_FILE):
 
     # Color Swatches Palette Bar at Bottom
     swatches_start_delay = base_delay + (anim_idx * stagger_step) + 0.1
-    swatch_y = card_height - 28
-    swatch_size = 14
-    swatch_gap = 6
+    swatch_y = card_height - 34
+    swatch_size = 16
+    swatch_gap = 8
 
     svg_parts.append(f'''  <!-- Terminal Color Swatches Palette -->
   <g transform="translate({start_x}, {swatch_y})" filter="url(#swatch-glow)">
@@ -186,14 +190,14 @@ def generate_svg(output_path=OUTPUT_FILE):
     for s_idx, scolor in enumerate(COLOR_SWATCHES):
         sx = s_idx * (swatch_size + swatch_gap)
         s_delay = swatches_start_delay + (s_idx * 0.04)
-        svg_parts.append(f'''    <rect x="{sx}" y="0" width="{swatch_size}" height="{swatch_size}" rx="3" fill="{scolor}" opacity="0">
+        svg_parts.append(f'''    <rect x="{sx}" y="0" width="{swatch_size}" height="{swatch_size}" rx="4" fill="{scolor}" opacity="0">
       <animate attributeName="opacity" values="0; 1" dur="0.2s" begin="{s_delay:.3f}s" fill="freeze" />
       <animateTransform attributeName="transform" type="scale" values="0.3; 1.1; 1" keyTimes="0; 0.7; 1" dur="0.25s" begin="{s_delay:.3f}s" fill="freeze" />
     </rect>''')
 
     # Status text next to swatches
-    text_x = len(COLOR_SWATCHES) * (swatch_size + swatch_gap) + 14
-    svg_parts.append(f'''    <text x="{text_x}" y="11" font-size="9.5" fill="#7d8590" font-weight="600" opacity="0">
+    text_x = len(COLOR_SWATCHES) * (swatch_size + swatch_gap) + 16
+    svg_parts.append(f'''    <text x="{text_x}" y="13" font-size="10.5" fill="#7d8590" font-weight="700" font-family="monospace" opacity="0">
       <animate attributeName="opacity" values="0; 1" dur="0.3s" begin="{swatches_start_delay + 0.3:.3f}s" fill="freeze" />
       TERM_COLORS [8-BIT]
     </text>
