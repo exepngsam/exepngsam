@@ -1,0 +1,273 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 425 475" width="100%" height="auto" style="max-width: 425px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="info-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d13" />
+      <stop offset="50%" stop-color="#0d1117" />
+      <stop offset="100%" stop-color="#121820" />
+    </linearGradient>
+
+    <!-- Glowing Border Gradient -->
+    <linearGradient id="info-border" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#39d353" stop-opacity="0.7" />
+      <stop offset="50%" stop-color="#30363d" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#00f0ff" stop-opacity="0.8" />
+    </linearGradient>
+
+    <!-- Swatch Drop Shadow -->
+    <filter id="swatch-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#000000" flood-opacity="0.6" />
+    </filter>
+  </defs>
+
+  <style>
+    .term-title { font-size: 11px; fill: #7d8590; font-weight: 600; }
+    .hdr-user { font-size: 13px; font-weight: 800; fill: #00f0ff; letter-spacing: 0.5px; }
+    .hdr-host { font-size: 13px; font-weight: 800; fill: #39d353; letter-spacing: 0.5px; }
+    .divider-line { font-size: 10px; fill: #30363d; }
+    .sec-label { font-size: 9.5px; font-weight: 700; letter-spacing: 0.8px; }
+    .f-key { font-size: 11px; font-weight: 700; }
+    .f-sep { font-size: 11px; fill: #7d8590; font-weight: 400; }
+    .f-val { font-size: 11px; font-weight: 500; }
+  </style>
+
+  <!-- Outer Card Frame -->
+  <rect x="2" y="2" width="421" height="471" rx="12" fill="url(#info-bg)" stroke="url(#info-border)" stroke-width="1.5" />
+
+  <!-- Window Header Bar -->
+  <g transform="translate(18, 16)">
+    <!-- macOS buttons -->
+    <circle cx="0" cy="5" r="4.5" fill="#ff5f56" />
+    <circle cx="14" cy="5" r="4.5" fill="#ffbd2e" />
+    <circle cx="28" cy="5" r="4.5" fill="#27c93f" />
+
+    <!-- Window Title -->
+    <text x="44" y="8.5" class="term-title">
+      <tspan fill="#00f0ff">sam</tspan>@<tspan fill="#39d353">cyberdeck</tspan>: <tspan fill="#e6edf3">~/neofetch</tspan>
+    </text>
+
+    <!-- Right status pill -->
+    <rect x="303" y="-1" width="80" height="15" rx="7.5" fill="#161b22" stroke="#30363d" stroke-width="0.8" />
+    <text x="315" y="10" font-size="8.5" fill="#39d353" font-weight="700">SYS.ONLINE</text>
+  </g>
+
+  <!-- Header Separator -->
+  <line x1="14" y1="42" x2="411" y2="42" stroke="#21262d" stroke-width="1" />
+
+  <!-- Neofetch Content: Staggered Line Reveals -->
+  <g id="neofetch-lines">
+
+    <!-- Line 1: Header -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.22s" begin="0.250s" fill="freeze" />
+      <animateTransform attributeName="transform" type="translate" values="0 6; 0 0" dur="0.22s" begin="0.250s" fill="freeze" />
+      <text x="24" y="66">
+        <tspan class="hdr-user">sam</tspan><tspan fill="#e6edf3">@</tspan><tspan class="hdr-host">cyberdeck</tspan>
+      </text>
+    </g>
+    <!-- Line 2: Divider -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.22s" begin="0.310s" fill="freeze" />
+      <text x="24" y="82.5" class="divider-line">---------------------------------------------</text>
+    </g>
+    <!-- Line 3: OS -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.22s" begin="0.370s" fill="freeze" />
+      <animateTransform attributeName="transform" type="translate" values="0 6; 0 0" dur="0.22s" begin="0.370s" fill="freeze" />
+      <text x="24" y="99.0">
+        <tspan class="f-key" fill="#58a6ff">OS</tspan>
+        <tspan class="f-sep"> ~ </tspan>
+        <tspan class="f-val" fill="#e6edf3">CyberDeck OS x86_64 [Linux Kernel 6.12]</tspan>
+      </text>
+    </g>
+    <!-- Line 4: Host -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.22s" begin="0.430s" fill="freeze" />
+      <animateTransform attributeName="transform" type="translate" values="0 6; 0 0" dur="0.22s" begin="0.430s" fill="freeze" />
+      <text x="24" y="115.5">
+        <tspan class="f-key" fill="#58a6ff">Host</tspan>
+        <tspan class="f-sep"> ~ </tspan>
+        <tspan class="f-val" fill="#e6edf3">AWS Cloud / Serverless Edge Engine</tspan>
+      </text>
+    </g>
+    <!-- Line 5: Role -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.22s" begin="0.490s" fill="freeze" />
+      <animateTransform attributeName="transform" type="translate" values="0 6; 0 0" dur="0.22s" begin="0.490s" fill="freeze" />
+      <text x="24" y="132.0">
+        <tspan class="f-key" fill="#ffa657">Role</tspan>
+        <tspan class="f-sep"> ~ </tspan>
+        <tspan class="f-val" fill="#00f0ff">AI Systems &amp; Full-Stack Architect</tspan>
+      </text>
+    </g>
+    <!-- Line 6: Location -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.22s" begin="0.550s" fill="freeze" />
+      <animateTransform attributeName="transform" type="translate" values="0 6; 0 0" dur="0.22s" begin="0.550s" fill="freeze" />
+      <text x="24" y="148.5">
+        <tspan class="f-key" fill="#58a6ff">Location</tspan>
+        <tspan class="f-sep"> ~ </tspan>
+        <tspan class="f-val" fill="#e6edf3">Cyberspace / Dev Hub</tspan>
+      </text>
+    </g>
+    <!-- Line 7: Section -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.22s" begin="0.610s" fill="freeze" />
+      <animateTransform attributeName="transform" type="translate" values="0 6; 0 0" dur="0.22s" begin="0.610s" fill="freeze" />
+      <text x="24" y="171.0" class="sec-label" fill="#ffa657">━━━ CORE STACK ━━━━━━━━━━━━━━━━━━━━━━━━━</text>
+    </g>
+    <!-- Line 8: Languages -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.22s" begin="0.670s" fill="freeze" />
+      <animateTransform attributeName="transform" type="translate" values="0 6; 0 0" dur="0.22s" begin="0.670s" fill="freeze" />
+      <text x="24" y="187.5">
+        <tspan class="f-key" fill="#39d353">Languages</tspan>
+        <tspan class="f-sep"> ~ </tspan>
+        <tspan class="f-val" fill="#e6edf3">TypeScript, Python, JavaScript, SQL</tspan>
+      </text>
+    </g>
+    <!-- Line 9: Frameworks -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.22s" begin="0.730s" fill="freeze" />
+      <animateTransform attributeName="transform" type="translate" values="0 6; 0 0" dur="0.22s" begin="0.730s" fill="freeze" />
+      <text x="24" y="204.0">
+        <tspan class="f-key" fill="#39d353">Frameworks</tspan>
+        <tspan class="f-sep"> ~ </tspan>
+        <tspan class="f-val" fill="#e6edf3">Next.js 15, React 19, FastAPI, TailwindCSS</tspan>
+      </text>
+    </g>
+    <!-- Line 10: Cloud &amp; AI -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.22s" begin="0.790s" fill="freeze" />
+      <animateTransform attributeName="transform" type="translate" values="0 6; 0 0" dur="0.22s" begin="0.790s" fill="freeze" />
+      <text x="24" y="220.5">
+        <tspan class="f-key" fill="#39d353">Cloud &amp; AI</tspan>
+        <tspan class="f-sep"> ~ </tspan>
+        <tspan class="f-val" fill="#e6edf3">AWS Bedrock, GenAI, CDK, Serverless, Docker</tspan>
+      </text>
+    </g>
+    <!-- Line 11: Section -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.22s" begin="0.850s" fill="freeze" />
+      <animateTransform attributeName="transform" type="translate" values="0 6; 0 0" dur="0.22s" begin="0.850s" fill="freeze" />
+      <text x="24" y="243.0" class="sec-label" fill="#bc8cff">━━━ FEATURED PLATFORMS ━━━━━━━━━━━━━━━━━</text>
+    </g>
+    <!-- Line 12: Nexora -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.22s" begin="0.910s" fill="freeze" />
+      <animateTransform attributeName="transform" type="translate" values="0 6; 0 0" dur="0.22s" begin="0.910s" fill="freeze" />
+      <text x="24" y="259.5">
+        <tspan class="f-key" fill="#bc8cff">Nexora</tspan>
+        <tspan class="f-sep"> ~ </tspan>
+        <tspan class="f-val" fill="#00f0ff">Autonomous AI Incident Coordination</tspan>
+      </text>
+    </g>
+    <!-- Line 13: Stark-Ai -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.22s" begin="0.970s" fill="freeze" />
+      <animateTransform attributeName="transform" type="translate" values="0 6; 0 0" dur="0.22s" begin="0.970s" fill="freeze" />
+      <text x="24" y="276.0">
+        <tspan class="f-key" fill="#bc8cff">Stark-Ai</tspan>
+        <tspan class="f-sep"> ~ </tspan>
+        <tspan class="f-val" fill="#00f0ff">Futuristic Personal AI Operating System</tspan>
+      </text>
+    </g>
+    <!-- Line 14: TruthSeal -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.22s" begin="1.030s" fill="freeze" />
+      <animateTransform attributeName="transform" type="translate" values="0 6; 0 0" dur="0.22s" begin="1.030s" fill="freeze" />
+      <text x="24" y="292.5">
+        <tspan class="f-key" fill="#bc8cff">TruthSeal</tspan>
+        <tspan class="f-sep"> ~ </tspan>
+        <tspan class="f-val" fill="#00f0ff">Cryptographic Trust &amp; AI Forensics</tspan>
+      </text>
+    </g>
+    <!-- Line 15: YieldWay -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.22s" begin="1.090s" fill="freeze" />
+      <animateTransform attributeName="transform" type="translate" values="0 6; 0 0" dur="0.22s" begin="1.090s" fill="freeze" />
+      <text x="24" y="309.0">
+        <tspan class="f-key" fill="#bc8cff">YieldWay</tspan>
+        <tspan class="f-sep"> ~ </tspan>
+        <tspan class="f-val" fill="#00f0ff">Bedrock AgriTech Logistics Engine</tspan>
+      </text>
+    </g>
+    <!-- Line 16: Portfolio -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.22s" begin="1.150s" fill="freeze" />
+      <animateTransform attributeName="transform" type="translate" values="0 6; 0 0" dur="0.22s" begin="1.150s" fill="freeze" />
+      <text x="24" y="325.5">
+        <tspan class="f-key" fill="#bc8cff">Portfolio</tspan>
+        <tspan class="f-sep"> ~ </tspan>
+        <tspan class="f-val" fill="#00f0ff">3D Particle Physics Engine Terminal OS</tspan>
+      </text>
+    </g>
+    <!-- Line 17: Section -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.22s" begin="1.210s" fill="freeze" />
+      <animateTransform attributeName="transform" type="translate" values="0 6; 0 0" dur="0.22s" begin="1.210s" fill="freeze" />
+      <text x="24" y="348.0" class="sec-label" fill="#00f0ff">━━━ TELEMETRY ━━━━━━━━━━━━━━━━━━━━━━━━━━</text>
+    </g>
+    <!-- Line 18: Contributions -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.22s" begin="1.270s" fill="freeze" />
+      <animateTransform attributeName="transform" type="translate" values="0 6; 0 0" dur="0.22s" begin="1.270s" fill="freeze" />
+      <text x="24" y="364.5">
+        <tspan class="f-key" fill="#00f0ff">Contributions</tspan>
+        <tspan class="f-sep"> ~ </tspan>
+        <tspan class="f-val" fill="#39d353">109 Commits in 2026 (Active)</tspan>
+      </text>
+    </g>
+    <!-- Line 19: Architecture -->
+    <g opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.22s" begin="1.330s" fill="freeze" />
+      <animateTransform attributeName="transform" type="translate" values="0 6; 0 0" dur="0.22s" begin="1.330s" fill="freeze" />
+      <text x="24" y="381.0">
+        <tspan class="f-key" fill="#00f0ff">Architecture</tspan>
+        <tspan class="f-sep"> ~ </tspan>
+        <tspan class="f-val" fill="#e6edf3">100% Serverless • Zero-Bloat Code</tspan>
+      </text>
+    </g>
+  </g>
+
+  <!-- Terminal Color Swatches Palette -->
+  <g transform="translate(24, 447)" filter="url(#swatch-glow)">
+
+    <rect x="0" y="0" width="14" height="14" rx="3" fill="#161b22" opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.2s" begin="1.490s" fill="freeze" />
+      <animateTransform attributeName="transform" type="scale" values="0.3; 1.1; 1" keyTimes="0; 0.7; 1" dur="0.25s" begin="1.490s" fill="freeze" />
+    </rect>
+    <rect x="20" y="0" width="14" height="14" rx="3" fill="#ff5f56" opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.2s" begin="1.530s" fill="freeze" />
+      <animateTransform attributeName="transform" type="scale" values="0.3; 1.1; 1" keyTimes="0; 0.7; 1" dur="0.25s" begin="1.530s" fill="freeze" />
+    </rect>
+    <rect x="40" y="0" width="14" height="14" rx="3" fill="#39d353" opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.2s" begin="1.570s" fill="freeze" />
+      <animateTransform attributeName="transform" type="scale" values="0.3; 1.1; 1" keyTimes="0; 0.7; 1" dur="0.25s" begin="1.570s" fill="freeze" />
+    </rect>
+    <rect x="60" y="0" width="14" height="14" rx="3" fill="#ffbd2e" opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.2s" begin="1.610s" fill="freeze" />
+      <animateTransform attributeName="transform" type="scale" values="0.3; 1.1; 1" keyTimes="0; 0.7; 1" dur="0.25s" begin="1.610s" fill="freeze" />
+    </rect>
+    <rect x="80" y="0" width="14" height="14" rx="3" fill="#58a6ff" opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.2s" begin="1.650s" fill="freeze" />
+      <animateTransform attributeName="transform" type="scale" values="0.3; 1.1; 1" keyTimes="0; 0.7; 1" dur="0.25s" begin="1.650s" fill="freeze" />
+    </rect>
+    <rect x="100" y="0" width="14" height="14" rx="3" fill="#bc8cff" opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.2s" begin="1.690s" fill="freeze" />
+      <animateTransform attributeName="transform" type="scale" values="0.3; 1.1; 1" keyTimes="0; 0.7; 1" dur="0.25s" begin="1.690s" fill="freeze" />
+    </rect>
+    <rect x="120" y="0" width="14" height="14" rx="3" fill="#00f0ff" opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.2s" begin="1.730s" fill="freeze" />
+      <animateTransform attributeName="transform" type="scale" values="0.3; 1.1; 1" keyTimes="0; 0.7; 1" dur="0.25s" begin="1.730s" fill="freeze" />
+    </rect>
+    <rect x="140" y="0" width="14" height="14" rx="3" fill="#e6edf3" opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.2s" begin="1.770s" fill="freeze" />
+      <animateTransform attributeName="transform" type="scale" values="0.3; 1.1; 1" keyTimes="0; 0.7; 1" dur="0.25s" begin="1.770s" fill="freeze" />
+    </rect>
+    <text x="174" y="11" font-size="9.5" fill="#7d8590" font-weight="600" opacity="0">
+      <animate attributeName="opacity" values="0; 1" dur="0.3s" begin="1.790s" fill="freeze" />
+      TERM_COLORS [8-BIT]
+    </text>
+  </g>
+</svg>
