@@ -1,0 +1,375 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 560" width="100%" height="auto" style="max-width: 880px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="main-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d13" />
+      <stop offset="50%" stop-color="#0d1117" />
+      <stop offset="100%" stop-color="#141a23" />
+    </linearGradient>
+
+    <!-- Outer Border Glow -->
+    <linearGradient id="outer-glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.8">
+        <animate attributeName="stop-color" values="#00f0ff;#39d353;#a855f7;#ffa657;#00f0ff" dur="10s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="50%" stop-color="#30363d" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#39d353" stop-opacity="0.7">
+        <animate attributeName="stop-color" values="#39d353;#a855f7;#00f0ff;#39d353" dur="10s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <!-- Neon Glow Filter -->
+    <filter id="p-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="beacon-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.5" result="b" />
+      <feMerge>
+        <feMergeNode in="b" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    .card-title { font-size: 14px; font-weight: 700; fill: #e6edf3; letter-spacing: 0.3px; }
+    .card-sub { font-size: 11px; font-weight: 600; fill: #7d8590; }
+    .card-desc { font-size: 10.5px; fill: #8b949e; line-height: 1.4; }
+    .pill-txt { font-size: 9px; font-weight: 600; font-family: monospace; fill: #e6edf3; }
+    .demo-btn-txt { font-size: 9.5px; font-weight: 700; font-family: monospace; fill: #00f0ff; }
+    .proj-card { transition: transform 0.2s ease; cursor: pointer; }
+  </style>
+
+  <!-- Container Frame -->
+  <rect x="2" y="2" width="876" height="556" rx="14" fill="url(#main-bg)" stroke="url(#outer-glow)" stroke-width="1.6" />
+
+  <!-- Top Title Bar -->
+  <g transform="translate(20, 18)">
+    <circle cx="0" cy="5" r="4.5" fill="#ff5f56" />
+    <circle cx="14" cy="5" r="4.5" fill="#ffbd2e" />
+    <circle cx="28" cy="5" r="4.5" fill="#27c93f" />
+
+    <text x="46" y="9" font-size="12" font-weight="700" fill="#e6edf3" font-family="monospace">
+      <tspan fill="#00f0ff">~/cyberdeck</tspan>
+      <tspan fill="#7d8590"> / </tspan>
+      <tspan fill="#39d353">featured-platforms</tspan>
+      <tspan fill="#7d8590">.sh</tspan>
+    </text>
+
+    <!-- Pulsing Live Badge -->
+    <g transform="translate(645, -1)">
+      <rect x="0" y="0" width="185" height="20" rx="10" fill="#161b22" stroke="#30363d" stroke-width="1" />
+      <circle cx="12" cy="10" r="3.5" fill="#39d353" filter="url(#beacon-glow)">
+        <animate attributeName="r" values="3.5; 5; 3.5" dur="1.8s" repeatCount="indefinite" />
+        <animate attributeName="opacity" values="1; 0.3; 1" dur="1.8s" repeatCount="indefinite" />
+      </circle>
+      <text x="24" y="14" font-size="10" font-weight="700" fill="#00f0ff" font-family="monospace">
+        6_PLATFORMS // ACTIVE
+      </text>
+    </g>
+  </g>
+
+  <!-- Header line -->
+  <line x1="16" y1="46" x2="864" y2="46" stroke="#21262d" stroke-width="1" />
+
+  <!-- Project Cards Grid -->
+  <!-- Card 1: Nexora -->
+  <g transform="translate(24, 62)" class="proj-card">
+    <animate attributeName="opacity" values="0; 1" dur="0.3s" begin="0.15s" fill="freeze" />
+    <animateTransform attributeName="transform" type="translate" values="24 72; 24 62" dur="0.3s" begin="0.15s" fill="freeze" />
+
+    <!-- Card Base Box -->
+    <rect x="0" y="0" width="405" height="145" rx="10" fill="#111620" stroke="#30363d" stroke-width="1.2" />
+
+    <!-- Animated Running Accent Border Beam -->
+    <rect x="0" y="0" width="405" height="145" rx="10" fill="none" stroke="#00f0ff" stroke-width="1.8" stroke-dasharray="70 420" opacity="0.85">
+      <animate attributeName="stroke-dashoffset" values="0; -980" dur="4.0s" repeatCount="indefinite" />
+    </rect>
+
+    <!-- Top Row: Icon + Title + Live Beacon -->
+    <a href="https://nexora-three-mu.vercel.app" target="_blank">
+      <text x="14" y="24" font-size="16">🤖</text>
+      <text x="38" y="24" class="card-title">Nexora</text>
+    </a>
+
+    <!-- Live Status Pill in Card Header -->
+    <g transform="translate(310, 10)">
+      <rect x="0" y="0" width="80" height="18" rx="9" fill="#161b22" stroke="#00f0ff" stroke-width="0.8" />
+      <circle cx="9" cy="9" r="2.8" fill="#00f0ff">
+        <animate attributeName="opacity" values="1; 0.2; 1" dur="1.5s" repeatCount="indefinite" />
+      </circle>
+      <text x="18" y="12.5" font-size="8.5" font-weight="700" fill="#00f0ff" font-family="monospace">LIVE DEMO</text>
+    </g>
+
+    <!-- Subtitle -->
+    <text x="14" y="44" class="card-sub">Autonomous AI Incident Coordination Platform</text>
+
+    <!-- Description Lines -->
+    <text x="14" y="64" class="card-desc">Turns incidents into action with Featherless AI &amp; Caspia</text>
+    <text x="14" y="80" class="card-desc">n for reasoning, autonomous escalation, and real-time coord...</text>
+
+    <!-- Bottom Row: Tech Tag Pills -->
+    <g transform="translate(14, 104)">
+      <rect x="0" y="0" width="80.0" height="18" rx="4" fill="#1c2128" stroke="#30363d" stroke-width="0.8" />
+      <text x="7" y="12" class="pill-txt">TypeScript</text>
+      <rect x="86.0" y="0" width="106.39999999999999" height="18" rx="4" fill="#1c2128" stroke="#30363d" stroke-width="0.8" />
+      <text x="93.0" y="12" class="pill-txt">Featherless AI</text>
+      <rect x="198.39999999999998" y="0" width="80.0" height="18" rx="4" fill="#1c2128" stroke="#30363d" stroke-width="0.8" />
+      <text x="205.39999999999998" y="12" class="pill-txt">Next.js 15</text>
+      <a href="https://nexora-three-mu.vercel.app" target="_blank">
+        <rect x="296" y="0" width="80" height="18" rx="4" fill="#00f0ff" fill-opacity="0.15" stroke="#00f0ff" stroke-width="0.9" />
+        <text x="306" y="12" class="demo-btn-txt">VISIT ➔</text>
+      </a>
+    </g>
+  </g>
+  <!-- Card 2: Stark-Ai -->
+  <g transform="translate(451, 62)" class="proj-card">
+    <animate attributeName="opacity" values="0; 1" dur="0.3s" begin="0.23s" fill="freeze" />
+    <animateTransform attributeName="transform" type="translate" values="451 72; 451 62" dur="0.3s" begin="0.23s" fill="freeze" />
+
+    <!-- Card Base Box -->
+    <rect x="0" y="0" width="405" height="145" rx="10" fill="#111620" stroke="#30363d" stroke-width="1.2" />
+
+    <!-- Animated Running Accent Border Beam -->
+    <rect x="0" y="0" width="405" height="145" rx="10" fill="none" stroke="#a855f7" stroke-width="1.8" stroke-dasharray="70 420" opacity="0.85">
+      <animate attributeName="stroke-dashoffset" values="0; -980" dur="4.5s" repeatCount="indefinite" />
+    </rect>
+
+    <!-- Top Row: Icon + Title + Live Beacon -->
+    <a href="https://starkai-fawn.vercel.app/" target="_blank">
+      <text x="14" y="24" font-size="16">🧠</text>
+      <text x="38" y="24" class="card-title">Stark-Ai</text>
+    </a>
+
+    <!-- Live Status Pill in Card Header -->
+    <g transform="translate(310, 10)">
+      <rect x="0" y="0" width="80" height="18" rx="9" fill="#161b22" stroke="#a855f7" stroke-width="0.8" />
+      <circle cx="9" cy="9" r="2.8" fill="#a855f7">
+        <animate attributeName="opacity" values="1; 0.2; 1" dur="1.5s" repeatCount="indefinite" />
+      </circle>
+      <text x="18" y="12.5" font-size="8.5" font-weight="700" fill="#a855f7" font-family="monospace">LIVE DEMO</text>
+    </g>
+
+    <!-- Subtitle -->
+    <text x="14" y="44" class="card-sub">Futuristic Personal AI Operating System</text>
+
+    <!-- Description Lines -->
+    <text x="14" y="64" class="card-desc">Converts natural-language into intelligent tool actions,</text>
+    <text x="14" y="80" class="card-desc"> multi-agent automation, and continuous real-time assistanc...</text>
+
+    <!-- Bottom Row: Tech Tag Pills -->
+    <g transform="translate(14, 104)">
+      <rect x="0" y="0" width="80.0" height="18" rx="4" fill="#1c2128" stroke="#30363d" stroke-width="0.8" />
+      <text x="7" y="12" class="pill-txt">TypeScript</text>
+      <rect x="86.0" y="0" width="80.0" height="18" rx="4" fill="#1c2128" stroke="#30363d" stroke-width="0.8" />
+      <text x="93.0" y="12" class="pill-txt">Agentic AI</text>
+      <rect x="172.0" y="0" width="80.0" height="18" rx="4" fill="#1c2128" stroke="#30363d" stroke-width="0.8" />
+      <text x="179.0" y="12" class="pill-txt">Automation</text>
+      <a href="https://starkai-fawn.vercel.app/" target="_blank">
+        <rect x="296" y="0" width="80" height="18" rx="4" fill="#a855f7" fill-opacity="0.15" stroke="#a855f7" stroke-width="0.9" />
+        <text x="306" y="12" class="demo-btn-txt">VISIT ➔</text>
+      </a>
+    </g>
+  </g>
+  <!-- Card 3: TruthSeal AI -->
+  <g transform="translate(24, 223)" class="proj-card">
+    <animate attributeName="opacity" values="0; 1" dur="0.3s" begin="0.31s" fill="freeze" />
+    <animateTransform attributeName="transform" type="translate" values="24 233; 24 223" dur="0.3s" begin="0.31s" fill="freeze" />
+
+    <!-- Card Base Box -->
+    <rect x="0" y="0" width="405" height="145" rx="10" fill="#111620" stroke="#30363d" stroke-width="1.2" />
+
+    <!-- Animated Running Accent Border Beam -->
+    <rect x="0" y="0" width="405" height="145" rx="10" fill="none" stroke="#ffa657" stroke-width="1.8" stroke-dasharray="70 420" opacity="0.85">
+      <animate attributeName="stroke-dashoffset" values="0; -980" dur="5.0s" repeatCount="indefinite" />
+    </rect>
+
+    <!-- Top Row: Icon + Title + Live Beacon -->
+    <a href="https://truth-seal-ai.vercel.app" target="_blank">
+      <text x="14" y="24" font-size="16">🔐</text>
+      <text x="38" y="24" class="card-title">TruthSeal AI</text>
+    </a>
+
+    <!-- Live Status Pill in Card Header -->
+    <g transform="translate(310, 10)">
+      <rect x="0" y="0" width="80" height="18" rx="9" fill="#161b22" stroke="#ffa657" stroke-width="0.8" />
+      <circle cx="9" cy="9" r="2.8" fill="#ffa657">
+        <animate attributeName="opacity" values="1; 0.2; 1" dur="1.5s" repeatCount="indefinite" />
+      </circle>
+      <text x="18" y="12.5" font-size="8.5" font-weight="700" fill="#ffa657" font-family="monospace">LIVE DEMO</text>
+    </g>
+
+    <!-- Subtitle -->
+    <text x="14" y="44" class="card-sub">Digital Trust &amp; Media Forensics Platform</text>
+
+    <!-- Description Lines -->
+    <text x="14" y="64" class="card-desc">Combines cryptographic proof, AI media forensics, proven</text>
+    <text x="14" y="80" class="card-desc">ance tracking, and credential revocation for verified media...</text>
+
+    <!-- Bottom Row: Tech Tag Pills -->
+    <g transform="translate(14, 104)">
+      <rect x="0" y="0" width="139.39999999999998" height="18" rx="4" fill="#1c2128" stroke="#30363d" stroke-width="0.8" />
+      <text x="7" y="12" class="pill-txt">Cryptographic Trust</text>
+      <rect x="145.39999999999998" y="0" width="73.4" height="18" rx="4" fill="#1c2128" stroke="#30363d" stroke-width="0.8" />
+      <text x="152.39999999999998" y="12" class="pill-txt">Forensics</text>
+      <rect x="224.79999999999998" y="0" width="60.199999999999996" height="18" rx="4" fill="#1c2128" stroke="#30363d" stroke-width="0.8" />
+      <text x="231.79999999999998" y="12" class="pill-txt">Next.js</text>
+      <a href="https://truth-seal-ai.vercel.app" target="_blank">
+        <rect x="296" y="0" width="80" height="18" rx="4" fill="#ffa657" fill-opacity="0.15" stroke="#ffa657" stroke-width="0.9" />
+        <text x="306" y="12" class="demo-btn-txt">VISIT ➔</text>
+      </a>
+    </g>
+  </g>
+  <!-- Card 4: YieldWay AI -->
+  <g transform="translate(451, 223)" class="proj-card">
+    <animate attributeName="opacity" values="0; 1" dur="0.3s" begin="0.39s" fill="freeze" />
+    <animateTransform attributeName="transform" type="translate" values="451 233; 451 223" dur="0.3s" begin="0.39s" fill="freeze" />
+
+    <!-- Card Base Box -->
+    <rect x="0" y="0" width="405" height="145" rx="10" fill="#111620" stroke="#30363d" stroke-width="1.2" />
+
+    <!-- Animated Running Accent Border Beam -->
+    <rect x="0" y="0" width="405" height="145" rx="10" fill="none" stroke="#39d353" stroke-width="1.8" stroke-dasharray="70 420" opacity="0.85">
+      <animate attributeName="stroke-dashoffset" values="0; -980" dur="5.5s" repeatCount="indefinite" />
+    </rect>
+
+    <!-- Top Row: Icon + Title + Live Beacon -->
+    <a href="https://frontend-lake-zeta-88.vercel.app" target="_blank">
+      <text x="14" y="24" font-size="16">🌾</text>
+      <text x="38" y="24" class="card-title">YieldWay AI</text>
+    </a>
+
+    <!-- Live Status Pill in Card Header -->
+    <g transform="translate(310, 10)">
+      <rect x="0" y="0" width="80" height="18" rx="9" fill="#161b22" stroke="#39d353" stroke-width="0.8" />
+      <circle cx="9" cy="9" r="2.8" fill="#39d353">
+        <animate attributeName="opacity" values="1; 0.2; 1" dur="1.5s" repeatCount="indefinite" />
+      </circle>
+      <text x="18" y="12.5" font-size="8.5" font-weight="700" fill="#39d353" font-family="monospace">LIVE DEMO</text>
+    </g>
+
+    <!-- Subtitle -->
+    <text x="14" y="44" class="card-sub">Serverless AgriTech Logistics Platform</text>
+
+    <!-- Description Lines -->
+    <text x="14" y="64" class="card-desc">Built for 'Bharat Builds' AWS Hackathon with Amazon Bedr</text>
+    <text x="14" y="80" class="card-desc">ock GenAI &amp; AWS CDK to solve agricultural post-harvest logi...</text>
+
+    <!-- Bottom Row: Tech Tag Pills -->
+    <g transform="translate(14, 104)">
+      <rect x="0" y="0" width="86.6" height="18" rx="4" fill="#1c2128" stroke="#30363d" stroke-width="0.8" />
+      <text x="7" y="12" class="pill-txt">AWS Bedrock</text>
+      <rect x="92.6" y="0" width="60.199999999999996" height="18" rx="4" fill="#1c2128" stroke="#30363d" stroke-width="0.8" />
+      <text x="99.6" y="12" class="pill-txt">AWS CDK</text>
+      <rect x="158.79999999999998" y="0" width="80.0" height="18" rx="4" fill="#1c2128" stroke="#30363d" stroke-width="0.8" />
+      <text x="165.79999999999998" y="12" class="pill-txt">Serverless</text>
+      <a href="https://frontend-lake-zeta-88.vercel.app" target="_blank">
+        <rect x="296" y="0" width="80" height="18" rx="4" fill="#39d353" fill-opacity="0.15" stroke="#39d353" stroke-width="0.9" />
+        <text x="306" y="12" class="demo-btn-txt">VISIT ➔</text>
+      </a>
+    </g>
+  </g>
+  <!-- Card 5: CivicFix AI -->
+  <g transform="translate(24, 384)" class="proj-card">
+    <animate attributeName="opacity" values="0; 1" dur="0.3s" begin="0.47s" fill="freeze" />
+    <animateTransform attributeName="transform" type="translate" values="24 394; 24 384" dur="0.3s" begin="0.47s" fill="freeze" />
+
+    <!-- Card Base Box -->
+    <rect x="0" y="0" width="405" height="145" rx="10" fill="#111620" stroke="#30363d" stroke-width="1.2" />
+
+    <!-- Animated Running Accent Border Beam -->
+    <rect x="0" y="0" width="405" height="145" rx="10" fill="none" stroke="#58a6ff" stroke-width="1.8" stroke-dasharray="70 420" opacity="0.85">
+      <animate attributeName="stroke-dashoffset" values="0; -980" dur="6.0s" repeatCount="indefinite" />
+    </rect>
+
+    <!-- Top Row: Icon + Title + Live Beacon -->
+    <a href="https://civicfix-ai-roan.vercel.app" target="_blank">
+      <text x="14" y="24" font-size="16">🏙️</text>
+      <text x="38" y="24" class="card-title">CivicFix AI</text>
+    </a>
+
+    <!-- Live Status Pill in Card Header -->
+    <g transform="translate(310, 10)">
+      <rect x="0" y="0" width="80" height="18" rx="9" fill="#161b22" stroke="#58a6ff" stroke-width="0.8" />
+      <circle cx="9" cy="9" r="2.8" fill="#58a6ff">
+        <animate attributeName="opacity" values="1; 0.2; 1" dur="1.5s" repeatCount="indefinite" />
+      </circle>
+      <text x="18" y="12.5" font-size="8.5" font-weight="700" fill="#58a6ff" font-family="monospace">LIVE DEMO</text>
+    </g>
+
+    <!-- Subtitle -->
+    <text x="14" y="44" class="card-sub">AI-Powered Civic Issue Intelligence</text>
+
+    <!-- Description Lines -->
+    <text x="14" y="64" class="card-desc">Intelligent civic issue classification, severity detecti</text>
+    <text x="14" y="80" class="card-desc">on, automated routing, and real-time AWS resolution workflo...</text>
+
+    <!-- Bottom Row: Tech Tag Pills -->
+    <g transform="translate(14, 104)">
+      <rect x="0" y="0" width="73.4" height="18" rx="4" fill="#1c2128" stroke="#30363d" stroke-width="0.8" />
+      <text x="7" y="12" class="pill-txt">AWS Cloud</text>
+      <rect x="79.4" y="0" width="60.199999999999996" height="18" rx="4" fill="#1c2128" stroke="#30363d" stroke-width="0.8" />
+      <text x="86.4" y="12" class="pill-txt">Next.js</text>
+      <rect x="145.6" y="0" width="80.0" height="18" rx="4" fill="#1c2128" stroke="#30363d" stroke-width="0.8" />
+      <text x="152.6" y="12" class="pill-txt">AI Routing</text>
+      <a href="https://civicfix-ai-roan.vercel.app" target="_blank">
+        <rect x="296" y="0" width="80" height="18" rx="4" fill="#58a6ff" fill-opacity="0.15" stroke="#58a6ff" stroke-width="0.9" />
+        <text x="306" y="12" class="demo-btn-txt">VISIT ➔</text>
+      </a>
+    </g>
+  </g>
+  <!-- Card 6: Terminal OS &amp; Physics Engine -->
+  <g transform="translate(451, 384)" class="proj-card">
+    <animate attributeName="opacity" values="0; 1" dur="0.3s" begin="0.55s" fill="freeze" />
+    <animateTransform attributeName="transform" type="translate" values="451 394; 451 384" dur="0.3s" begin="0.55s" fill="freeze" />
+
+    <!-- Card Base Box -->
+    <rect x="0" y="0" width="405" height="145" rx="10" fill="#111620" stroke="#30363d" stroke-width="1.2" />
+
+    <!-- Animated Running Accent Border Beam -->
+    <rect x="0" y="0" width="405" height="145" rx="10" fill="none" stroke="#f43f5e" stroke-width="1.8" stroke-dasharray="70 420" opacity="0.85">
+      <animate attributeName="stroke-dashoffset" values="0; -980" dur="6.5s" repeatCount="indefinite" />
+    </rect>
+
+    <!-- Top Row: Icon + Title + Live Beacon -->
+    <a href="https://portfolio19s.vercel.app/" target="_blank">
+      <text x="14" y="24" font-size="16">✨</text>
+      <text x="38" y="24" class="card-title">Terminal OS &amp; Physics Engine</text>
+    </a>
+
+    <!-- Live Status Pill in Card Header -->
+    <g transform="translate(310, 10)">
+      <rect x="0" y="0" width="80" height="18" rx="9" fill="#161b22" stroke="#f43f5e" stroke-width="0.8" />
+      <circle cx="9" cy="9" r="2.8" fill="#f43f5e">
+        <animate attributeName="opacity" values="1; 0.2; 1" dur="1.5s" repeatCount="indefinite" />
+      </circle>
+      <text x="18" y="12.5" font-size="8.5" font-weight="700" fill="#f43f5e" font-family="monospace">LIVE DEMO</text>
+    </g>
+
+    <!-- Subtitle -->
+    <text x="14" y="44" class="card-sub">Brutalist Zero-Bloat Portfolio OS</text>
+
+    <!-- Description Lines -->
+    <text x="14" y="64" class="card-desc">Interactive local AI chatbot, an 800-node 3D particle ph</text>
+    <text x="14" y="80" class="card-desc">ysics simulation, and custom high-speed system architecture...</text>
+
+    <!-- Bottom Row: Tech Tag Pills -->
+    <g transform="translate(14, 104)">
+      <rect x="0" y="0" width="80.0" height="18" rx="4" fill="#1c2128" stroke="#30363d" stroke-width="0.8" />
+      <text x="7" y="12" class="pill-txt">3D Physics</text>
+      <rect x="86.0" y="0" width="80.0" height="18" rx="4" fill="#1c2128" stroke="#30363d" stroke-width="0.8" />
+      <text x="93.0" y="12" class="pill-txt">Zero-Bloat</text>
+      <rect x="172.0" y="0" width="66.8" height="18" rx="4" fill="#1c2128" stroke="#30363d" stroke-width="0.8" />
+      <text x="179.0" y="12" class="pill-txt">Local AI</text>
+      <a href="https://portfolio19s.vercel.app/" target="_blank">
+        <rect x="296" y="0" width="80" height="18" rx="4" fill="#f43f5e" fill-opacity="0.15" stroke="#f43f5e" stroke-width="0.9" />
+        <text x="306" y="12" class="demo-btn-txt">VISIT ➔</text>
+      </a>
+    </g>
+  </g>
+</svg>

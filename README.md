@@ -1,10 +1,13 @@
 <div align="center">
 
-# ⚡ SAM // ARCHITECT &amp; BUILDER
-### 🌌 Autonomous AI Systems • Serverless Edge • Full-Stack Architecture
-```text
-[ SYSTEM INITIALIZED: CYBERDECK OS v2.4 ] ~ CONNECTED TO GITHUB:@exepngsam
-```
+<!-- Animated Dynamic Cyberpunk Typing Banner -->
+<a href="https://github.com/exepngsam">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=25&pause=1000&color=00F0FF&center=true&vCenter=true&width=700&height=55&lines=SAM+%7C%7C+AI+SYSTEMS+%26+FULL-STACK+ARCHITECT;BUILDING+AUTONOMOUS+AI+AGENTS+%26+SYSTEMS;NEXT.JS+15+%E2%80%A2+AWS+BEDROCK+%E2%80%A2+TYPESCRIPT;109+CONTRIBUTIONS+AND+COUNTING..." alt="Typing SVG" />
+</a>
+
+<p align="center">
+  <code>[ SYSTEM INITIALIZED: CYBERDECK OS v2.4 ] ~ CONNECTED TO GITHUB:@exepngsam</code>
+</p>
 
 [![GitHub Followers](https://img.shields.io/github/followers/exepngsam?style=for-the-badge&logo=github&color=00f0ff&labelColor=0d1117)](https://github.com/exepngsam)
 [![Total Repos](https://img.shields.io/badge/Public_Repos-7-39d353?style=for-the-badge&logo=git&labelColor=0d1117)](https://github.com/exepngsam?tab=repositories)
@@ -34,12 +37,82 @@
 
 <br />
 
+<!-- Animated Contribution Snake Game -->
+<div align="center">
+  <img src="./github-contribution-grid-snake.svg" alt="GitHub Contribution Snake Game" width="100%" style="max-width: 880px;" />
+</div>
+
+<br />
+
+</div>
+
+---
+
+<div align="center">
+
+## 🤝 Connect
+
+<a href="https://github.com/exepngsam"><img src="https://skillicons.dev/icons?i=github" width="48" height="48" alt="GitHub" /></a>
+&nbsp;&nbsp;
+<a href="https://linkedin.com"><img src="https://skillicons.dev/icons?i=linkedin" width="48" height="48" alt="LinkedIn" /></a>
+&nbsp;&nbsp;
+<a href="mailto:loudbiology@gmail.com"><img src="https://skillicons.dev/icons?i=gmail" width="48" height="48" alt="Gmail" /></a>
+&nbsp;&nbsp;
+<a href="https://portfolio19s.vercel.app/"><img src="https://skillicons.dev/icons?i=vercel" width="48" height="48" alt="Portfolio" /></a>
+
+<br /><br />
+
+## 💻 Tech Stack
+
+<!-- Row 1 -->
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=py,fastapi,postgres,mysql,docker,git,github,vscode,html,css,cpp,aws" alt="Tech Stack Row 1" />
+</p>
+
+<!-- Row 2 -->
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=nextjs,react,ts,nodejs,pytorch,tensorflow,gcp,tailwind" alt="Tech Stack Row 2" />
+</p>
+
+<br />
+
+## 📊 GitHub Stats
+
+<!-- Activity Graph -->
+<a href="https://github.com/exepngsam">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=exepngsam&theme=tokyo-night&area=true&hide_border=false&color=00f0ff&line=39d353&point=a855f7&bg_color=0d1117" alt="Activity Graph" width="100%" style="max-width: 880px;" />
+</a>
+
+<br /><br />
+
+<!-- GitHub Stats & Streak Side-by-Side -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 880px;">
+  <tr>
+    <td width="50%" align="center" valign="top" style="border: none; padding: 4px;">
+      <img src="https://github-readme-stats.vercel.app/api?username=exepngsam&show_icons=true&theme=tokyonight&bg_color=0d1117&title_color=00f0ff&icon_color=39d353&text_color=e6edf3&border_color=30363d&count_private=true&include_all_commits=true" width="100%" alt="GitHub Stats" />
+    </td>
+    <td width="50%" align="center" valign="top" style="border: none; padding: 4px;">
+      <img src="https://github-readme-streak-stats.herokuapp.com/?user=exepngsam&theme=tokyonight&background=0d1117&border=30363d&stroke=00f0ff&ring=39d353&fire=ffa657&currStreakNum=e6edf3&sideNums=e6edf3&currStreakLabel=00f0ff" width="100%" alt="Streak Stats" />
+    </td>
+  </tr>
+</table>
+
 </div>
 
 ---
 
 ## 🚀 Featured Platforms & Systems
 
+<div align="center">
+
+<!-- Totally Animated Projects Dashboard Card -->
+<img src="./projects-animated.svg" alt="Featured Platforms & Systems Dashboard" width="100%" style="max-width: 880px;" />
+
+</div>
+
+<br />
+
+<!-- Interactive Fallback & Direct Clickable Links Table -->
 <table>
   <tr>
     <td width="50%" valign="top">
@@ -96,22 +169,6 @@
     </td>
   </tr>
 </table>
-
----
-
-## 🛠️ Core Tech Arsenal
-
-<div align="center">
-
-| Domain | Technologies |
-| :--- | :--- |
-| **Languages** | `TypeScript` • `Python` • `JavaScript` • `SQL` • `HTML5 / CSS3` |
-| **Frontend &amp; UI** | `Next.js 15` • `React 19` • `TailwindCSS` • `Lucide` • `Canvas / WebGL` |
-| **AI &amp; Autonomous Agents** | `Amazon Bedrock` • `Featherless AI` • `Agentic Workflows` • `Media Forensics` |
-| **Cloud &amp; Infrastructure** | `AWS (CDK, Lambda, S3)` • `Vercel Edge` • `Serverless Architecture` • `Docker` |
-| **Database &amp; Storage** | `PostgreSQL` • `Redis` • `Vector DBs` • `Cloudflare / Edge KV` |
-
-</div>
 
 ---
 

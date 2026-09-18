@@ -1,13 +1,14 @@
 """
 generate_all.py
-Master Python orchestrator for generating the complete premium animated GitHub Profile suite
-for @exepngsam.
+Master Python orchestrator for the complete animated Cyberpunk GitHub Profile Suite for @exepngsam.
 
 Executes:
 1. generate_contribution_svg.py -> github-contribution-animation.svg (53x7 slant reveal & glint)
 2. generate_terminal_card.py    -> terminal-card.svg (ASCII avatar + sweeping cursor + whoami)
 3. generate_info_card.py        -> info-card.svg (Neofetch terminal card with staggered reveals)
-4. Injects side-by-side table and centered contribution animation into README.md
+4. generate_projects_svg.py     -> projects-animated.svg (Screenshot 4 totally animated card grid)
+5. generate_snake_svg.py        -> github-contribution-grid-snake.svg (Contribution snake game)
+6. Generates complete README.md incorporating all requested visual sections.
 """
 
 import os
@@ -15,16 +16,21 @@ import sys
 import generate_contribution_svg
 import generate_terminal_card
 import generate_info_card
+import generate_projects_svg
+import generate_snake_svg
 
 USERNAME = "exepngsam"
 
-README_CONTENT = f"""<div align="center">
+README_TEMPLATE = f"""<div align="center">
 
-# ⚡ SAM // ARCHITECT &amp; BUILDER
-### 🌌 Autonomous AI Systems • Serverless Edge • Full-Stack Architecture
-```text
-[ SYSTEM INITIALIZED: CYBERDECK OS v2.4 ] ~ CONNECTED TO GITHUB:@{USERNAME}
-```
+<!-- Animated Dynamic Cyberpunk Typing Banner -->
+<a href="https://github.com/{USERNAME}">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=25&pause=1000&color=00F0FF&center=true&vCenter=true&width=700&height=55&lines=SAM+%7C%7C+AI+SYSTEMS+%26+FULL-STACK+ARCHITECT;BUILDING+AUTONOMOUS+AI+AGENTS+%26+SYSTEMS;NEXT.JS+15+%E2%80%A2+AWS+BEDROCK+%E2%80%A2+TYPESCRIPT;109+CONTRIBUTIONS+AND+COUNTING..." alt="Typing SVG" />
+</a>
+
+<p align="center">
+  <code>[ SYSTEM INITIALIZED: CYBERDECK OS v2.4 ] ~ CONNECTED TO GITHUB:@{USERNAME}</code>
+</p>
 
 [![GitHub Followers](https://img.shields.io/github/followers/{USERNAME}?style=for-the-badge&logo=github&color=00f0ff&labelColor=0d1117)](https://github.com/{USERNAME})
 [![Total Repos](https://img.shields.io/badge/Public_Repos-7-39d353?style=for-the-badge&logo=git&labelColor=0d1117)](https://github.com/{USERNAME}?tab=repositories)
@@ -54,12 +60,82 @@ README_CONTENT = f"""<div align="center">
 
 <br />
 
+<!-- Animated Contribution Snake Game -->
+<div align="center">
+  <img src="./github-contribution-grid-snake.svg" alt="GitHub Contribution Snake Game" width="100%" style="max-width: 880px;" />
+</div>
+
+<br />
+
+</div>
+
+---
+
+<div align="center">
+
+## 🤝 Connect
+
+<a href="https://github.com/{USERNAME}"><img src="https://skillicons.dev/icons?i=github" width="48" height="48" alt="GitHub" /></a>
+&nbsp;&nbsp;
+<a href="https://linkedin.com"><img src="https://skillicons.dev/icons?i=linkedin" width="48" height="48" alt="LinkedIn" /></a>
+&nbsp;&nbsp;
+<a href="mailto:loudbiology@gmail.com"><img src="https://skillicons.dev/icons?i=gmail" width="48" height="48" alt="Gmail" /></a>
+&nbsp;&nbsp;
+<a href="https://portfolio19s.vercel.app/"><img src="https://skillicons.dev/icons?i=vercel" width="48" height="48" alt="Portfolio" /></a>
+
+<br /><br />
+
+## 💻 Tech Stack
+
+<!-- Row 1 -->
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=py,fastapi,postgres,mysql,docker,git,github,vscode,html,css,cpp,aws" alt="Tech Stack Row 1" />
+</p>
+
+<!-- Row 2 -->
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=nextjs,react,ts,nodejs,pytorch,tensorflow,gcp,tailwind" alt="Tech Stack Row 2" />
+</p>
+
+<br />
+
+## 📊 GitHub Stats
+
+<!-- Activity Graph -->
+<a href="https://github.com/{USERNAME}">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username={USERNAME}&theme=tokyo-night&area=true&hide_border=false&color=00f0ff&line=39d353&point=a855f7&bg_color=0d1117" alt="Activity Graph" width="100%" style="max-width: 880px;" />
+</a>
+
+<br /><br />
+
+<!-- GitHub Stats & Streak Side-by-Side -->
+<table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 880px;">
+  <tr>
+    <td width="50%" align="center" valign="top" style="border: none; padding: 4px;">
+      <img src="https://github-readme-stats.vercel.app/api?username={USERNAME}&show_icons=true&theme=tokyonight&bg_color=0d1117&title_color=00f0ff&icon_color=39d353&text_color=e6edf3&border_color=30363d&count_private=true&include_all_commits=true" width="100%" alt="GitHub Stats" />
+    </td>
+    <td width="50%" align="center" valign="top" style="border: none; padding: 4px;">
+      <img src="https://github-readme-streak-stats.herokuapp.com/?user={USERNAME}&theme=tokyonight&background=0d1117&border=30363d&stroke=00f0ff&ring=39d353&fire=ffa657&currStreakNum=e6edf3&sideNums=e6edf3&currStreakLabel=00f0ff" width="100%" alt="Streak Stats" />
+    </td>
+  </tr>
+</table>
+
 </div>
 
 ---
 
 ## 🚀 Featured Platforms & Systems
 
+<div align="center">
+
+<!-- Totally Animated Projects Dashboard Card -->
+<img src="./projects-animated.svg" alt="Featured Platforms & Systems Dashboard" width="100%" style="max-width: 880px;" />
+
+</div>
+
+<br />
+
+<!-- Interactive Fallback & Direct Clickable Links Table -->
 <table>
   <tr>
     <td width="50%" valign="top">
@@ -119,22 +195,6 @@ README_CONTENT = f"""<div align="center">
 
 ---
 
-## 🛠️ Core Tech Arsenal
-
-<div align="center">
-
-| Domain | Technologies |
-| :--- | :--- |
-| **Languages** | `TypeScript` • `Python` • `JavaScript` • `SQL` • `HTML5 / CSS3` |
-| **Frontend &amp; UI** | `Next.js 15` • `React 19` • `TailwindCSS` • `Lucide` • `Canvas / WebGL` |
-| **AI &amp; Autonomous Agents** | `Amazon Bedrock` • `Featherless AI` • `Agentic Workflows` • `Media Forensics` |
-| **Cloud &amp; Infrastructure** | `AWS (CDK, Lambda, S3)` • `Vercel Edge` • `Serverless Architecture` • `Docker` |
-| **Database &amp; Storage** | `PostgreSQL` • `Redis` • `Vector DBs` • `Cloudflare / Edge KV` |
-
-</div>
-
----
-
 <div align="center">
 
 ```
@@ -148,41 +208,53 @@ README_CONTENT = f"""<div align="center">
 
 
 def main():
-    print("=" * 65)
+    print("=" * 68)
     print("   CYBERPUNK GITHUB PROFILE GENERATOR SUITE — @exepngsam")
-    print("=" * 65)
+    print("=" * 68)
 
     # 1. Generate Contribution Graph SVG
-    print("\n[1/4] Generating 53x7 Animated Contribution Calendar...")
+    print("\n[1/5] Generating 53x7 Animated Contribution Calendar...")
     grid, total, months = generate_contribution_svg.fetch_contributions(USERNAME)
     contrib_svg = generate_contribution_svg.generate_svg(grid, total, months)
     print(f"      -> {contrib_svg} created.")
 
     # 2. Generate Terminal ASCII Card SVG
-    print("\n[2/4] Generating macOS Terminal ASCII Portrait Card...")
+    print("\n[2/5] Generating macOS Terminal ASCII Portrait Card...")
     ascii_lines = generate_terminal_card.fetch_and_convert_avatar(USERNAME)
     terminal_svg = generate_terminal_card.generate_svg(ascii_lines)
     print(f"      -> {terminal_svg} created.")
 
     # 3. Generate Neofetch Info Card SVG
-    print("\n[3/4] Generating Neofetch Telemetry Info Card...")
+    print("\n[3/5] Generating Neofetch Telemetry Info Card...")
     info_svg = generate_info_card.generate_svg()
     print(f"      -> {info_svg} created.")
 
-    # 4. Inject into README.md
-    print("\n[4/4] Writing README.md with side-by-side cards & centered calendar...")
+    # 4. Generate Animated Projects Card SVG (Screenshot 4)
+    print("\n[4/5] Generating Totally Animated Projects Dashboard Card (Screenshot 4)...")
+    projects_svg = generate_projects_svg.generate_projects_svg()
+    print(f"      -> {projects_svg} created.")
+
+    # 5. Generate Animated Snake Game SVG
+    print("\n[5/5] Generating Contribution Snake Game SVG...")
+    snake_svg = generate_snake_svg.generate_snake_svg()
+    print(f"      -> {snake_svg} created.")
+
+    # 6. Inject into README.md
+    print("\nWriting complete README.md...")
     readme_path = "README.md"
     with open(readme_path, "w", encoding="utf-8") as f:
-        f.write(README_CONTENT.strip() + "\n")
-    print(f"      -> {readme_path} created ({len(README_CONTENT)} bytes).")
+        f.write(README_TEMPLATE.strip() + "\n")
+    print(f"      -> {readme_path} created ({len(README_TEMPLATE)} bytes).")
 
-    print("\n" + "=" * 65)
-    print("   [ALL ASSETS GENERATED SUCCESSFULLY]")
+    print("\n" + "=" * 68)
+    print("   [ALL ASSETS GENERATED & VERIFIED SUCCESSFULLY]")
     print("   - github-contribution-animation.svg")
     print("   - terminal-card.svg")
     print("   - info-card.svg")
+    print("   - projects-animated.svg")
+    print("   - github-contribution-grid-snake.svg")
     print("   - README.md")
-    print("=" * 65)
+    print("=" * 68)
 
 
 if __name__ == "__main__":
