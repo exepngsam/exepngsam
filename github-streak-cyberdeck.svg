@@ -82,7 +82,7 @@
   <g transform="translate(48, 55)">
     <rect x="0" y="0" width="180" height="110" rx="14" fill="#101722" stroke="#30363d" stroke-width="1" />
     <text x="20" y="28" class="metric-sub">TOTAL CONTRIBUTIONS</text>
-    <text x="20" y="70" class="metric-val" fill="#ffffff">117</text>
+    <text x="20" y="70" class="metric-val" fill="#ffffff">118</text>
     <text x="20" y="94" class="metric-date">Jun 21 - Present</text>
   </g>
 
