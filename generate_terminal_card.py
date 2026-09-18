@@ -1,0 +1,324 @@
+"""
+generate_terminal_card.py
+Generates the unified, ultra-premium CyberDeck Dual-Pane Terminal SVG card
+combining the 3D Holographic Quantum Neural Core (Left Pane) and the
+Neofetch System Telemetry (Right Pane) into a single sleek, wide container
+(920x290) matching header-liquid-glass.svg in dimensions and aesthetic.
+Zero HTML tables, zero CSS dependencies, pure 60 FPS SMIL animations.
+"""
+
+import xml.etree.ElementTree as ET
+
+OUTPUT_FILE = "terminal-card.svg"
+
+
+def generate_terminal_card_svg(output_path=OUTPUT_FILE):
+    width = 920
+    height = 290
+
+    # Left pane geometry (Quantum Core)
+    core_cx = 225
+    core_cy = 138
+
+    # Right pane geometry (Neofetch)
+    neo_x = 472
+
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="100%" height="auto" style="max-width: {width}px; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SFMono-Regular', Consolas, monospace;">
+  <defs>
+    <!-- Liquid Glass Dark Gradient -->
+    <linearGradient id="term-glass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#161f2e" stop-opacity="0.95" />
+      <stop offset="40%" stop-color="#0f1622" stop-opacity="0.97" />
+      <stop offset="100%" stop-color="#090d13" stop-opacity="0.99" />
+    </linearGradient>
+
+    <!-- iOS 27 Liquid Iridescent Border -->
+    <linearGradient id="term-border" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.95">
+        <animate attributeName="stop-color" values="#00f0ff;#a855f7;#39d353;#ffa657;#00f0ff" dur="8s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="35%" stop-color="#ffffff" stop-opacity="0.5" />
+      <stop offset="70%" stop-color="#30363d" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#39d353" stop-opacity="0.9">
+        <animate attributeName="stop-color" values="#39d353;#00f0ff;#a855f7;#39d353" dur="8s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <!-- Specular Light Sweep Gradient -->
+    <linearGradient id="term-shimmer" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Vertical Laser Divider Gradient -->
+    <linearGradient id="laser-divider" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0" />
+      <stop offset="20%" stop-color="#00f0ff" stop-opacity="0.8" />
+      <stop offset="60%" stop-color="#a855f7" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#39d353" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Singularity Radial Gradients -->
+    <radialGradient id="core-singularity" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="25%" stop-color="#00f0ff" />
+      <stop offset="65%" stop-color="#a855f7" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#0d1117" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="reactor-sun" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="40%" stop-color="#00f0ff" />
+      <stop offset="80%" stop-color="#39d353" />
+      <stop offset="100%" stop-color="#006d32" />
+    </radialGradient>
+
+    <!-- Glow & Bloom Filters -->
+    <filter id="bloom" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="5" result="b1" />
+      <feGaussianBlur stdDeviation="2" result="b2" />
+      <feMerge>
+        <feMergeNode in="b1" />
+        <feMergeNode in="b2" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="ring-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2" result="g" />
+      <feMerge>
+        <feMergeNode in="g" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Shimmer Bar -->
+    <linearGradient id="bar-anim" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f0ff" />
+      <stop offset="50%" stop-color="#39d353" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+  </defs>
+
+  <style>
+    .title-bar {{ font-size: 12px; font-weight: 700; fill: #7d8590; font-family: monospace; }}
+    .hud-label {{ font-size: 9.5px; font-weight: 700; fill: #7d8590; font-family: monospace; }}
+    .hud-val {{ font-size: 9.5px; font-weight: 800; fill: #00f0ff; font-family: monospace; }}
+    .neo-title {{ font-size: 14px; font-weight: 800; fill: #00f0ff; font-family: monospace; letter-spacing: 0.5px; }}
+    .sec-hdr {{ font-size: 10.5px; font-weight: 800; fill: #ffa657; letter-spacing: 0.5px; font-family: monospace; }}
+    .sec-hdr-p {{ font-size: 10.5px; font-weight: 800; fill: #bc8cff; letter-spacing: 0.5px; font-family: monospace; }}
+    .sec-hdr-t {{ font-size: 10.5px; font-weight: 800; fill: #00f0ff; letter-spacing: 0.5px; font-family: monospace; }}
+    .spec-key {{ font-size: 11px; font-weight: 700; fill: #58a6ff; font-family: monospace; }}
+    .spec-val {{ font-size: 11px; font-weight: 600; fill: #e6edf3; font-family: -apple-system, BlinkMacSystemFont, monospace; }}
+    .prompt-text {{ font-size: 11px; font-weight: 700; font-family: monospace; }}
+  </style>
+
+  <!-- Outer Liquid Glass Frame (Matching header-liquid-glass rx=20) -->
+  <rect x="3" y="3" width="{width - 6}" height="{height - 6}" rx="20" fill="url(#term-glass)" stroke="url(#term-border)" stroke-width="2" />
+
+  <!-- Animated Specular Glass Shimmer Beam -->
+  <rect x="-220" y="3" width="220" height="{height - 6}" rx="20" fill="url(#term-shimmer)" pointer-events="none">
+    <animate attributeName="x" values="-220; {width + 220}" dur="6s" repeatCount="indefinite" />
+  </rect>
+
+  <!-- ==================== TOP TITLE BAR ==================== -->
+  <g transform="translate(24, 22)">
+    <circle cx="0" cy="0" r="5" fill="#ff5f56" />
+    <circle cx="15" cy="0" r="5" fill="#ffbd2e" />
+    <circle cx="30" cy="0" r="5" fill="#27c93f" />
+
+    <text x="48" y="3.5" class="title-bar">
+      <tspan fill="#00f0ff">exepngsam</tspan>@<tspan fill="#39d353">cyberdeck</tspan>: <tspan fill="#e6edf3">~/quantum-core.ai &amp; neofetch</tspan>
+    </text>
+
+    <!-- Top Right Online Telemetry Pill -->
+    <g transform="translate({width - 24 - 150}, -9)">
+      <rect x="0" y="0" width="126" height="18" rx="9" fill="#161b22" stroke="#30363d" stroke-width="1" />
+      <circle cx="12" cy="9" r="3" fill="#39d353">
+        <animate attributeName="opacity" values="1; 0.2; 1" dur="1.5s" repeatCount="indefinite" />
+      </circle>
+      <text x="22" y="12.5" font-size="9" fill="#39d353" font-weight="800" font-family="monospace">SYS.ONLINE [60Hz]</text>
+    </g>
+  </g>
+
+  <!-- Horizontal Top Separator Line -->
+  <line x1="16" y1="38" x2="{width - 16}" y2="38" stroke="#21262d" stroke-width="1" />
+
+  <!-- ==================== CENTER VERTICAL LASER DIVIDER ==================== -->
+  <line x1="452" y1="44" x2="452" y2="{height - 14}" stroke="url(#laser-divider)" stroke-width="1.5" />
+
+  <!-- ============================================================== -->
+  <!-- LEFT PANE: 3D HOLOGRAPHIC QUANTUM NEURAL REACTOR               -->
+  <!-- ============================================================== -->
+  <g transform="translate({core_cx}, {core_cy})">
+    <!-- Outer Reticle Grids -->
+    <circle r="76" fill="none" stroke="#21262d" stroke-width="1" stroke-dasharray="3 5" />
+    <circle r="88" fill="none" stroke="#30363d" stroke-width="0.8" stroke-dasharray="10 120" opacity="0.7">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="20s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- Cardinal HUD Crosshairs -->
+    <line x1="0" y1="-86" x2="0" y2="-76" stroke="#00f0ff" stroke-width="1.8" />
+    <line x1="0" y1="76" x2="0" y2="86" stroke="#00f0ff" stroke-width="1.8" />
+    <line x1="-86" y1="0" x2="-76" y2="0" stroke="#00f0ff" stroke-width="1.8" />
+    <line x1="76" y1="0" x2="86" y2="0" stroke="#00f0ff" stroke-width="1.8" />
+
+    <!-- Corner Sci-Fi Brackets -->
+    <path d="M -85 -55 L -95 -55 L -95 -75 L -75 -75" fill="none" stroke="#00f0ff" stroke-width="1.2" opacity="0.7" />
+    <path d="M 85 -55 L 95 -55 L 95 -75 L 75 -75" fill="none" stroke="#00f0ff" stroke-width="1.2" opacity="0.7" />
+    <path d="M -85 55 L -95 55 L -95 75 L -75 75" fill="none" stroke="#00f0ff" stroke-width="1.2" opacity="0.7" />
+    <path d="M 85 55 L 95 55 L 95 75 L 75 75" fill="none" stroke="#00f0ff" stroke-width="1.2" opacity="0.7" />
+
+    <!-- Floating HUD Telemetry Tags -->
+    <text x="-95" y="-80" class="hud-label">NODE: <tspan class="hud-val">800_PARTICLES</tspan></text>
+    <text x="35" y="-80" class="hud-label">SYS: <tspan class="hud-val">AUTONOMOUS_AI</tspan></text>
+    <text x="-95" y="88" class="hud-label">FREQ: <tspan class="hud-val">60Hz_SYNC</tspan></text>
+    <text x="35" y="88" class="hud-label">LATENCY: <tspan class="hud-val">0.12ms</tspan></text>
+
+    <!-- Outer Ambient Glow Aura -->
+    <circle r="48" fill="url(#core-singularity)" opacity="0.65">
+      <animate attributeName="r" values="42; 56; 42" dur="3s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.45; 0.8; 0.45" dur="3s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- 3D Gyroscope Ring 1 (Clockwise) -->
+    <g>
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="10s" repeatCount="indefinite" />
+      <ellipse cx="0" cy="0" rx="72" ry="26" fill="none" stroke="#00f0ff" stroke-width="1.6" filter="url(#ring-glow)" opacity="0.9">
+        <animate attributeName="stroke" values="#00f0ff;#39d353;#a855f7;#00f0ff" dur="8s" repeatCount="indefinite" />
+      </ellipse>
+      <circle cx="72" cy="0" r="3.8" fill="#ffffff" filter="url(#bloom)" />
+      <circle cx="-72" cy="0" r="2.5" fill="#00f0ff" />
+    </g>
+
+    <!-- 3D Gyroscope Ring 2 (Counter-Clockwise) -->
+    <g>
+      <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="8s" repeatCount="indefinite" />
+      <ellipse cx="0" cy="0" rx="72" ry="26" fill="none" stroke="#a855f7" stroke-width="1.6" filter="url(#ring-glow)" opacity="0.85">
+        <animate attributeName="stroke" values="#a855f7;#00f0ff;#39d353;#a855f7" dur="8s" repeatCount="indefinite" />
+      </ellipse>
+      <circle cx="0" cy="26" r="3.4" fill="#39d353" filter="url(#bloom)" />
+      <circle cx="0" cy="-26" r="2.8" fill="#ffffff" />
+    </g>
+
+    <!-- 3D Gyroscope Ring 3 (Vertical Tilt) -->
+    <g>
+      <animateTransform attributeName="transform" type="rotate" from="45" to="405" dur="13s" repeatCount="indefinite" />
+      <ellipse cx="0" cy="0" rx="60" ry="18" fill="none" stroke="#39d353" stroke-width="1.4" stroke-dasharray="10 5" opacity="0.8">
+        <animate attributeName="ry" values="18; 52; 18" dur="4s" repeatCount="indefinite" />
+      </ellipse>
+      <circle cx="60" cy="0" r="2.8" fill="#00f0ff" />
+    </g>
+
+    <!-- Center Glowing Singularity Core Reactor -->
+    <circle cx="0" cy="0" r="18" fill="url(#reactor-sun)" filter="url(#bloom)">
+      <animate attributeName="r" values="16; 21; 16" dur="2.2s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.9; 1; 0.9" dur="2.2s" repeatCount="indefinite" />
+    </circle>
+
+    <!-- Core Inner Diamond Spark -->
+    <polygon points="0,-10 7,0 0,10 -7,0" fill="#ffffff">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="4s" repeatCount="indefinite" />
+    </polygon>
+
+    <!-- Pulsing Synapse Radiating Wave -->
+    <circle r="30" fill="none" stroke="#00f0ff" stroke-width="1" opacity="0.7">
+      <animate attributeName="r" values="24; 58; 72" dur="2.4s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0.8; 0.2; 0" dur="2.4s" repeatCount="indefinite" />
+    </circle>
+  </g>
+
+  <!-- Left Bottom Status & Health Bar -->
+  <g transform="translate(30, 236)">
+    <rect x="0" y="0" width="390" height="42" rx="8" fill="#101722" stroke="#21262d" stroke-width="1" />
+    <g transform="translate(12, 16)">
+      <text x="0" y="0" font-size="9" font-weight="700" fill="#7d8590" font-family="monospace">CORE HEALTH</text>
+      <text x="366" y="0" font-size="9" font-weight="800" fill="#39d353" font-family="monospace" text-anchor="end">100% OPERATIONAL</text>
+      <rect x="0" y="5" width="366" height="5" rx="2.5" fill="#161b22" />
+      <rect x="0" y="5" width="0" height="5" rx="2.5" fill="url(#bar-anim)">
+        <animate attributeName="width" values="0; 366" dur="1.2s" fill="freeze" />
+      </rect>
+    </g>
+    <g transform="translate(12, 33)">
+      <text x="0" y="0" class="prompt-text" fill="#39d353">exepngsam@deck:~$</text>
+      <text x="125" y="0" class="prompt-text" fill="#e6edf3">./quantum-core --status</text>
+      <rect x="278" y="-9" width="6" height="11" fill="#00f0ff">
+        <animate attributeName="opacity" values="1; 0; 1" dur="0.8s" repeatCount="indefinite" />
+      </rect>
+      <text x="292" y="0" font-size="9.5" font-family="monospace" font-weight="800" fill="#39d353">[READY]</text>
+    </g>
+  </g>
+
+  <!-- ============================================================== -->
+  <!-- RIGHT PANE: NEOFETCH SYSTEM TELEMETRY                          -->
+  <!-- ============================================================== -->
+  <g transform="translate({neo_x}, 54)">
+    <!-- Header -->
+    <text x="0" y="0" class="neo-title">sam@cyberdeck</text>
+
+    <!-- System Info Fields -->
+    <g transform="translate(0, 18)">
+      <text x="0" y="0" class="spec-key">OS</text>
+      <text x="24" y="0" class="spec-val">~ CyberDeck OS x86_64 [Linux Kernel 6.12]</text>
+
+      <text x="0" y="16" class="spec-key">Host</text>
+      <text x="34" y="16" class="spec-val">~ AWS Cloud / Serverless Edge Engine</text>
+
+      <text x="0" y="32" class="spec-key" fill="#ffa657">Role</text>
+      <text x="34" y="32" class="spec-val" fill="#00f0ff">~ AI Systems &amp; Full-Stack Architect</text>
+
+      <text x="0" y="48" class="spec-key">Location</text>
+      <text x="58" y="48" class="spec-val">~ Cyberspace / Dev Hub</text>
+    </g>
+
+    <!-- Section: Core Stack -->
+    <g transform="translate(0, 80)">
+      <text x="0" y="0" class="sec-hdr">━━━ CORE STACK ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</text>
+      <text x="0" y="16" class="spec-key" fill="#39d353">Languages</text>
+      <text x="68" y="16" class="spec-val">~ TypeScript, Python, JavaScript, SQL</text>
+
+      <text x="0" y="32" class="spec-key" fill="#39d353">Frameworks</text>
+      <text x="76" y="32" class="spec-val">~ Next.js 15, React 19, FastAPI, TailwindCSS</text>
+
+      <text x="0" y="48" class="spec-key" fill="#39d353">Cloud &amp; AI</text>
+      <text x="68" y="48" class="spec-val">~ AWS Bedrock, GenAI, CDK, Serverless, Docker</text>
+    </g>
+
+    <!-- Section: Featured Platforms & Telemetry -->
+    <g transform="translate(0, 144)">
+      <text x="0" y="0" class="sec-hdr-p">━━━ FEATURED PLATFORMS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━</text>
+      <text x="0" y="15" class="spec-key" fill="#bc8cff">Platforms</text>
+      <text x="64" y="15" class="spec-val" fill="#00f0ff">~ Nexora • Stark-Ai • TruthSeal • YieldWay</text>
+
+      <text x="0" y="31" class="sec-hdr-t">━━━ TELEMETRY ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</text>
+      <text x="0" y="46" class="spec-key" fill="#00f0ff">Telemetry</text>
+      <text x="64" y="46" class="spec-val">~ <tspan fill="#39d353">109 Commits</tspan> in 2026 • 100% Serverless</text>
+    </g>
+
+    <!-- 8-Bit Color Palette Swatches -->
+    <g transform="translate(0, 212)">
+      <rect x="0" y="0" width="13" height="11" rx="2.5" fill="#161b22" />
+      <rect x="17" y="0" width="13" height="11" rx="2.5" fill="#ff5f56" />
+      <rect x="34" y="0" width="13" height="11" rx="2.5" fill="#39d353" />
+      <rect x="51" y="0" width="13" height="11" rx="2.5" fill="#ffbd2e" />
+      <rect x="68" y="0" width="13" height="11" rx="2.5" fill="#58a6ff" />
+      <rect x="85" y="0" width="13" height="11" rx="2.5" fill="#bc8cff" />
+      <rect x="102" y="0" width="13" height="11" rx="2.5" fill="#00f0ff" />
+      <rect x="119" y="0" width="13" height="11" rx="2.5" fill="#e6edf3" />
+      <text x="142" y="9" font-size="9" fill="#7d8590" font-family="monospace" font-weight="700">TERM_COLORS [8-BIT]</text>
+    </g>
+  </g>
+</svg>'''
+
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write(svg)
+
+    # Validate XML
+    ET.fromstring(svg)
+    print(f"[OK] Generated valid XML: {output_path} ({len(svg)} bytes)")
+    return output_path
+
+
+if __name__ == "__main__":
+    generate_terminal_card_svg()

@@ -80,7 +80,7 @@
         <animate attributeName="r" values="3.5;5;3.5" dur="2s" repeatCount="indefinite" />
       </circle>
       <text x="24" y="14" class="badge-text">
-        <tspan class="stat-number">113</tspan> CONTRIBUTIONS
+        <tspan class="stat-number">114</tspan> CONTRIBUTIONS
       </text>
     </g>
   </g>
@@ -3138,11 +3138,11 @@
       <animate attributeName="width" values="4.4; 12.5; 11" keyTimes="0; 0.4; 1" dur="0.5s" begin="1.128s" fill="freeze" />
       <animate attributeName="height" values="4.4; 12.5; 11" keyTimes="0; 0.4; 1" dur="0.5s" begin="1.128s" fill="freeze" />
     </rect>
-    <rect x="768" y="84" width="11" height="11" rx="2.5" fill="#161b22" opacity="0" filter="url(#neon-glow-l4)">
+    <rect x="768" y="84" width="11" height="11" rx="2.5" fill="#161b22" opacity="0" filter="url(#neon-glow-l3)">
       <!-- Opacity reveal -->
       <animate attributeName="opacity" values="0; 1; 1" keyTimes="0; 0.2; 1" dur="0.45s" begin="1.296s" fill="freeze" />
       <!-- Specular glint / flash transition -->
-      <animate attributeName="fill" values="#ffffff; #7ee787; #39d353" keyTimes="0; 0.3; 1" dur="0.65s" begin="1.296s" fill="freeze" />
+      <animate attributeName="fill" values="#ffffff; #7ee787; #26a641" keyTimes="0; 0.3; 1" dur="0.65s" begin="1.296s" fill="freeze" />
       <!-- Subtle pop expansion -->
       <animate attributeName="width" values="4.4; 12.5; 11" keyTimes="0; 0.4; 1" dur="0.5s" begin="1.296s" fill="freeze" />
       <animate attributeName="height" values="4.4; 12.5; 11" keyTimes="0; 0.4; 1" dur="0.5s" begin="1.296s" fill="freeze" />
@@ -3192,11 +3192,11 @@
       <animate attributeName="width" values="4.4; 12.5; 11" keyTimes="0; 0.4; 1" dur="0.5s" begin="1.176s" fill="freeze" />
       <animate attributeName="height" values="4.4; 12.5; 11" keyTimes="0; 0.4; 1" dur="0.5s" begin="1.176s" fill="freeze" />
     </rect>
-    <rect x="768" y="174" width="11" height="11" rx="2.5" fill="#161b22" opacity="0" filter="url(#neon-glow-l3)">
+    <rect x="768" y="174" width="11" height="11" rx="2.5" fill="#161b22" opacity="0">
       <!-- Opacity reveal -->
       <animate attributeName="opacity" values="0; 1; 1" keyTimes="0; 0.2; 1" dur="0.45s" begin="1.152s" fill="freeze" />
       <!-- Specular glint / flash transition -->
-      <animate attributeName="fill" values="#ffffff; #7ee787; #26a641" keyTimes="0; 0.3; 1" dur="0.65s" begin="1.152s" fill="freeze" />
+      <animate attributeName="fill" values="#ffffff; #7ee787; #006d32" keyTimes="0; 0.3; 1" dur="0.65s" begin="1.152s" fill="freeze" />
       <!-- Subtle pop expansion -->
       <animate attributeName="width" values="4.4; 12.5; 11" keyTimes="0; 0.4; 1" dur="0.5s" begin="1.152s" fill="freeze" />
       <animate attributeName="height" values="4.4; 12.5; 11" keyTimes="0; 0.4; 1" dur="0.5s" begin="1.152s" fill="freeze" />

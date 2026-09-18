@@ -17,6 +17,7 @@ Executes:
 import os
 import sys
 import generate_header_svg
+import generate_terminal_card
 import generate_neural_core_svg
 import generate_info_card
 import generate_contribution_svg
@@ -33,17 +34,8 @@ README_TEMPLATE = f"""<div align="center">
 
 <br /><br />
 
-<!-- Side-by-Side 3D Quantum Neural Core & Neofetch Telemetry Cards (Unique, High-Legibility, Zero ASCII) -->
-<table border="0" cellpadding="0" cellspacing="0" style="border: none; background: transparent; width: 100%; max-width: 960px;">
-  <tr>
-    <td width="50%" align="center" valign="top" style="border: none; padding: 8px;">
-      <img src="./neural-core.svg" alt="3D Holographic Quantum Neural Core" width="100%" />
-    </td>
-    <td width="50%" align="center" valign="top" style="border: none; padding: 8px;">
-      <img src="./info-card.svg" alt="Neofetch System Telemetry" width="100%" />
-    </td>
-  </tr>
-</table>
+<!-- Unified CyberDeck OS Dual-Pane Terminal (3D Quantum Core & Neofetch Telemetry - Matches Header Banner Width) -->
+<img src="./terminal-card.svg" alt="CyberDeck OS Dual-Pane Terminal" width="100%" style="max-width: 960px;" />
 
 <br />
 
@@ -196,42 +188,47 @@ def main():
     print("=" * 70)
 
     # 1. Generate Liquid Glass Hero Banner
-    print("\n[1/7] Generating Liquid Glass Hero Banner SVG...")
+    print("\n[1/8] Generating Liquid Glass Hero Banner SVG...")
     header_svg = generate_header_svg.generate_header_svg()
     print(f"      -> {header_svg} created.")
 
-    # 2. Generate 3D Holographic Quantum Neural Core SVG (Replaces ASCII)
-    print("\n[2/7] Generating 3D Holographic Quantum Neural Core SVG...")
+    # 2. Generate Unified CyberDeck Dual-Pane Terminal Card SVG (920px wide)
+    print("\n[2/8] Generating Unified CyberDeck Dual-Pane Terminal Card SVG...")
+    term_svg = generate_terminal_card.generate_terminal_card_svg()
+    print(f"      -> {term_svg} created.")
+
+    # 3. Generate 3D Holographic Quantum Neural Core SVG (Standalone)
+    print("\n[3/8] Generating 3D Holographic Quantum Neural Core SVG...")
     neural_svg = generate_neural_core_svg.generate_neural_core_svg()
     print(f"      -> {neural_svg} created.")
 
-    # 3. Generate Neofetch Info Card SVG (Enlarged & Crisp)
-    print("\n[3/7] Generating Enlarged Neofetch Telemetry Info Card...")
+    # 4. Generate Neofetch Info Card SVG (Standalone)
+    print("\n[4/8] Generating Enlarged Neofetch Telemetry Info Card...")
     info_svg = generate_info_card.generate_svg()
     print(f"      -> {info_svg} created.")
 
-    # 4. Generate Contribution Graph SVG
-    print("\n[4/7] Generating 53x7 Animated Contribution Calendar...")
+    # 5. Generate Contribution Graph SVG
+    print("\n[5/8] Generating 53x7 Animated Contribution Calendar...")
     grid, total, months = generate_contribution_svg.fetch_contributions(USERNAME)
     contrib_svg = generate_contribution_svg.generate_svg(grid, total, months)
     print(f"      -> {contrib_svg} created.")
 
-    # 5. Generate Animated Stats & Waveform SVG
-    print("\n[5/7] Generating Animated Liquid Glass Stats & Waveform SVG...")
+    # 6. Generate Animated Stats & Waveform SVG
+    print("\n[6/8] Generating Animated Liquid Glass Stats & Waveform SVG...")
     stats_svg = generate_stats_svg.generate_stats_svg()
     print(f"      -> {stats_svg} created.")
 
-    # 6. Generate Animated Projects Card SVG
-    print("\n[6/7] Generating Totally Animated Projects Dashboard Card...")
+    # 7. Generate Animated Projects Card SVG
+    print("\n[7/8] Generating Totally Animated Projects Dashboard Card...")
     projects_svg = generate_projects_svg.generate_projects_svg()
     print(f"      -> {projects_svg} created.")
 
-    # 7. Generate Animated Snake Game SVG
-    print("\n[7/7] Generating Contribution Snake Game SVG...")
+    # 8. Generate Animated Snake Game SVG
+    print("\n[8/8] Generating Contribution Snake Game SVG...")
     snake_svg = generate_snake_svg.generate_snake_svg()
     print(f"      -> {snake_svg} created.")
 
-    # 8. Inject into README.md
+    # 9. Inject into README.md
     print("\nWriting complete README.md with high-readability layout...")
     readme_path = "README.md"
     with open(readme_path, "w", encoding="utf-8") as f:
@@ -239,10 +236,11 @@ def main():
     print(f"      -> {readme_path} created ({len(README_TEMPLATE)} bytes).")
 
     print("\n" + "=" * 70)
-    print("   [ALL 7 ASSETS GENERATED & VERIFIED SUCCESSFULLY]")
-    print("   - header-liquid-glass.svg")
-    print("   - neural-core.svg (Unique 3D Holographic AI Core)")
-    print("   - info-card.svg")
+    print("   [ALL 8 ASSETS GENERATED & VERIFIED SUCCESSFULLY]")
+    print("   - header-liquid-glass.svg (Hero Banner)")
+    print("   - terminal-card.svg (Unified CyberDeck Dual-Pane Terminal)")
+    print("   - neural-core.svg (3D Holographic AI Core)")
+    print("   - info-card.svg (Neofetch Telemetry)")
     print("   - github-contribution-animation.svg")
     print("   - github-stats-animated.svg")
     print("   - projects-animated.svg")
