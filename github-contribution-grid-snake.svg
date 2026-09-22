@@ -152,7 +152,7 @@
     <circle cx="28" cy="0" r="4.5" fill="#27c93f" />
 
     <text x="44" y="4" class="game-title">
-      <tspan fill="#00f0ff">snake@cyberdeck</tspan>: <tspan fill="#39d353">contributions.eat()</tspan> ~ <tspan fill="#ffffff">135 dots consumed</tspan>
+      <tspan fill="#00f0ff">snake@cyberdeck</tspan>: <tspan fill="#39d353">contributions.eat()</tspan> ~ <tspan fill="#ffffff">139 dots consumed</tspan>
     </text>
 
     <!-- Top Right Live Status Pill -->
@@ -560,6 +560,7 @@
     <rect class="c cf" x="818" y="98" rx="2" ry="2"/>
     <rect class="c cg" x="834" y="2" rx="2" ry="2"/>
     <rect class="c" x="834" y="18" rx="2" ry="2"/>
+    <rect class="c" x="834" y="34" rx="2" ry="2"/>
 
     <!-- Liquid-Smooth Energy Harvest Progression Meter (60 FPS Fluid Fill) -->
     <rect x="0" y="145" width="848" height="8" rx="4" ry="4" fill="#0c121c" stroke="#21262d" stroke-width="1" />
@@ -580,7 +581,7 @@
   <!-- ==================== FOOTER TELEMETRY & CONTROLS ==================== -->
   <g transform="translate(24, 228)">
     <text x="0" y="0" class="footer-stat">
-      GAME: <tspan fill="#39d353">SNAKE_AI_v2</tspan> | SCORE: <tspan fill="#00f0ff">135 PTS</tspan> | SPEED: <tspan fill="#ffa657">60 FPS</tspan> | STATUS: <tspan fill="#a855f7">AUTONOMOUS</tspan>
+      GAME: <tspan fill="#39d353">SNAKE_AI_v2</tspan> | SCORE: <tspan fill="#00f0ff">139 PTS</tspan> | SPEED: <tspan fill="#ffa657">60 FPS</tspan> | STATUS: <tspan fill="#a855f7">AUTONOMOUS</tspan>
     </text>
 
     <!-- Right Side Indicator -->
