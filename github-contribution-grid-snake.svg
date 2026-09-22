@@ -152,7 +152,7 @@
     <circle cx="28" cy="0" r="4.5" fill="#27c93f" />
 
     <text x="44" y="4" class="game-title">
-      <tspan fill="#00f0ff">snake@cyberdeck</tspan>: <tspan fill="#39d353">contributions.eat()</tspan> ~ <tspan fill="#ffffff">139 dots consumed</tspan>
+      <tspan fill="#00f0ff">snake@cyberdeck</tspan>: <tspan fill="#39d353">contributions.eat()</tspan> ~ <tspan fill="#ffffff">143 dots consumed</tspan>
     </text>
 
     <!-- Top Right Live Status Pill -->
@@ -581,7 +581,7 @@
   <!-- ==================== FOOTER TELEMETRY & CONTROLS ==================== -->
   <g transform="translate(24, 228)">
     <text x="0" y="0" class="footer-stat">
-      GAME: <tspan fill="#39d353">SNAKE_AI_v2</tspan> | SCORE: <tspan fill="#00f0ff">139 PTS</tspan> | SPEED: <tspan fill="#ffa657">60 FPS</tspan> | STATUS: <tspan fill="#a855f7">AUTONOMOUS</tspan>
+      GAME: <tspan fill="#39d353">SNAKE_AI_v2</tspan> | SCORE: <tspan fill="#00f0ff">143 PTS</tspan> | SPEED: <tspan fill="#ffa657">60 FPS</tspan> | STATUS: <tspan fill="#a855f7">AUTONOMOUS</tspan>
     </text>
 
     <!-- Right Side Indicator -->
