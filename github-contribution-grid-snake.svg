@@ -563,6 +563,7 @@
     <rect class="c ch" x="834" y="34" rx="2" ry="2"/>
     <rect class="c ci" x="834" y="50" rx="2" ry="2"/>
     <rect class="c" x="834" y="66" rx="2" ry="2"/>
+    <rect class="c" x="834" y="82" rx="2" ry="2"/>
 
     <!-- Liquid-Smooth Energy Harvest Progression Meter (60 FPS Fluid Fill) -->
     <rect x="0" y="145" width="848" height="8" rx="4" ry="4" fill="#0c121c" stroke="#21262d" stroke-width="1" />
